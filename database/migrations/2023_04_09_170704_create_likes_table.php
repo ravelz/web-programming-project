@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('failed_jobs', function (Blueprint $table) {
-            $table->id();
-            $table->string('uuid')->unique();
-            $table->text('connection');
-            $table->text('queue');
-            $table->longText('payload');
-            $table->longText('exception');
-            $table->timestamp('failed_at')->useCurrent();
+        Schema::create('likes', function (Blueprint $table) {
+            $table->string('id_user')->primary();
+            $table->foreign('id_user')->references('id_user')->on('users'); //as foreign key, gimana primarynya?
+            $table->string('id_article')->primary();
+            $table->foreign('id_article')->references('id_article')->on('articles');
         });
     }
 
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('likes');
     }
 };

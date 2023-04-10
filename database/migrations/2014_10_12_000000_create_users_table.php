@@ -14,13 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->string('id_user')->primary(); //nnti dia hasil string combine dengan id yang angkanya tuh dari autoincrement
+            $table->string('username')->unique();
+            $table->string('name', 20); 
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->string('role'); //mungkin bakalan pake enums bingung weee
+            $table->integer('jml_followers');
         });
     }
 
