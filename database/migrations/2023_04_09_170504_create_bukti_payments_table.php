@@ -13,8 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('buktiPayment', function (Blueprint $table) {
-            $table->id();
+        Schema::create('buktiPayments', function (Blueprint $table) {
             $table->string('id_bukpay')->primary();
             $table->date('tgl_payment');
         });
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buktiPayment');
+        Schema::dropIfExists('buktiPayments');
     }
 };

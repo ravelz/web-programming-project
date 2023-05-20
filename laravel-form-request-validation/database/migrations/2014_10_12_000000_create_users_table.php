@@ -8,28 +8,24 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->string('id_user')->primary(); //nnti dia hasil string combine dengan id yang angkanya tuh dari autoincrement
-            $table->string('username')->unique();
-            $table->string('name', 20); 
+            $table->id();
+            $table->string('name');
             $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('role'); 
-            $table->integer('jml_followers');
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('users');
     }
