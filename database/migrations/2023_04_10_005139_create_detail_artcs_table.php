@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreign('id_article')->references('id_article')->on('articles');
             $table->integer('jml_view');
             $table->primary(array('id_user', 'id_article'));
+            $table->timestamps();
         });
     }
 
