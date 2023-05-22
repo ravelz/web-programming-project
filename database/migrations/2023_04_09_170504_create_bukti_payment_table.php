@@ -14,9 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('buktiPayment', function (Blueprint $table) {
-            $table->id();
             $table->string('id_bukpay')->primary();
             $table->date('tgl_payment');
+            $table->string('id_payment');
+            $table->foreign('id_payment')->references('id_payment')->on('payments');
         });
     }
 

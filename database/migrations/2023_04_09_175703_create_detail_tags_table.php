@@ -14,10 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('detailTags', function (Blueprint $table) {
-            $table->string('id_article')->primary();
+            $table->string('id_article');
             $table->foreign('id_article')->references('id_article')->on('articles');
-            $table->string('id_tag')->primary();
+            $table->string('id_tag');
             $table->foreign('id_tag')->references('id_tag')->on('tags');
+            $table->primary(array('id_article', 'id_tag'));
         });
     }
 

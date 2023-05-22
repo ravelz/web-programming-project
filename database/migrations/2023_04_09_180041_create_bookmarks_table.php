@@ -14,10 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('bookmarks', function (Blueprint $table) {
-            $table->string('id_user')->primary();
+            $table->string('id_user');
             $table->foreign('id_user')->references('id_user')->on('users'); 
-            $table->string('id_article')->primary();
+            $table->string('id_article');
             $table->foreign('id_article')->references('id_article')->on('articles');
+            $table->primary(array('id_user', 'id_article'));
         });
     }
 
