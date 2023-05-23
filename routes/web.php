@@ -25,3 +25,11 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/homes', function () {
+    return view('Layout/home');
+});
+
+Route::get('/test', function () {
+    return view('test');
+});
