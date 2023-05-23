@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('tgl_payment');
             $table->string('id_payment');
             $table->foreign('id_payment')->references('id_payment')->on('payments');
+            $table->timestamps();
         });
     }
 

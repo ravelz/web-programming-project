@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('id_tag');
             $table->foreign('id_tag')->references('id_tag')->on('tags');
             $table->primary(array('id_article', 'id_tag'));
+            $table->timestamps();
         });
     }
 
