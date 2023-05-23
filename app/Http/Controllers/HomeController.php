@@ -12,7 +12,11 @@ class HomeController extends Controller
                 ->inRandomOrder()
                 ->limit(2)
                 ->get();
-        dd($author);
+        $article = DB::table('articles')
+            ->inRandomOrder()
+            ->limit(10)
+            ->get();
+        dd($author, $article->first()->judul);
 
         return view('home');
     }
