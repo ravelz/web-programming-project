@@ -96,9 +96,8 @@
                     
                     <div class="offset-1 mt-1 d-flex flex-row flex-nowrap" style="gap:24px; position:relative; " >
 
-                        @include('../Component/homeComponent/miniCard')
-                       
-    
+                        {{-- @include('../Component/homeComponent/miniCard') --}}
+                        
                         <div id = "stengah-card" class="ikuti-card">
                             <div class="card" style="max-width: 291.61px; height:auto; border-radius: 0px; clip-path: polygon(0 0, 0 100%, 50% 100%, 50% 0);">
                                 <img src="../img/Home/smallCard.jpg" class="card-img-top" alt="..." style="border-radius: 0px;">
