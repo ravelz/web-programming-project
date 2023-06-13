@@ -3,17 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
 
 class HomeController extends Controller
 {
-    public function showHome(){
-        $author = DB::table('users')->where('role', '=' ,'2')
-                ->inRandomOrder()
-                ->limit(2)
-                ->get();
-        dd($author);
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
         return view('home');
     }
 }
