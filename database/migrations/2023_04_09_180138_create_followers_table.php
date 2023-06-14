@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('followers', function (Blueprint $table) {
+        Schema::create('followers', function (Blueprint $table) {   
            $table->string('id_user_f');
            $table->foreign('id_user_f')->references('id_user')->on('users');
            $table->string('id_user_m');

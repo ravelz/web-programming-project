@@ -1,0 +1,74 @@
+/*======================================================= HEADER ================================================================== */
+@media (max-width: 992px){
+
+    body{
+        overflow-x: hidden;
+    }
+
+    .daftar{
+        display: none;
+    }
+
+    .masuk{
+        display: none;
+    }
+
+    .prof{
+        display: none;
+    }
+
+    .Header{
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-left: 0px;
+        box-sizing: border-box;
+    }
+
+    .back-nav{
+        padding-left: 32px;
+        position: fixed;
+        background-color: #982727;
+        left:0px;
+        z-index: 999;
+    }
+
+    .web-logo{
+        margin-top: 100px;
+        width: 50vh !important;
+    }
+
+    .sidebar-kanan{
+        display: none;
+    }
+    
+}
+
+@media(max-width: 1380px){
+    #sidebar-right{
+        position: fixed;
+        right: -20px;
+    }
+}
+
+
+
+
+/*======================================================= ISI ================================================================== */
+
+
+/*======================================================= FOOTER ================================================================== */
+
+@media(max-width: 1380px){
+    .mid-1, .mid-2, .mid-3, .mid4{
+        flex: 50% !important;
+    }
+}
+  
+
+
+
+
+
+
+
+

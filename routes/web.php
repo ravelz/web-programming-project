@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\articleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CreateArticleController;
@@ -16,10 +17,12 @@ use App\Http\Controllers\CreateArticleController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function() {
+    return view('article');
 });
 
+
+Route::get('/article', [articleController::class, 'index']);
 Route::get('/home', [HomeController::class, 'showHome']);
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -31,3 +34,10 @@ Route::get('/create-article', [CreateArticleController::class, 'create'])->name(
 Route::post('/create-article', [CreateArticleController::class, 'store'])->name('store');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/homes', function () {
+    return view('Layout/home');
+});
+
+Route::get('/test', function () {
+    return view('test');
+});

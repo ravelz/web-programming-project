@@ -24,6 +24,7 @@ class AuthController extends Controller
             'username' => 'The provided credentials do not match our records.',
         ]);
     }
+    
     public function showRegistrationForm()
     {
         return view('register');

@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -37,6 +36,20 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function followers(){
+        return $this->belongsToMany(User::class, 'followers',
+        'id_user_m',
+        'id_user_f');
+    }
+
+    public function articles(){
+        return $this->belongsToMany(Article::class,
+        'articles',
+        'id_user',
+        'id_user'
+    );
+    }
 
     /**
      * The attributes that should be cast.
