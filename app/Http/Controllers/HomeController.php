@@ -10,6 +10,10 @@ use App\Models\Article;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function showHome(){
         $authors = User::where('role', '2')->inRandomOrder()->limit(2)->get();
 
@@ -47,7 +51,13 @@ class HomeController extends Controller
         ->get();
 
         dd($joinFollows, $joinFollow, $providers_collection, $joinFollow, Auth::id(), $readList);
-
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
         return view('home');
     }
 }
