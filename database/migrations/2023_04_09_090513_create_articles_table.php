@@ -23,6 +23,8 @@ return new class extends Migration
             $table->integer('status_member');
             $table->string('deskripsi', 255);
             $table->integer('jml_like');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 

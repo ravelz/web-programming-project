@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('id_user');
             $table->foreign('id_user')->references('id_user')->on('users');
             $table->string('comment');
+            $table->timestamps();
         });
     }
 

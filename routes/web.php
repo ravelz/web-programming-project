@@ -1,7 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\articleController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,4 +20,19 @@ Route::get('/', function() {
     return view('article');
 });
 
+
 Route::get('/article', [articleController::class, 'index']);
+Route::get('/home', [HomeController::class, 'showHome']);
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/homes', function () {
+    return view('Layout/home');
+});
+
+Route::get('/test', function () {
+    return view('test');
+});
