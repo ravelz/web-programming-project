@@ -18,7 +18,7 @@ use App\Http\Controllers\CreateArticleController;
 */
 
 Route::get('/', function() {
-    return view('article');
+    return view('login');
 });
 
 
@@ -33,9 +33,11 @@ Route::get('/article', [CreateArticleController::class, 'show'])->name('article'
 Route::get('/create-article', [CreateArticleController::class, 'create'])->name('create');
 Route::post('/create-article', [CreateArticleController::class, 'store'])->name('store');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/homes', function () {
-    return view('Layout/home');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return view('Home/home');
 });
 
 Route::get('/test', function () {
