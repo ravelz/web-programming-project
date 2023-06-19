@@ -9,8 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     use HasFactory;
+    protected $key = 'id_article';
     protected $fillable = [
-        'id_artcile',
+        'id_article',
         'judul',
         'tgl_publish',
         'status_member',
@@ -24,6 +25,6 @@ class Article extends Model
         return $this->belongsTo(User::class, 'id_user', 'id_user');
     }
     
-    protected $primaryKey = 'id_article';
+    
 
 }
