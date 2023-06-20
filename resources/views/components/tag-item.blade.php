@@ -1,0 +1,1 @@
+<a type="button" id ="button-tag" class="btn btn-primary btn-sm top-tag me-2 mb-2" style=" background-color:#982727; border-radius:20px; border:none; " role="button" href="{{ route('clickedTag', ['tagName' => $tagItem->id_tag]) }}">{{ $tagItem->title_tag }}</a>

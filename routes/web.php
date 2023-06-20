@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\User;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\articleController;
 use App\Http\Controllers\AuthController;
@@ -19,12 +21,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function() {
-    return view('article');
+    return view('login');
 });
 
-
 Route::get('/article', [articleController::class, 'index']);
-Route::get('/home', [HomeController::class, 'showHome']);
+// Route::get('/home', [HomeController::class, 'showHome']);
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -40,11 +41,18 @@ Route::get('/read-article/{id}/{judul}', [CreateArticleController::class, 'readA
 Route::get('/like/{id}/{judul}', [articleController::class, 'like'])->name('like_article');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/homes', function () {
-    return view('Layout/home');
-});
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/test', function () {
-    return view('test');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/', function () {
+//     return view('Home/home');
+// })->middleware(User::class);
+
+Route::middleware([User::class])->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('index');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/home/tag/{tagName}', [HomeController::class, 'getClickedTag'])->name('clickedTag');
+    Route::get('/user', function () {
+        return view('test')->with('id', Auth::user());
+    });
 });
