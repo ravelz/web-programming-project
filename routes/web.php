@@ -5,6 +5,7 @@ use App\Http\Controllers\articleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CreateArticleController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +31,14 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 Route::get('/article', [CreateArticleController::class, 'show'])->name('article');
+
 Route::get('/create-article', [CreateArticleController::class, 'create'])->name('create');
-Route::post('/create-article', [CreateArticleController::class, 'store'])->name('store');
+Route::post('/upload-image', [CreateArticleController::class, 'uploadImage'])->name('upload');
+Route::post('/create-article', [CreateArticleController::class, 'store'])->name('store'); 
+Route::get('/read-article/{id}/{judul}', [CreateArticleController::class, 'readArticle'])->name('read');
+
+Route::get('/like/{id}/{judul}', [articleController::class, 'like'])->name('like_article');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/homes', function () {

@@ -37,12 +37,15 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users,email|max:255',
             'password' => 'required|min:8|max:255|confirmed',
         ]);
-        $lastIdUser = User::select('id_user')->orderBy('id_user','desc')->first();
+        $lastIdUser = User::select('id_user')->orderByRaw("CAST(substr(id_user, 3) as UNSIGNED) asc")->first()->get();
+        dD($lastIdUser);
         if(!$lastIdUser){
-            $idUser = "USR001";
+            $idUser = "USR1";
         }else{
-            $idUser = (int)substr($lastIdUser , -3);
-            $idUser = 'USR'.$lastIdUser+1;
+            $lastId = (int)substr($lastIdUser , 3);
+            dd($lastId);
+            $idUser = 'USR'. ($lastId + 1);
+            dd($idUser);
         }
         $user = User::create([
             'id_user' => $idUser,
@@ -55,4 +58,4 @@ class AuthController extends Controller
         auth()->login($user);
         return redirect('/home');
     }
-}
+} 

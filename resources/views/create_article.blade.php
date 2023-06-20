@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body>
@@ -30,39 +30,19 @@
         </div> 
     </form>
 
-        @push('scripts')
-            <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
-            <script>
-            var options = {
-                filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-                filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
-                filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-                filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
-            };
-            </script>
-            <script>
-                CKEDITOR.replace('deskripsi', options);
-            </script>
-            <script>
-                import { EasyImage } from '@ckeditor/ckeditor5-easy-image';
-                import { Image } from '@ckeditor/ckeditor5-image';
-
-                ClassicEditor
-                    .create( document.querySelector( '#editor' ), {
-                        plugins: [ EasyImage, Image, /* ... */ ],
-                        toolbar: [ 'uploadImage', /* ... */ ],
-
-                        // Configure the endpoint. See the "Configuration" section above.
-                        cloudServices: {
-                            tokenUrl: 'https://example.com/cs-token-endpoint',
-                            uploadUrl: 'https://your-organization-id.cke-cs.com/easyimage/upload/'
-                        }
-                    } )
-                    .then( /* ... */ )
-                    .catch( /* ... */ );
-            </script>
-        @endpush
-
-        @stack('scripts')
+    <script>
+        ClassicEditor
+                .create( document.querySelector( '#deskripsi' ), {
+                    ckfinder:{
+                        uploadUrl: '{{route('upload',['_token'=>csrf_token()])}}',
+                        uploadUrl: 'https://ckeditor.com/apps/ckfinder/3.5.0/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
+                        filebrowserUploadMethod : 'form',
+                    }
+                } )
+                .catch( error => {
+                        console.error( error );
+                } );
+    </script>
+</body> 
 </body>
 </html>

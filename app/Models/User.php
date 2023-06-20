@@ -51,6 +51,10 @@ class User extends Authenticatable
     );
     }
 
+    // public function article(){
+    //     return $this->hasMany(Article::class, 'id_user', 'id_user');
+    // }
+
     /**
      * The attributes that should be cast.
      *
@@ -60,7 +64,5 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function article(){
-        return $this->hasMany(Article::class, 'id_user', 'id_user');
-    }
+    
 }
