@@ -19,28 +19,18 @@
     <link rel="stylesheet" href="./css/Home/homeRes.css">
     <link rel="stylesheet" href="./css/Home/homeAnimation.css">
 
+    {{-- Glide --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@^3.4.1/dist/css/glide.core.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@^3.4.1/dist/glide.min.js"></script>
+    
+
 </head>
 
 <body>
     @section('content')
     <div class="page">
-       
         <!-- ====================================================HEADER & SEARCH============================================================== -->
         <section class="Header">
-            {{-- <div class="row" style="">
-                <div class="container-fluid back-nav" style="">
-                    <div class="ham">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-list" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-                        </svg>
-                    </div>
-                </div>
-            </div> --}}
-
-
-            
-
-            <!-- < 576, >=576, >=768, >=992, >=1200, >=1400 / ... /sm/md/lg/xl/xxl--> 
             <div class="row" >
                 <div class="logo-search mb5">
                     <div class=" d-flex justify-content-center ">
@@ -58,40 +48,34 @@
                     </div>   
                 </div>
             </div>
-               
-                
         </section>
 
                                                         <!-- ========PEMBATAS======== -->
         <div class="pembatas-bawah"></div>
 
         <!-- ====================================================ISI============================================================== -->
-        <section id = "isi" class="Content">
-                                                         <!-- ========BANNER======= -->
-
-            <div class="row">
-                <div class="col-1 offset-1 banner ">
-                    <p class="sign ">Diikuti</p>
+        <section id = "isis" class="Content d-flex flex-row" >
+            <!-- ========BANNER======= -->
+            <div class="d-flex flex-column">
+                <div class="row">
+                    <div class="col offset-2 banner ">
+                        <p class="sign ">Diikuti</p>
+                    </div>
+                    <div id = "view-all" class="col view-all">VIEW ALL
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                          </svg>
+                    </div>
                 </div>
-
-                <div id = "view-all" class="col-3 view-all">VIEW ALL
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-                      </svg>
-                </div>
-            </div>
-
-                                                    <!-- ========ARTIKEL DIIKUTI======= -->
-
-            <div class="container-fluid" style="position: relative">
                 <div class="row">
                     <div class="row mt-2">
-                        <div class="col-11 offset-1 ikuti">
+                        <div class="col offset-2 ikuti">
                             <h3 class="judul-ikuti">Artikel dari yang kamu ikuti</h3>
                         </div>
                     </div>
-
                     <!-- ========CARD DIIKUTI======= -->
+
+                    
                     
                     <div class="offset-1 mt-1 d-flex flex-row flex-nowrap" style="gap:24px; position:relative; " >
                         @foreach ($followedArticles as $article)
@@ -105,7 +89,6 @@
                                         <p class = "waktu">17 Jam yang lalu</p>
                                     </div>
                                   </div>
-        
                                   <h1 class="judul">{{ $article->judul }}</h1>
                                   <p class="deskripsi">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, quidem..</p>
         
@@ -132,18 +115,40 @@
                         </div>
                     </div>
                 </div>
-
+            </div>
+        </section>
+        <section id = "isi" class="Content d-flex flex-row justify-content-around">
+            <div class="d-flex flex-column">
+                <div class="d-flex flex-column">
+                    <div class="row mt-2">
+                        <div class="col-11 offset-1 ikuti">
+                            <h3 class="judul-ikuti" style="padding-bottom: 32px">Artikel dari yang kamu ikuti</h3>
+                        </div>
+                    </div>
+    
+                     <!-- ========BIG CARD======= -->
+                    <div class="offset-1 pe-5" >
+                        @foreach ($popularArticles as $article)
+                            <x-article-item :article="$article"/>
+                        @endforeach
+                    </div>
+                    <div>
+                        <div class="col-7 offset-1">
+                            <a href = ""style="background-color: #F5F0F0;color: #5E5D2D; font-size:20px; font-weight:600; font-family:'Rubik', sans-serif; padding-left:12px; text-decoration:underline;">Tampilkan Lebih. . .</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-column">
                 <!-- ========SIDEBAR KANAN====== -->
-
-                <div id = sidebar-right class="d-flex justify-content-end flex-row col-3 offset-9" style="position: relative;">
+                <div class="d-flex flex-row col-3" >
                     <div class="bungkus-sidebar d-flex flex-row" style=" height: 0px;">
-                        <div class="sidebar-kanan" style="height: 729px">
+                        <div style="height: 729px">
                             <!-- ========TOP AUTHOR======= -->
-                            
-                            <div class="top-author" style="border: 1px solid rgba(0,0,0,0.22); border-top:none;border-bottom:none;" >
+                            <div style="border: 1px solid rgba(0,0,0,0.22); border-top:none;border-bottom:none;" >
                                 <h2 style="padding-top: 32px; padding-left:24px ;">Ikuti juga</h2>
                                 @guest
-                                
+
                                 @endguest
                                 @auth
                                     @foreach ($authors as $author)
@@ -162,11 +167,10 @@
                                             </div>
                                         </div>
                                     @endforeach
-                                    
                                 @endauth
-        
+                                <!-- Button trigger modal -->
                                 <div style="margin-top : 12px; padding-left:24px; padding-bottom:32px;">
-                                    <p style="color: #5E5D2D; font-size:16px; font-weight:400; font-family:'Rubik', sans-serif;">Lihat lebih banyak saran...</p>
+                                    <a style="color: #5E5D2D; font-size:16px; font-weight:400; font-family:'Rubik', sans-serif;" data-bs-toggle="modal" data-bs-target="#exampleModal">Lihat lebih banyak saran...</a>
                                 </div>
                             </div>
                            
@@ -176,13 +180,12 @@
                                 <div class="ikuti-author">
                                     <div class="tags d-flex flex-row flex-wrap" style="font-family:'Rubik',sans-serif; font-size:16px">
                                         @foreach ($tags as $tag)
-                                            <button type="button" id ="button-tag" class="btn btn-primary btn-sm top-tag me-2 mb-2" style=" background-color:#982727; border-radius:20px; border:none; ">{{ $tag->title_tag }}</button>
+                                            <x-tag-item :tagItem="$tag"/>
                                         @endforeach                                        
                                     </div>
-                                </div>
-                                
+                                </div>                                                            
+                                <a>Lihat lebih banyak topik...</a>
                                 <div style="margin-top : 24px; padding-left:24px;">
-                                    <p style="background-color: #F5F0F0;color: #5E5D2D; font-size:16px; font-weight:400; font-family:'Rubik', sans-serif;">Lihat lebih banyak topik...</p>
                                 </div>
                             </div>
     
@@ -198,31 +201,34 @@
                         </div>
                     </div>
                 </div>
-            </div> 
-
-                                                    <!-- ========ARTIKEL POPULER KATEGORI TERTENTU======= -->
-            <div class="row" style="position: relative">
-
-                <div class="row mt-2">
-                    <div class="col-11 offset-1 ikuti">
-                        <h3 class="judul-ikuti" style="padding-bottom: 32px">Artikel dari yang kamu ikuti</h3>
-                    </div>
-                </div>
-
-                                                             <!-- ========BIG CARD======= -->
-                <div class="col-7 offset-1" >
-                    @foreach ($popularArticles as $article)
-                    <x-article-item :article="$article"/>
-                    @endforeach
-                </div>
-                <div>
-                    <div class="col-7 offset-1">
-                        <a href = ""style="background-color: #F5F0F0;color: #5E5D2D; font-size:20px; font-weight:600; font-family:'Rubik', sans-serif; padding-left:12px; text-decoration:underline;">Tampilkan Lebih. . .</a>
-                    </div>
-                </div>
+            </div>
+            
         </section>
-        
-         
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Follow more author</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex flex-column">
+                @foreach ($authors as $author)
+                <x-author-item :author="$author"/>
+                @endforeach
+                <div class="d-flex justify-content-center w-100 text-red">
+                    {{ $authors->links()  }}
+                </div>
+                
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>       
+            </div>
+        </div>
+        </div>
     </div>
     @endsection
 
@@ -230,3 +236,49 @@
     <script src="./js/Home/homescript.js"></script>
 </body>
 </html>
+
+<script>
+    const myModal = document.getElementById('myModal')
+    const myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', () => {
+    myInput.focus()
+    })
+</script>
+
+
+
+<style>
+.glide__arrows {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+}
+.glide__arrow {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    line-height: 40px;
+    text-align: center;
+    transition: background-color 0.2s ease-in-out;
+}
+.glide__arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.glide__arrow--left {
+    left: 20px;
+}
+.glide__arrow--right {
+    right: 20px;
+}
+</style>

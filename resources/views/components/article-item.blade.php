@@ -1,5 +1,5 @@
-<div id = follow-card class="card mb-3" style="max-width: 1005px; height: auto">
-    <div class="row g-0">
+<div id = "follow-card" class="card d-flex flex-column mb-4" style="height: auto">
+    <div class="d-flex flex-row">
         <div class="col-md-4" style="height: auto">
             <img id = "follow-img" src="img\Home\hakim.jpg" class="img-fluid" alt="..." style="height:100%; width:100%; object-fit:cover;" >
         </div>
@@ -16,8 +16,8 @@
                     </div>
                 </div>
             
-                <div id = "follow-tit" style="max-width: 527px; max-height:400px;"><p class="card-text" style="padding-left: 8px;color:black;font-size:34px; font-weight:400; font-family:'Rubik', sans-serif;">{{ $article->judul }}</p></div>
-                <div id = "follow-desc"style="max-width: 527px; max-height:400px">
+                <div id = "follow-tit" style="max-height:400px;"><p class="card-text" style="padding-left: 8px;color:black;font-size:34px; font-weight:400; font-family:'Rubik', sans-serif;">{{ $article->judul }}</p></div>
+                <div id = "follow-desc"style="max-height:400px">
                 <p class="card-text" style="padding-left: 8px;color:background: #374A59;
                     ;font-size:20px; font-weight:400; font-family:'Rubik', sans-serif; padding-top:24px">{{ $article->deskripsi }}</p>
                 </div>

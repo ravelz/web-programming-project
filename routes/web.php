@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\User;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\articleController;
 use App\Http\Controllers\AuthController;
@@ -21,9 +23,8 @@ Route::get('/', function() {
     return view('login');
 });
 
-
 Route::get('/article', [articleController::class, 'index']);
-Route::get('/home', [HomeController::class, 'showHome']);
+// Route::get('/home', [HomeController::class, 'showHome']);
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -35,11 +36,16 @@ Route::post('/create-article', [CreateArticleController::class, 'store'])->name(
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/', function () {
-    return view('Home/home');
-});
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/', function () {
+//     return view('Home/home');
+// })->middleware(User::class);
 
-Route::get('/test', function () {
-    return view('test');
+Route::middleware([User::class])->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('index');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/home/tag/{tagName}', [HomeController::class, 'getClickedTag'])->name('clickedTag');
+    Route::get('/user', function () {
+        return view('test')->with('id', Auth::user());
+    });
 });

@@ -20,8 +20,6 @@ class HomeController extends Controller
     }
 
     public function showHome(){
-        
-
         $joinFollow = DB::table('users')
         ->where('users.id_user', '=', Auth::id())
         ->join('followers', 'users.id_user', '=', 'followers.id_user_m')
@@ -53,13 +51,31 @@ class HomeController extends Controller
     }
 
     public function getAuthor(){
-        $authors = User::where('role', '2')->inRandomOrder()->limit(3)->get();
+        $authors = User::where('role', '2')->inRandomOrder()->paginate(5);
         return $authors;
     }
 
     public function getTag(){
-        $tags = Tag::inRandomOrder()->limit(10)->get();
+        $tags = Tag::inRandomOrder()->paginate(10);
         return $tags;
+    }
+
+    public function getClickedTag($tagName){
+        $taggedArticle = DB::table('detailtags')
+        ->where('detailtags.id_tag', '=', $tagName)
+        ->join('articles', 'articles.id_article', '=', 'detailtags.id_article')
+        ->get()
+        ;
+        foreach ($taggedArticle as $article) {
+            $article->deskripsi = Str::limit($article->deskripsi, 150);
+            $article->differenceDate = Carbon::now()->diffInDays(Carbon::parse($article->tgl_publish));
+            $article->authorName = User::select('name')->where('id_user', $article->id_user)->first()->name;
+        }
+        return view('Home/home')
+        ->with('authors', $this->getAuthor())
+        ->with('tags', $this->getTag())
+        ->with('popularArticles', $taggedArticle)
+        ->with('followedArticles', $this->getFollowedArticle());
     }
 
     public function getPopularArticle(){
@@ -70,7 +86,6 @@ class HomeController extends Controller
             $article->differenceDate = Carbon::now()->diffInDays(Carbon::parse($article->tgl_publish));
             $article->authorName = User::select('name')->where('id_user', $article->id_user)->first()->name;
         }
-        
         return $articles;
     }
 
@@ -81,24 +96,17 @@ class HomeController extends Controller
         ->select('followers.id_user_f', 'articles.*')
         ->join('articles', 'followers.id_user_f', '=', 'articles.id_user')
         ->inRandomOrder()
-        ->limit(3) //Jangan dilimit nanti kalo frontendnya udah bener
+        ->limit(1) //Jangan dilimit nanti kalo frontendnya udah bener
         ->get();
-
         return $joinFollow;
-
     }
     
     public function index()
     {
-        $authors = $this->getAuthor();
-        $tags = $this->getTag();
-        $articles = $this->getPopularArticle();
         return view('Home/home')
-        ->with('authors', $authors)
-        ->with('tags', $tags)
-        ->with('popularArticles', $articles)
+        ->with('authors', $this->getAuthor())
+        ->with('tags', $this->getTag())
+        ->with('popularArticles', $this->getPopularArticle())
         ->with('followedArticles', $this->getFollowedArticle());
     }
-
-    
 }
