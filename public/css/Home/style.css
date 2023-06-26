@@ -776,5 +776,18 @@ html,body{
     height: 90vh;
     width: 40vw;
   }
+
+  #intro{
+    height: 100vh !important;
+    background-image: url("../../img/payment/suc.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+  }
+
+  .title-sukses{
+    color: #4BB543 !important;
+  }
  
 
