@@ -50,11 +50,6 @@ class HomeController extends Controller
         ->get();
     }
 
-<<<<<<< HEAD
-        dd($joinFollows, $joinFollow, $providers_collection, $joinFollow, Auth::id(), $readList);
-    }
- 
-=======
     public function getAuthor(){
         $authors = User::where('role', '2')->inRandomOrder()->paginate(5);
         return $authors;
@@ -106,7 +101,6 @@ class HomeController extends Controller
         return $joinFollow;
     }
     
->>>>>>> main
     public function index()
     {
         return view('Home/home')

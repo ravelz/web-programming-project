@@ -1,19 +1,20 @@
 <?php
 
 namespace App\View\Components;
+
 use Illuminate\View\Component;
 
-class isiArticle extends Component
+class ArticleCard extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public $dataArticle;
-    public function __construct($dataArticle)
+    public $article;
+    public function __construct($article)
     {
-        $this->dataArticle = $dataArticle;
+        $this->article = $article;
     }
 
     /**
@@ -23,6 +24,6 @@ class isiArticle extends Component
      */
     public function render()
     {
-        return view('components.isi-article');
+        return view('components.article-card');
     }
 }
