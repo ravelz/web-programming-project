@@ -96,7 +96,7 @@ class HomeController extends Controller
         ->select('followers.id_user_f', 'articles.*')
         ->join('articles', 'followers.id_user_f', '=', 'articles.id_user')
         ->inRandomOrder()
-        ->limit(1) //Jangan dilimit nanti kalo frontendnya udah bener
+        ->limit(10) //Jangan dilimit nanti kalo frontendnya udah bener
         ->get();
         return $joinFollow;
     }
