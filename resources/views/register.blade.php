@@ -58,22 +58,35 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="form-group" style="max-width: 250px; margin: 0 auto;">
-                <label for="password" class="form-label">Password</label>
-                <div class="input-group">
-                <input type="password" name="password" class="form-control" id="password" style="border-radius: 30px; box-shadow: 0px 0.5px 4px rgba(0, 0, 0, 0.10);">
-                <span class="password-icon" onclick="togglePassword()">
-                    <i class="fa fa-eye" id="toggle-password-icon"></i>
-                </span>
-                <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" style="border-radius: 30px; box-shadow: 0px 0.5px 4px rgba(0, 0, 0, 0.10);">
-                <span class="password-icon" onclick="togglePassword()">
-                    <i class="fa fa-eye" id="toggle-password-icon"></i>
-                </span>
+            <div class="mb-3" style="margin-top: 10px; max-width: 250px; margin: 0 auto;">
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="input-group">
+                        <input type="password" name="password" class="form-control" id="password" style="border-radius: 30px; box-shadow: 0px 0.5px 4px rgba(0, 0, 0, 0.10);">
+                        <span class="password-icon" onclick="togglePassword()">
+                            <i class="fa fa-eye" id="toggle-password-icon"></i>
+                        </span>
+                    </div>
+                    @error('password')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
-                @error('password')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
+            </div>
+            <div class="mb-3" style="margin-top: 10px; max-width: 250px; margin: 0 auto;">
+                <div class="form-group">
+                    <label for="password_confirmation" class="form-label">Confirm Password</label>
+                    <div class="input-group">
+                        <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" style="border-radius: 30px; box-shadow: 0px 0.5px 4px rgba(0, 0, 0, 0.10);">
+                        <span class="password-icon" onclick="togglePassword()">
+                            <i class="fa fa-eye" id="toggle-password-icon"></i>
+                        </span>
+                    </div>
+                    @error('password')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
+            </div>
+            </div>
             </div>
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="{{ asset('js/toggle-passwords.js') }}"></script>
