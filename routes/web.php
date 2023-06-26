@@ -21,7 +21,15 @@ Route::get('/home', function () {
     return view('Layout/home');
 });
 
+Route::get('/payment', function () {
+    return view('Layout/payment');
+})->name("payment");
+
+Route::get('/paySuccess', function () {
+    return view('Layout/paySuccess');
+})->name('paySuccess');
+
 Route::get('/test', function () {
-    return view('test');
+    return view('Layout/test');
 });
 

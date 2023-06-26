@@ -2,11 +2,11 @@
 html,body{
     background-color: #F5F0F0;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 
                                                 /*=============SET UP FONT ================*/
-
 
 /*=====Rubik=====*/
 
@@ -40,6 +40,8 @@ html,body{
     font-style: normal;
 }
 
+/*==================================================== HOME ======================================================*/
+
                                                             /*============= ELEMENT ================*/
 
 /*========= HEADER ========== */    
@@ -60,7 +62,15 @@ html,body{
     height: 8vh;
 }
 
+.ham1{
+    position: relative;
+    width: 150px; 
+    z-index : 99997;
+}
 
+.log{
+    padding-top:16px;
+}
 
 /*Daftar, Masuk, Foto Profil*/
 
@@ -100,6 +110,10 @@ html,body{
     padding-bottom: 16px;
 }
 
+.ham:hover{
+    cursor:pointer;
+}
+
 /*Search Bar*/
 
 .logo-search{
@@ -130,7 +144,7 @@ html,body{
     width: 10% ;
 }
 
-.form-control{
+.placeMid{
     text-align: center;
     font-family: 'Rubik', sans-serif;
     font-weight: 400;
@@ -138,11 +152,13 @@ html,body{
 
 .search-form{
     margin-top: 2.5rem;
+    width: 48.3%;
 }
 
 .web-logo{
     padding-top: 100px;
     height: 350px;
+    width : 470px;
 }
 
 .pembatas-bawah{
@@ -179,6 +195,35 @@ html,body{
     text-align: center;
 }
 
+.artikel-diikuti-container{
+    position: relative;
+}
+
+.card-diikuti-container{
+    gap:24px; 
+    position:relative; 
+}
+
+.ikuti-card .card{
+    max-width: 291.61px; 
+    height:auto; 
+    border-radius: 0px;
+}
+
+.next{
+    position: absolute;
+    bottom:200px; 
+    left:1000px; 
+    z-index:999;
+}
+
+.ikuti-card-half .card{
+    max-width: 291.61px; 
+    height:auto; 
+    border-radius: 0px; 
+    clip-path: polygon(0 0, 0 100%, 50% 100%, 50% 0);
+}
+
 .sign{
     color: #982727;
 
@@ -196,15 +241,21 @@ html,body{
     margin-top: 4.5rem;
 }
 
+.ikuti-title{
+    padding-top: 32px; 
+    padding-left:24px ;
+}
+
 .ikuti .judul-ikuti{
     font-family: 'Rubik', sans-serif;
     font-size: 28px;
     font-weight: 600;
     font-style: normal;
     color: black;
+    padding-bottom: 32px;
 }
 
-.ikuti-card{
+.ikuti-card, .ikuti-card-half{
     margin-top: 2rem;
 }
 
@@ -304,6 +355,117 @@ html,body{
     margin-top: 28px;
 }
 
+#follow-card{
+    max-width: 1005px; 
+    height: auto
+}
+
+.follow-img-container{
+    height: auto;
+}
+
+#follow-img{
+    height:100%; 
+    width:100%; 
+    object-fit:cover;
+}
+
+#follow-img-big{
+    object-fit:cover;
+    margin-bottom: 8px;
+}
+
+.follow-card-body{
+    height: auto;
+}
+
+.prof-big-card{
+    margin-top:8px;
+}
+
+.prof-big-card .fol-name{
+    margin-top:8px;
+    text-decoration:none;
+    color:#5E5D2D;
+    font-size:20px; 
+    font-weight:600; 
+    font-family:'Rubik', sans-serif;
+}
+
+.baca-lebih-container{
+    margin-top:8px;
+}
+
+.tulisan-baca-lebih{
+    text-decoration : none; 
+    padding-top: 8px; 
+    padding-right:32px;
+    color:#5E5D2D;
+    font-size:20px; 
+    font-weight:600; 
+    font-family:'Rubik', sans-serif;
+}
+
+.tulisan-tampilkan-lebih{
+    background-color: #F5F0F0;
+    color: #5E5D2D; 
+    font-size:20px; 
+    font-weight:600; 
+    font-family:'Rubik', sans-serif; 
+    padding-left:12px; 
+    text-decoration:underline;
+}
+
+#follow-cat{
+    color:#982727;
+    font-size:20px; 
+    font-weight:600; 
+    font-family:'Rubik', sans-serif;
+    padding-left:32px; 
+    padding-top:16px; 
+    box-sizing:border-box
+}
+
+#follow-time{
+    color:#982727;
+    font-size:20px; 
+    font-weight:400; 
+    font-family:'Rubik', sans-serif;
+    padding-top:8px; 
+    padding-right:32px;
+    box-sizing:border-box
+}
+
+#follow-tit{
+    max-width: 527px; 
+    max-height:400px;
+}
+
+.follow-text{
+    padding-left: 8px;
+    color:black;
+    font-size:34px; 
+    font-weight:400; 
+    font-family:'Rubik', sans-serif;
+}
+
+#follow-desc{
+    max-width: 527px; 
+    max-height:400px;
+}
+
+.follow-text-desc{
+    padding-left: 8px;
+    color: #374A59;
+    font-size:20px; 
+    font-weight:400; 
+    font-family:'Rubik', sans-serif; 
+    padding-top:24px
+}
+
+
+
+
 .nama-rekom{
     font-family: 'Rubik', sans-serif;
     font-size: 20px;
@@ -313,14 +475,48 @@ html,body{
 
 .sidebar-kanan{
     position: relative;
-    bottom: 712px;
+    bottom: 744px;
     z-index: 999;
     background-color: #F5F0F0;
     width: 100%;
+    height: 729px;
+}
+
+.bungkus-sidebar{
+    height: 0px;
 }
 
 #sidebar-right{
-    right:136px 
+    position: relative;
+    right:136px ;
+
+}
+
+.top-author{
+    border: 1px solid rgba(0,0,0,0.22); 
+    border-top:none;
+    border-bottom:none;
+}
+
+.nama-author{
+    margin-left: 16px;
+}
+
+.saran{
+    margin-top : 12px; 
+    padding-left:24px; 
+    padding-bottom:32px;
+}
+
+.tulisan-saran{
+    color: #5E5D2D; 
+    font-size:16px; 
+    font-weight:400; 
+    font-family:'Rubik', sans-serif;
+}
+
+.populer-container{
+    position: relative;
 }
 
 .ikuti-author{
@@ -330,6 +526,13 @@ html,body{
 
 .nama-ikuti{
     font-family: 'Rubik', sans-serif; font-size: 20px; font-weight :550; font-style: normal;
+}
+
+.button-follow{
+    color: black; 
+    border-radius: 20px; 
+    width:99px; 
+    height:39px; 
 }
 
 .kotak-tulisan{
@@ -343,4 +546,235 @@ html,body{
 }
 
 
+.overlay{
+    display: none;
+}
+
+  .xenon {
+    display: none;
+    animation: slideRight 0.3s ease forwards;
+}
+
+#button-atas:hover{
+    background-color: #B05151 !important;
+    color: white !important;
+}
+
+#button-tag:hover{
+    background-color: #B05151 !important;
+    color: white;
+}
+
+.top-tag:hover{
+    background-color: #B05151;
+    color: white;
+}
+
+.footer-button:hover{
+    background-color:#B5B5B5 !important;
+}
+
+@keyframes slideRight {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  .slide-right {
+    animation-direction: normal;
+  }
+
+  @keyframes slideLeft {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .slide-left {
+    animation-direction: normal;
+  }
+
+ 
+@media (max-width: 992px){
+
+    body{
+        overflow-x: hidden;
+    }
+
+    .daftar{
+        display: none;
+    }
+
+    .masuk{
+        display: none;
+    }
+
+    .prof{
+        display: none;
+    }
+
+    .Header{
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-left: 0px;
+        box-sizing: border-box;
+    }
+
+    .back-nav{
+        padding-left: 32px;
+        position: fixed;
+        background-color: #982727;
+        left:0px;
+        z-index: 999;
+    }
+
+    .web-logo{
+        margin-top: 100px;
+        width: 50vh !important;
+    }
+
+    .sidebar-kanan{
+        display: none;
+    }
+    
+}
+
+@media(max-width: 1380px){
+    #sidebar-right{
+        position: fixed;
+        right: -20px;
+    }
+}
+
+@media(max-width: 1380px){
+.mid-1, .mid-2, .mid-3, .mid4{
+        flex: 50% !important;
+    }
+}
+
+.tempat-side{
+    z-index : 99999;
+    position :fixed; 
+    display:flex;
+}
+
+.xenon{
+    background-color :white; 
+    width : 20vw; 
+    height : 100vh
+}
+
+.main{
+    border-bottom : 0.5px solid #C6C6C6
+}
+
+.mainItem{
+    text-decoration : none; 
+    color :black; 
+    font-family : 'Rubik', sans-serif; 
+    font-size : 15px; 
+    font-style:normal; 
+    margin-top : 32px
+}
+
+.mainIcon{
+    font-size : 1.2vmax;
+}
+
+.spanMain{
+    font-size:1.2vmax;
+}
+
+.kategori .title{
+    font-family: 'Rubik', sans-serif; 
+    color : #5F5F5F; 
+    font-size : 1.2vmax;
+}
+
+.kategoriTag{
+    text-decoration : none; 
+    color :black; 
+    font-family : 'Rubik', sans-serif; 
+    font-size : 15px; 
+    font-style:normal;
+    margin-top : 16px
+}
+
+.kategoriIcon{
+    font-size : 1vmax; 
+    color : red
+}
+
+.kategoriSpan{
+    font-size : 1vmax;
+}
+
+.overlay{
+    position : fixed; 
+    z-index : 99995;
+    height : 100vh; 
+    width : 100vw; 
+    background-color : rgba(0,0,0,0.3)
+}
+
+.payMethod{
+    background-color:#982727 ; 
+    width:25%; 
+    height:25%;
+    cursor: pointer;
+    border: solid 2px rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 2px;
+   
+}
+
+
+
+  /*===============PAYMENT===============*/
+
+  .span-radio{
+    margin-left: 8px;
+  }
+
+  .form-check-label{
+    cursor: pointer!important;
+  }
+
+  .placeCountry{
+    color: #4E4E4E;
+  }
+
+  .klik-bayar{
+    background-color: #982727;
+    border: none;
+    width: 10%;
+  }
+
+  .bayarCuy{
+    font-size: 1.3vmax;
+  }
+
+  #spinner{
+    display: none;
+  }
+
+  .suc-pop{
+    height: 100vh;
+  }
+
+  .suc-card{
+    background-color: #982727;
+  }
+
+  .scroll-log{
+    height: 90vh;
+    width: 40vw;
+  }
+ 
 
