@@ -30,7 +30,7 @@
             <p class="h1 fw-bold judul-ikuti mt-5 ">Pembayaran</p>
             <p class="fw-medium fs-4">Pilih Metode Pembayaran di Bawah</p>
             <div class="d-flex justify-content-between text-center">
-                <div class="payMethod text-center" >
+                <div class="payMethod border border-5" >
                     <label class="form-check-label" for="flexRadioDefault1">
                         <img class="img-fluid" 
                         src="img/payment/bca2.png" alt="">
@@ -39,7 +39,7 @@
                         </div>
                     </label>
                 </div>
-                <div class="payMethod" >
+                <div class="payMethod border border-5" >
                     <label class="form-check-label" for="flexRadioDefault2">
                         <img class="img-fluid" 
                         src="img/payment/paypal.png"alt="">
@@ -48,7 +48,7 @@
                         </div>
                     </label>
                 </div>
-                <div class="payMethod text-center" >
+                <div class="payMethod border border-5" >
                     <label class="form-check-label" for="flexRadioDefault3">
                         <img class="amazon img-fluid" 
                         src="img/payment/visaFix.png"alt="">

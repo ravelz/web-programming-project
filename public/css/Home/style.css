@@ -789,5 +789,9 @@ html,body{
   .title-sukses{
     color: #4BB543 !important;
   }
+
+  .payMethod{
+    border-color:#982727 !important;
+  }
  
 
