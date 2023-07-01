@@ -56,7 +56,8 @@ class HomeController extends Controller
     }
 
     public function getTag(){
-        $tags = Tag::inRandomOrder()->paginate(10);
+        $tags = Tag::inRandomOrder()->limit(10)->get();
+        // dd($tags[0]->toArray());
         return $tags;
     }
 
@@ -79,12 +80,9 @@ class HomeController extends Controller
     }
 
     public function getPopularArticle(){
-        $articles = Article::inRandomORder()->limit(10)->get();
-        // $product = User::findOrFail($id);
+        $articles = Article::inRandomORder()->limit(6)->get();
         $articles = $this->getDifferenceDate($articles);
         foreach ($articles as $article) {
-            // $article->deskripsi = Str::limit($article->deskripsi, 150);
-            // $article->differenceDate = Carbon::now()->diffInDays(Carbon::parse($article->tgl_publish));
             $article->authorName = User::select('name')->where('id_user', $article->id_user)->first()->name;
         }
         // dd($articles);
@@ -102,7 +100,7 @@ class HomeController extends Controller
         $joinFollow = DB::table('users')
         ->where('users.id_user', '=', Auth::id())
         ->join('followers', 'users.id_user', '=', 'followers.id_user_m')
-        ->select('followers.id_user_f', 'users.name', 'articles.*', 'detailtags.*', 'tags.*', DB::raw("GROUP_CONCAT(tags.title_tag SEPARATOR ', ') as title_group"))
+        ->select('followers.id_user_f', 'users.name as authorName', 'articles.*', 'detailtags.*', 'tags.*', DB::raw("GROUP_CONCAT(tags.title_tag SEPARATOR ', ') as title_group"))
         ->join('articles', 'followers.id_user_f', '=', 'articles.id_user')
         ->join('detailtags', 'detailtags.id_article', '=', 'articles.id_article')
         ->join('tags', 'tags.id_tag', '=', 'detailtags.id_tag')
@@ -111,7 +109,6 @@ class HomeController extends Controller
         ->get();
         ;
         $joinFollow = $this->getDifferenceDate($joinFollow);
-        // dd($joinFollow);
         return $joinFollow;
     }
     

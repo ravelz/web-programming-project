@@ -31,7 +31,7 @@
         <div class="row" >
             <div class="logo-search mb5">
                 <div class=" d-flex justify-content-center ">
-                    <img src="img/Home/LOGO WEB.png" alt="" class="web-logo " style="width : 470px;">
+                    <img src="{{ asset('storage/LOGO WEB.png') }}" alt="" class="web-logo " style="width : 470px;">
                 </div> 
                 <div class="row justify-content-center mb-5">
                     <form class="search-form col-md-6 col-lg-4 col-12 col-sm-8 mx-auto" style="width: 48.3%">
@@ -58,10 +58,15 @@
                 <div class="col-2 banner">
                     <p class="sign ">Diikuti</p>
                 </div>
-                <div id = "view-all" class="col view-all">VIEW ALL
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-                    </svg>
+                <div id = "view-all" class="col view-all d-flex align-items-center text-dark" >
+                    <a class="text-dark text-decoration-none" href="{{ route('diikuti') }}">
+                        <p>Semua
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                            </svg>
+                        </p>
+                    </a>
+                    
                 </div>
             </div>
             <div class="row my-5">
@@ -96,12 +101,12 @@
                             type: 'slider',
                             bound: true,
                             rewind: true,
-                            startAt: 3,
+                            startAt: 1,
                             perView: 4,
                             gap: 16,
-                            autoplay: 3000,
+                            autoplay: 1000,
                             hoverpause: true,
-                            focusAt: "center",  // set focus on the center slide
+                            focusAt: 0,  // set focus on the center slide
                         }).mount();
                     </script>
                 </div>
@@ -111,7 +116,7 @@
                 <div class="d-flex flex-column col-8">
                     <div class="row mt-2">
                         <div class="col-11 ikuti">
-                            <h3 class="judul-ikuti" style="padding-bottom: 32px">Artikel dari yang kamu ikuti</h3>
+                            <h3 class="judul-ikuti" style="padding-bottom: 32px">Artikel rekomendasi buat kamu</h3>
                         </div>
                     </div>
                         <!-- ========BIG CARD======= -->
@@ -122,67 +127,53 @@
                     </div>
                     <div>
                         <div class="col-7">
-                            <a href = ""style="background-color: #F5F0F0;color: #5E5D2D; font-size:20px; font-weight:600; font-family:'Rubik', sans-serif; padding-left:12px; text-decoration:underline;">Tampilkan Lebih. . .</a>
+                            <a href = "{{ route("rekomendasi") }}" style="background-color: #F5F0F0;color: #5E5D2D; font-size:20px; font-weight:600; font-family:'Rubik', sans-serif; padding-left:12px; text-decoration:underline;">Tampilkan Lebih. . .</a>
                         </div>
                     </div>
                 </div>
-                <div class="d-flex flex-column col-3 offset-1" >
+                <div class="d-flex flex-column col-3 offset-1 border-start border-end px-3" >
                     <div class="d-flex flex-row">
+                        <!-- ========TOP AUTHOR======= -->
                         <div>
-                            <!-- ========TOP AUTHOR======= -->
-                            <div style="border: 1px solid rgba(0,0,0,0.22); border-top:none;border-bottom:none;" >
-                                <h2 style="padding-top: 32px; padding-left:24px ;">Ikuti juga</h2>
-                                @guest
-
-                                @endguest
-                                @auth
-                                    @foreach ($authors as $author)
-                                        <div id = side-top class="ikuti-author d-flex">
-                                            <div class="ikuti-img">
-                                                <img id = "top-img" src="img/Home/profile.jpg" class="rounded-circle " alt="..." width="47px" height="47px">
-                                            </div>
-                                            <div class="nama-author d-flex" style="margin-left: 16px">
-                                                <div>
-                                                    <div><h1 id = "top-name" class = "nama-ikuti" >{{ $author->name }}</h1></div>
-                                                    <div class="kotak-tulisan"> <p id = "top-desc" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, eum.</p></div>
-                                                </div>
-                                                <div class="kotak-tombol">
-                                                    <button type="button" class="btn btn-outline-secondary" style="color: black; border-radius: 20px; width:99px; height:39px; ">Follow</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                @endauth
-                                <!-- Button trigger modal -->
-                                <div style="margin-top : 12px; padding-left:24px; padding-bottom:32px;">
-                                    <a style="color: #5E5D2D; font-size:16px; font-weight:400; font-family:'Rubik', sans-serif;" data-bs-toggle="modal" data-bs-target="#exampleModal">Lihat lebih banyak saran...</a>
-                                </div>
-                            </div>
-                            
-                            <!-- ========TOP TOPIC======= -->
-                            <div class="top-topic" style="background-color: #F5F0F0; border: 1px solid rgba(0,0,0,0.22); border-bottom:none;">
-                                <h2 style="padding-top: 32px;padding-left:24px;padding-right:32px; box-sizing:border-box">Topik yang direkomendasikan</h2>
-                                <div class="ikuti-author">
-                                    <div class="tags d-flex flex-row flex-wrap" style="font-family:'Rubik',sans-serif; font-size:16px">
-                                        @foreach ($tags as $tag)
-                                            <x-tag-item :tagItem="$tag"/>
-                                        @endforeach                                        
+                            <h2>Ikuti juga</h2>
+                            @guest
+                            @endguest
+                            @auth
+                            @foreach ($authors as $author)
+                                <div id = side-top class="d-flex flex-row justify-content-between">
+                                    <div class="ikuti-img">
+                                        <img id = "top-img" src="img/Home/profile.jpg" class="rounded-circle " alt="..." width="47px" height="47px">
                                     </div>
-                                </div>                                                            
-                                <a>Lihat lebih banyak topik...</a>
-                                <div style="margin-top : 24px; padding-left:24px;">
+                                    <div class="mx-2">
+                                        <h1 id = "top-name" class = "nama-ikuti" >{{ $author->name }}</h1>
+                                        <div class="kotak-tulisan"> 
+                                            <p id = "top-desc" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, eum.</p>
+                                        </div>
+                                    </div>
+                                    <div class="p-0 m-0">
+                                        <button type="button" class="btn btn-outline-secondary" style="color: black; border-radius: 20px;">Follow</button>
+                                    </div>
                                 </div>
+                            @endforeach
+                            @endauth
+                            <!-- Button trigger modal -->
+                            <div style="margin-top : 12px; padding-left:24px; padding-bottom:32px;">
+                                <a style="color: #5E5D2D; font-size:16px; font-weight:400; font-family:'Rubik', sans-serif;" data-bs-toggle="modal" data-bs-target="#exampleModal">Lihat lebih banyak saran...</a>
                             </div>
-    
-                            <!-- ========LIST YANG AKAN DIBACA======= -->
-    
-                            <div class="disimpan" style="background-color: #F5F0F0;border: 1px solid rgba(0,0,0,0.22);border-top:none; border-bottom:none; position:relative; bottom:16px;">
-                                <h2 style="padding-left: 24px; padding-top:32px;">List yang akan dibaca</h2>
-                                <div style="margin-top : 24px; padding-left:24px">
-                                    <p style="color: rgba(0,0,0,0.51); font-size:16px; font-weight:400; font-family:'Rubik', sans-serif;">Klik pada tanda 
-                                        <img src="img/Home/Vector.png" alt=""> pada artikel manapun, untuk menambahkannya pada list ini.</p>
-                                </div>
+                        </div>
+                    </div>
+                    <!-- ========TOP TOPIC======= -->
+                    <div class="top-topic">
+                        <h2>Topik yang direkomendasikan</h2>
+                        <div>
+                            <div class="tags d-flex flex-row flex-wrap" style="font-family:'Rubik',sans-serif; font-size:16px">
+                                @foreach ($tags as $tag)                                  
+                                    <x-tag-item :tagItem="$tag"/>
+                                @endforeach                                        
                             </div>
+                        </div>                                                            
+                        <div style="margin-top : 12px; padding-left:24px; padding-bottom:32px;">
+                            <a style="color: #5E5D2D; font-size:16px; font-weight:400; font-family:'Rubik', sans-serif;" >Lihat lebih banyak saran...</a>
                         </div>
                     </div>
                 </div>
@@ -200,12 +191,11 @@
             </div>
             <div class="modal-body d-flex flex-column">
                 @foreach ($authors as $author)
-                <x-author-item :author="$author"/>
+                    <x-author-item :author="$author"/>
                 @endforeach
                 <div class="d-flex justify-content-center w-100 text-red">
                     {{ $authors->links()  }}
                 </div>
-                
             </div>
             
             <div class="modal-footer">

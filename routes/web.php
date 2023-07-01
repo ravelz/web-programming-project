@@ -7,6 +7,8 @@ use App\Http\Controllers\articleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CreateArticleController;
+use App\Http\Controllers\DiscoverArticleController;
+use App\Http\Controllers\TopicsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,16 +37,21 @@ Route::get('/create-article', [CreateArticleController::class, 'create'])->name(
 Route::post('/create-article', [CreateArticleController::class, 'store'])->name('store');
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/topics', [TopicsController::class, 'index'])->name('topics');
 
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
 // Route::get('/', function () {
 //     return view('Home/home');
 // })->middleware(User::class);
-
 Route::middleware([User::class])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/home/tag/{tagName}', [HomeController::class, 'getClickedTag'])->name('clickedTag');
+    Route::get('/cari/tag/{tagName}', [DiscoverArticleController::class, 'getByTopic'])->name('clickedTag');
+
+    Route::get('/rekomendasi', [DiscoverArticleController::class, 'rekomendasi'])->name('rekomendasi');
+    Route::get('/populer', [DiscoverArticleController::class, 'populer'])->name('populer');
+    Route::get('/diikuti', [DiscoverArticleController::class, 'diikuti'])->name('diikuti');
+    
     Route::get('/user', function () {
         return view('test')->with('id', Auth::user());
     });

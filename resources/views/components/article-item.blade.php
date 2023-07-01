@@ -23,7 +23,7 @@
                 </div>
                 <div class="d-flex">
                     <div class="p-2" style="">
-                        <img style = "margin-bottom: 8px;"id = "follow-img"src="img/Home/profile.jpg" class="rounded-circle " alt="..." width="44px" height="44px" >
+                        <img style = "margin-bottom: 8px;"id = "follow-img" src="img/Home/profile.jpg" class="rounded-circle " alt="..." width="44px" height="44px" >
                     </div>
                     <div class="p-2" style="margin-top:8px">
                         <a href = ""id = "follow-name"style="text-decoration:none;color:#5E5D2D;font-size:20px; font-weight:600; font-family:'Rubik', sans-serif;">{{ $article->authorName }}</a>

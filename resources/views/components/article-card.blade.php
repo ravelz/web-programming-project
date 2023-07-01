@@ -11,12 +11,13 @@
 
         <h1 style="color: black" id = "judul-small" class="judul text-wrap">{{ $article->judul }}</h1>
         <p style = "color: black;" id = "deskripsi-small" class="deskripsi text-wrap">{{ $article->deskripsi }}</p>
-        <div class="last-layer">
+        <div class="last-layer d-flex justify-content-between">
             <div class="foto-penulis">
                 <a href=""><img id = "prof-small" src="img/Home/profile.jpg" class="img rounded-circle " alt="..." width="32px" height="32px"></a>
+                <a href="" style="text-decoration: none" id = "name-small" class="nama-penulis text-wrap">{{ $article->authorName }}</a>
             </div>
 
-            <a href="" style="text-decoration: none" id = "name-small" class="nama-penulis text-wrap">{{ $article->name }}</a>
+            
 
             <div class="baca-lebih">
                 <a href = ""style = "text-decoration : none" id = "read-small" class="sub text-wrap">Baca Lebih</a>
