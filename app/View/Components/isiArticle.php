@@ -1,19 +1,21 @@
 <?php
 
 namespace App\View\Components;
+
 use Illuminate\View\Component;
 
-class isiArticle extends Component
+class IsiArticle extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public $dataArticle;
+
+     public $dataArticle;
     public function __construct($dataArticle)
     {
-        $this->dataArticle = $dataArticle;
+        $this->dataArticle = $dataArticle;  
     }
 
     /**

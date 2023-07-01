@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class IsiArticle extends Component
+class inputComment extends Component
 {
     /**
      * Create a new component instance.
@@ -12,10 +12,10 @@ class IsiArticle extends Component
      * @return void
      */
 
-     public $dataArticle;
-    public function __construct($dataArticle)
+    public $inputComment;
+    public function __construct($inputComment)
     {
-        $this->dataArticle = $dataArticle;  
+        $this->inputComment = $inputComment;
     }
 
     /**
@@ -25,6 +25,6 @@ class IsiArticle extends Component
      */
     public function render()
     {
-        return view('components.isi-article');
+        return view('components.input-comment');
     }
 }

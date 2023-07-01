@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Carbon\Carbon;
@@ -9,12 +10,27 @@ use App\Models\Article;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CreateArticleController extends Controller
 {
     public function show(){
         $articles = DB::table('articles')->get();
+        $articles = $this->getDifferenceDate($articles);
+        foreach ($articles as $article) {
+            // $article->deskripsi = Str::limit($article->deskripsi, 150);
+            // $article->differenceDate = Carbon::now()->diffInDays(Carbon::parse($article->tgl_publish));
+            $article->authorName = User::select('name')->where('id_user', $article->id_user)->first()->name;
+        }
         return view('listArticles')->with('articles', $articles);
+    }
+
+    public function getDifferenceDate($collections){
+        foreach ($collections as $collection) {
+            $collection->deskripsi = Str::limit($collection->deskripsi, 150);
+            $collection->differenceDate = Carbon::now()->diffInDays(Carbon::parse($collection->tgl_publish));
+        }
+        return $collections;
     }
 
     public function create(){
@@ -68,6 +84,15 @@ class CreateArticleController extends Controller
                     ['articles.id_article', '=', $id],
                     ['articles.judul', '=', $judul]
                 ])->get();   
-        return view('article')->with('read', $read);                       
+
+        $comment = DB::table('comments')
+                    ->join('articles', 'comments.id_article', '=', 'articles.id_article')
+                    ->join('users', 'users.id_user', '=', 'articles.id_user')
+                    ->where([
+                        ['articles.id_article', '=', $id],
+                        ['articles.judul', '=', $judul]
+                    ])->get();
+        return view('article', ['read'=>$read, 'comment'=>$comment]);                       
     }
+
 }

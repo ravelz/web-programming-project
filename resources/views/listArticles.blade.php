@@ -11,13 +11,7 @@
     <div class="container">
         {{-- aku belom bisa masukin cardnya kesini, jadi maaf ya --}}
         @foreach ($articles as $d)
-        <div class="card" style="width: 25rem;">
-            <div class="card-body">
-              <h5 class="card-title">{{$d->judul}}</h5>
-              <p class="card-text"> {!! Str::limit($d->deskripsi, 100) !!} </p>
-              <a href="{{route('read', ['id'=>$d->id_article, 'judul'=>$d->judul])}}" class="btn btn-primary">Baca  </a>
-            </div>
-          </div>
+          <x-article-item :article="$d"/>
         @endforeach
     </div>
 </body>
