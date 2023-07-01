@@ -38,7 +38,7 @@
                 <div class="d-flex justify-content-end align-items-center me-4 log">
                     <button type="button" id = "button-atas"class="btn daftar me-3 ">Daftar</button>
                     <button type="button" id = "button-atas" class="btn masuk me-3">Masuk</button>
-                    <div class="prof ">
+                    <div class="prof">
                       <img src="img/Home/profile.jpg" class="img rounded-circle profile" alt="...">
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                     <div class="row justify-content-center mb-5">
                         <form class="search-form col-md-6 col-lg-4 col-12 col-sm-8 mx-auto">
                             <div class="form-group has-search">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4E4E4E" class="bi bi-search fw-bold" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4E4E4E" class="bi bi-search search-home fw-bold" viewBox="0 0 16 16">
                                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                                   </svg>
                                 <input type="text" id = "klik-hilang" class="form-control placeMid" placeholder="Cari apapun tentang Indonesia... ">
@@ -291,8 +291,8 @@
                                         </div>
                                     </div>
                                 
-                                    <div id = "follow-tit" style=""><p class="card-text follow-text">Wayang Kulit : Dari Indonesia Untuk Dunia</p></div>
-                                    <div id = "follow-desc"style=""><p class="card-text follow-text-desc">wayang kulit lahir, hidup, tumbuh, berkembang terutama dalam masyarakat Jawa. Lebih dari sekadar pertunjukan, wayang kulit dahulu merupakan media permenungan menuju roh spiritual para dewa. . . .</p>
+                                    <div id = "follow-tit" ><p class="card-text follow-text">Wayang Kulit : Dari Indonesia Untuk Dunia</p></div>
+                                    <div id = "follow-desc"><p class="card-text follow-text-desc">wayang kulit lahir, hidup, tumbuh, berkembang terutama dalam masyarakat Jawa. Lebih dari sekadar pertunjukan, wayang kulit dahulu merupakan media permenungan menuju roh spiritual para dewa. . . .</p>
                                     </div>
                                     <div class="d-flex">
                                         <div class="p-2">

@@ -29,7 +29,11 @@ Route::get('/paySuccess', function () {
     return view('Layout/paySuccess');
 })->name('paySuccess');
 
-Route::get('/test', function () {
-    return view('Layout/test');
+Route::get('/profile', function () {
+    return view('Layout/profile');
+});
+
+Route::get('/visitProfile', function () {
+    return view('Layout/visitProfile');
 });
 

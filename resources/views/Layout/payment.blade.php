@@ -19,18 +19,15 @@
     <link rel="stylesheet" href="./css/Home/homeAnimation.css">
 </head>
 <body>
-    <div class="container-fluid">
-        {{-- @include('Partial/sidebarLeft')
-        <div class="ham ham1">
-            <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-list" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-        </div> --}}
-        <div class="container d-flex flex-column">
+    <div class="container-fluid gx-0">
+        
+        <div class="container d-flex flex-column mt-5">
             <p class="h1 fw-bold judul-ikuti mt-5 ">Pembayaran</p>
             <p class="fw-medium fs-4">Pilih Metode Pembayaran di Bawah</p>
             <div class="d-flex justify-content-between text-center">
-                <div class="payMethod border border-5" >
+
+                {{-- ======PAYMENT METHOD 1======== --}}
+                <div class="payMethod border border-5" data-bs-toggle="modal" data-bs-target="#exampleModal1" >
                     <label class="form-check-label" for="flexRadioDefault1">
                         <img class="img-fluid" 
                         src="img/payment/bca2.png" alt="">
@@ -39,7 +36,9 @@
                         </div>
                     </label>
                 </div>
-                <div class="payMethod border border-5" >
+            
+                {{-- ======PAYMENT METHOD 2======== --}}
+                <div class="payMethod border border-5" data-bs-toggle="modal" data-bs-target="#exampleModal2">
                     <label class="form-check-label" for="flexRadioDefault2">
                         <img class="img-fluid" 
                         src="img/payment/paypal.png"alt="">
@@ -48,7 +47,9 @@
                         </div>
                     </label>
                 </div>
-                <div class="payMethod border border-5" >
+
+                 {{-- ======PAYMENT METHOD 3======== --}}
+                <div class="payMethod border border-5" data-bs-toggle="modal" data-bs-target="#exampleModal3">
                     <label class="form-check-label" for="flexRadioDefault3">
                         <img class="amazon img-fluid" 
                         src="img/payment/visaFix.png"alt="">
@@ -60,10 +61,196 @@
             </div>
         </div>
 
-        <div class="container mt-5">
+        {{-- =============MODAL============ --}}
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-3 fw-bold" id="exampleModalLabel">BCA Payment</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-start">
+                        {{-- ========ISI MODAL======== --}}
+                        <div class="row">
+                            <div class="mt-2 col-6">
+                                <label for="exampleFormControlInput1" class="form-label fw-bold">Nama Panjang</label>
+                                <input id = "form-home" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Misal: Oren">
+                            </div>
+                            <div class="mt-2 col-6">
+                                <label for="exampleFormControlInput1" class="form-label fw-bold">Alamat Email</label>
+                                <input id = "form-home" class="form-control" id="exampleFormControlInput1" placeholder="nama@contoh.com">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-6 mt-2">
+                                <label for="Select" class="form-label fw-bold">Kota</label>
+                                <select id="Select" class="form-select">
+                                    <option  value="" disabled selected class="secondary-text">Pilih Kota</option>
+                                    <option  value="1">1</option>
+                                    <option  value="2">2</option>
+                                    <option  value="3">3</option>
+                                </select>
+                            </div>
+                            <div class="col-6 mt-2">
+                                <label for="Select" class="form-label fw-bold">Negara</label>
+                                <select id="Select" class="form-select">
+                                    <option  value="" disabled selected class="secondary-text">Pilih Negara</option>
+                                    <option  value="1">1</option>
+                                    <option  value="2">2</option>
+                                    <option  value="3">3</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-6 mt-2">
+                                <label for="exampleFormControlInput1" class="form-label fw-bold">Nama Pemilik Kartu</label>
+                                <input id = "form-home" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Misal: Oren">
+                            </div>
+                            <div class="col-6 mt-2">
+                                <label for="exampleFormControlInput1" class="form-label fw-bold">Nomor Kartu</label>
+                                <input id = "form-home" class="form-control" id="exampleFormControlInput1" placeholder="xxxx-xxxx-xxxx-xxxx">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex flex-column">
+                        <button type="button" id = "klik-bayar1"class="btn btn-danger klik-bayar"><span class="bayarCuy fs-5">Bayar</span></button>
+                        <div id = "spin1" class="spinner-border text-danger mt-2" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-3 fw-bold" id="exampleModalLabel">Paypal Payment</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-start">
+                        {{-- ========ISI MODAL======== --}}
+                        <div class="row">
+                            <div class="mt-2 col-6">
+                                <label for="exampleFormControlInput1" class="form-label fw-bold">Nama Panjang</label>
+                                <input id = "form-home" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Misal: Oren">
+                            </div>
+                            <div class="mt-2 col-6">
+                                <label for="exampleFormControlInput1" class="form-label fw-bold">Alamat Email</label>
+                                <input id = "form-home" class="form-control" id="exampleFormControlInput1" placeholder="nama@contoh.com">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-6 mt-2">
+                                <label for="Select" class="form-label fw-bold">Kota</label>
+                                <select id="Select" class="form-select">
+                                    <option  value="" disabled selected class="secondary-text">Pilih Kota</option>
+                                    <option  value="1">1</option>
+                                    <option  value="2">2</option>
+                                    <option  value="3">3</option>
+                                </select>
+                            </div>
+                            <div class="col-6 mt-2">
+                                <label for="Select" class="form-label fw-bold">Negara</label>
+                                <select id="Select" class="form-select">
+                                    <option  value="" disabled selected class="secondary-text">Pilih Negara</option>
+                                    <option  value="1">1</option>
+                                    <option  value="2">2</option>
+                                    <option  value="3">3</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-6 mt-2">
+                                <label for="exampleFormControlInput1" class="form-label fw-bold">Nama Pemilik Kartu</label>
+                                <input id = "form-home" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Misal: Oren">
+                            </div>
+                            <div class="col-6 mt-2">
+                                <label for="exampleFormControlInput1" class="form-label fw-bold">Nomor Kartu</label>
+                                <input id = "form-home" class="form-control" id="exampleFormControlInput1" placeholder="xxxx-xxxx-xxxx-xxxx">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex flex-column">
+                        <button type="button" id = "klik-bayar2"class="btn btn-danger klik-bayar"><span class="bayarCuy fs-5">Bayar</span></button>
+                        <div id = "spin2" class="spinner-border text-danger mt-2" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-3 fw-bold" id="exampleModalLabel">Visa Payment</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-start">
+                        {{-- ========ISI MODAL======== --}}
+                        <div class="row">
+                            <div class="mt-2 col-6">
+                                <label for="exampleFormControlInput1" class="form-label fw-bold">Nama Panjang</label>
+                                <input id = "form-home" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Misal: Oren">
+                            </div>
+                            <div class="mt-2 col-6">
+                                <label for="exampleFormControlInput1" class="form-label fw-bold">Alamat Email</label>
+                                <input id = "form-home" class="form-control" id="exampleFormControlInput1" placeholder="nama@contoh.com">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-6 mt-2">
+                                <label for="Select" class="form-label fw-bold">Kota</label>
+                                <select id="Select" class="form-select">
+                                    <option  value="" disabled selected class="secondary-text">Pilih Kota</option>
+                                    <option  value="1">1</option>
+                                    <option  value="2">2</option>
+                                    <option  value="3">3</option>
+                                </select>
+                            </div>
+                            <div class="col-6 mt-2">
+                                <label for="Select" class="form-label fw-bold">Negara</label>
+                                <select id="Select" class="form-select">
+                                    <option  value="" disabled selected class="secondary-text">Pilih Negara</option>
+                                    <option  value="1">1</option>
+                                    <option  value="2">2</option>
+                                    <option  value="3">3</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-6 mt-2">
+                                <label for="exampleFormControlInput1" class="form-label fw-bold">Nama Pemilik Kartu</label>
+                                <input id = "form-home" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Misal: Oren">
+                            </div>
+                            <div class="col-6 mt-2">
+                                <label for="exampleFormControlInput1" class="form-label fw-bold">Nomor Kartu</label>
+                                <input id = "form-home" class="form-control" id="exampleFormControlInput1" placeholder="xxxx-xxxx-xxxx-xxxx">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex flex-column">
+                        <button type="button" id = "klik-bayar3"class="btn btn-danger klik-bayar"><span class="bayarCuy fs-5">Bayar</span></button>
+                        <div id = "spin3" class="spinner-border text-danger mt-2" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- ===================END MODAL=============== --}}
+
+        {{-- <div class="container mt-5">
             <div class="row">
                 <div class="col-6">
-                    <p class="h3">Billing Info</p>
+                    <p class="h3">Info Billing</p>
                     <div class="mt-4">
                         <label for="exampleFormControlInput1" class="form-label">Nama Panjang</label>
                         <input id = "form-home" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Misal: Oren">
@@ -74,8 +261,13 @@
                     </div>
                     <div class="col-6 d-flex mt-4 ">
                         <div class="col-10">
-                            <label for="exampleFormControlInput1" class="form-label">Kota</label>
-                            <input id = "form-home" class="form-control" id="exampleFormControlInput1" placeholder="Asal">
+                            <label for="Select" class="form-label">Kota</label>
+                            <select id="Select" class="form-select">
+                              <option  value="" disabled selected class="secondary-text">Pilih Kota</option>
+                              <option  value="1">1</option>
+                              <option  value="2">2</option>
+                              <option  value="3">3</option>
+                            </select>
                         </div>
                         <div class="offset-4 col-10">
                             <label for="exampleFormControlInput1" class="form-label">Kode Pos</label>
@@ -86,24 +278,15 @@
                     <div class="mt-4">
                         <label for="Select" class="form-label">Negara</label>
                         <select id="Select" class="form-select">
-                          <option  value="" disabled selected class="secondary-text">Pilih Negaramu</option>
+                          <option  value="" disabled selected class="secondary-text">Pilih Negara</option>
                           <option  value="1">1</option>
                           <option  value="2">2</option>
                           <option  value="3">3</option>
                         </select>
                     </div>
-                    {{-- <div class=" col-6 input-group mt-5">
-                        <label for="inputGroupSelect03" class="form-label mt-2 me-3 align-middle">Country</label>
-                        <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
-                          <option selected class="placeCountry">Negara. . . .</option>
-                          <option value="1">Negara 1</option>
-                          <option value="2">Negara 2</option>
-                          <option value="3">Negara 3</option>
-                        </select>
-                    </div> --}}
                 </div>
                 <div class="col-6">
-                    <p class="h3">Payment Info</p>
+                    <p class="h3">Info Pembayaran</p>
                     <div class="mt-4">
                         <label for="exampleFormControlInput1" class="form-label">Nama Pemilik Kartu</label>
                         <input id = "form-home" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Misal: Oren">
@@ -144,14 +327,21 @@
             <button type="button" id = "klik-bayar"class="btn btn-danger klik-bayar"><span class="bayarCuy">Bayar</span></button>
         </div>
         <div class="d-flex justify-content-center mt-5">
-            <div id = "spinner" class="spinner-border text-danger" role="status">
+            <div id="spinner1" class="spinner-grow text-danger" role="status">
                 <span class="visually-hidden">Loading...</span>
-              </div>
+            </div>
+            <div id="spinner2" class="ms-3 spinner-grow text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div id="spinner3" class="ms-3 spinner-grow text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
         </div>
     </div>
-    
+     --}}
     @include('Partial/footer')
 
     <script src="./js/Home/payment.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>

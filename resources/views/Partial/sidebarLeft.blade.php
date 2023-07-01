@@ -16,7 +16,7 @@
                     <img src="img/home/LOGO WEB.png" alt=""height = "120px" width="200px">
                 </div>
                 
-                <div class="d-flex flex-column justify-content-between mt-4 ms-4">
+                <div class="d-flex flex-column justify-content-between mt-3 mb-3 ms-4">
                     <a class = "mainItem" href="" >
                         <i class="mainIcon bi bi-grid bi-2x"></i> 
                         <span class="spanMain ms-3 fw-normal">Utama</span>
@@ -37,9 +37,9 @@
             </div>
 
             <div class="kategori d-flex flex-column justify-content-between mt-3">
-                <p class="title mt-4 ms-4 fw-normal">Kategori</p>
+                <p class="title mt-2 ms-4 fw-normal">Kategori</p>
                 
-                <div class="d-flex flex-column justify-content-between mt-3 ms-3 ">
+                <div class="d-flex flex-column justify-content-between mt-1 ms-3 ">
                     @include('Component/homeComponent/sidebarTag')
                     @include('Component/homeComponent/sidebarTag')
                     @include('Component/homeComponent/sidebarTag')
