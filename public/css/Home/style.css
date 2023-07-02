@@ -963,10 +963,6 @@ html,body{
     font-family:'Rubik', sans-serif;
   }
 
-  .profile-follow-img{
-    
-  }
-
   #profile-follow-img{
     height: 100%;
   }
@@ -975,6 +971,11 @@ html,body{
     overflow-y: auto;
     max-height: 1000px;
   }
+
+  .modal-open{
+    padding-right: 0px !important;
+  }
+
 
 
 

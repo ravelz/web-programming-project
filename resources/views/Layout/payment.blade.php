@@ -66,15 +66,22 @@
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-3 fw-bold" id="exampleModalLabel">BCA Payment</h1>
+                        <img class="modal-logo" src="img/home/LOGO WEB.png" alt=""height = "70px" width="120px">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <h1 class="modal-title fs-3 fw-bold ms-auto me-auto" id="exampleModalLabel">BCA Payment</h1>
+                    <img class="modal-logo ms-auto me-auto mt-2 border border-dark border-opacity-25 p-3" src="img/payment/bca2.png" alt=""height = "120px" width="160px">
                     <div class="modal-body text-start">
                         {{-- ========ISI MODAL======== --}}
                         <div class="row">
                             <div class="mt-2 col-6">
-                                <label for="exampleFormControlInput1" class="form-label fw-bold">Nama Panjang</label>
-                                <input id = "form-home" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Misal: Oren">
+                                <form class="was-validated" novalidate>
+                                    <label for="validationTextarea" class="form-label fw-bold">Nama Panjang</label>
+                                    <input id = "validationTextarea" type="text" class="form-control" placeholder="Misal: Oren" required>
+                                    <div class="invalid-feedback">
+                                        Mohon Diisi
+                                    </div>
+                                </form>
                             </div>
                             <div class="mt-2 col-6">
                                 <label for="exampleFormControlInput1" class="form-label fw-bold">Alamat Email</label>
@@ -127,9 +134,11 @@
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-3 fw-bold" id="exampleModalLabel">Paypal Payment</h1>
+                        <img class="modal-logo" src="img/home/LOGO WEB.png" alt=""height = "70px" width="120px">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <h1 class="modal-title fs-3 fw-bold ms-auto me-auto" id="exampleModalLabel">Paypal Payment</h1>
+                    <img class="modal-logo ms-auto me-auto mt-2 border border-dark border-opacity-25 p-3" src="img/payment/paypal.png" alt=""height = "120px" width="160px">
                     <div class="modal-body text-start">
                         {{-- ========ISI MODAL======== --}}
                         <div class="row">
@@ -188,9 +197,11 @@
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-3 fw-bold" id="exampleModalLabel">Visa Payment</h1>
+                        <img class="modal-logo" src="img/home/LOGO WEB.png" alt=""height = "70px" width="120px">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <h1 class="modal-title fs-3 fw-bold ms-auto me-auto" id="exampleModalLabel">Visa Payment</h1>
+                    <img class="modal-logo ms-auto me-auto mt-2 border border-dark border-opacity-25 p-3" src="img/payment/visaFix.png" alt=""height = "120px" width="160px">
                     <div class="modal-body text-start">
                         {{-- ========ISI MODAL======== --}}
                         <div class="row">
@@ -339,7 +350,7 @@
         </div>
     </div>
      --}}
-    @include('Partial/footer')
+    {{-- @include('Partial/footer') --}}
 
     <script src="./js/Home/payment.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
