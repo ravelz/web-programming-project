@@ -41,7 +41,6 @@ Route::get('/read-article/{id}/{judul}', [CreateArticleController::class, 'readA
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/topics', [TopicsController::class, 'index'])->name('topics');
 Route::get('/like/{id}', [ArticleController::class, 'like'])->name('like_article');
-Route::get('/comment', [CreateArticleController::class, 'showComment'])->name('showComment');
 Route::post('/comment/{id}', [ArticleController::class, 'comment'])->name('comment_article');
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
 // Route::get('/', function () {

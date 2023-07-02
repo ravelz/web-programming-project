@@ -37,4 +37,8 @@ class Article extends Model
     public function comment(){
         return $this->belongsToMany(Comment::class, 'id_article', 'id_article');
     }
+
+    public function tag(){
+        return $this->belongsToMany(DetailTag::class, 'id_article', 'id_article');
+    }
 }
