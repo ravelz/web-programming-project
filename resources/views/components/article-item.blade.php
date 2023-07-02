@@ -21,17 +21,8 @@
                 <div id = "follow-desc"style="max-height:400px">
                 <p class="card-text" style="padding-left: 8px;color:background: #374A59;
                     ;font-size:20px; font-weight:400; font-family:'Rubik', sans-serif; padding-top:24px">{{ $article->deskripsi }}</p>
-                </div>
+                </div>                
                 <div class="d-flex">
-                    <div class="p-2" style="">
-                        <img style = "margin-bottom: 8px;"id = "follow-img" src="img/Home/profile.jpg" class="rounded-circle " alt="..." width="44px" height="44px" >
-                    </div>
-                
-                    <div id = "follow-tit" style="max-height:400px;"><p class="card-text" style="padding-left: 8px;color:black;font-size:34px; font-weight:400; font-family:'Rubik', sans-serif;">{{ $article->judul }}</p></div>
-                    <div id = "follow-desc"style="max-height:400px">
-                    <p class="card-text" style="padding-left: 8px;color:background: #374A59;
-                        ;font-size:20px; font-weight:400; font-family:'Rubik', sans-serif; padding-top:24px">{{ $article->deskripsi }}</p>
-                    </div>
                     <div class="d-flex">
                         <div class="p-2" style="">
                             <img style = "margin-bottom: 8px;"id = "follow-img"src="img/Home/profile.jpg" class="rounded-circle " alt="..." width="44px" height="44px" >
@@ -51,3 +42,4 @@
             </div>
         </div>
     </div>
+</div>
