@@ -60,12 +60,14 @@
                                 </form>
                             </ul>
                             <ul class="nav-item p-0 m-auto">
-                                <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="24" cy="24" r="24" fill="#982727"/>
-                                    <path d="M25.995 8.70006L12.9958 22.4592C12.505 22.9817 12.03 24.0109 11.935 24.7234L11.3491 29.8534C11.1433 31.7059 12.4733 32.9726 14.31 32.6559L19.4083 31.7851C20.1208 31.6584 21.1183 31.1359 21.6091 30.5976L34.6083 16.8384C36.8566 14.4634 37.87 11.7559 34.3708 8.44673C30.8875 5.16923 28.2433 6.32506 25.995 8.70006Z" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M23.8262 10.9958C24.507 15.3658 28.0537 18.7067 32.4553 19.15" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M9.75 37.8334H38.25" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
+                                <a href="{{route('create')}}">
+                                    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="24" cy="24" r="24" fill="#982727"/>
+                                        <path d="M25.995 8.70006L12.9958 22.4592C12.505 22.9817 12.03 24.0109 11.935 24.7234L11.3491 29.8534C11.1433 31.7059 12.4733 32.9726 14.31 32.6559L19.4083 31.7851C20.1208 31.6584 21.1183 31.1359 21.6091 30.5976L34.6083 16.8384C36.8566 14.4634 37.87 11.7559 34.3708 8.44673C30.8875 5.16923 28.2433 6.32506 25.995 8.70006Z" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M23.8262 10.9958C24.507 15.3658 28.0537 18.7067 32.4553 19.15" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M9.75 37.8334H38.25" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
                                 <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g filter="url(#filter0_d_377_1010)">
                                         <circle cx="28" cy="25" r="24" fill="#982727"/>
@@ -113,18 +115,31 @@
             <!-- header selesai -->
 
             <!-- isi artikel -->
-            <div class="row">
+            <div class="d-flex flex-row">
                 <!-- yang kosong paling kiri -->
-                <div class="col-md-2 p-0"> </div>  
-                <div style="padding-top: 20px" class="col-md-5">
+                {{-- <div class="col-md-2 p-0"> </div>   --}}
+                <div style="padding-top: 20px; " class="offset-1 d-flex flex-col">
                     <div class="row">
                         <!-- paling atas  -->
                         <div style= "padding-top: 20px;"> 
                             <div class="row flex-nowrap">
-                                <div class="col-auto">
-                                    <img class="img-fluid" src="{{ asset('images/fotoProfil.jpeg') }}" style= "width: 50px;height: 50px;border-radius: 100%;float: right;" alt="">
+                                <div class="row">
+                                    <div style="display: flex; :center">
+                                        <img class="img-fluid" src="{{ asset('images/fotoProfil.jpeg') }}" style= "width: 70px;height: 70px;border-radius: 100%;float: right;" alt="">
+                                        <div style="display:flex;  flex-direction:column; align-items:center;">
+                                            <div class="row" style="display: flex; align-items:center">
+                                                <p style="font-family: Poppins, sans-serif;font-weight: 600; margin-left:15px"> Christiella </p>
+                                            </div>
+                                            <div class="row">
+                                                <p style="font-family: Poppins, sans-serif;font-weight: 600; margin-left:15px; display:flex; align-items:center"> Christiella </p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-auto">
+                                    {{-- <img class="img-fluid" src="{{ asset('images/fotoProfil.jpeg') }}" style= "width: 50px;height: 50px;border-radius: 100%;float: right;" alt=""> --}}
+                                </div>
+                                {{-- <div class="col-auto">
                                     <h3 style="font-family: Poppins, sans-serif;font-weight: 600;"> Christiella </h3>
                                     <h6 style="color: #696969; font-family: Poppins, sans-serif;font-weight: 200;" > 4 april 2023 | 
                                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -137,7 +152,7 @@
                                         </defs>
                                     </svg>
                                     Premium </h6>
-                                </div>
+                                </div> --}}
                                 <div class="col-auto d-flex justify-content-between ms-auto">
                                     <svg width="50px" height="50px" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g filter="url(#filter0_d_280_1024)">
@@ -182,87 +197,18 @@
                             </div>
                         </div>
 
-                            <!-- bagian isi artikel -->
-                        <div style= "padding-top: 40px;" class="bagBawah mx-auto text-center" >
-                            <h3 style="font-family: Rubik, sans-serif;font-weight: 600;">TARI KECAK CIRI KHAS BALI</h3>
-                            <img class="img-fluid mx-auto" src="{{ asset('images/tarikecak.jpg') }}" style= "width: 400px;height: 250px;" alt="" class="img-fluid">
-                        </div>
-                        <div style= "padding-top: 50px; padding-left: 10px;text-indent: 50px; font-family: Poppins, sans-serif;font-weight: 300;" class="isiArtikel">
-                            <p>Tari kecak adalah tarian yang berasal dari Bali. Pada tahun 1930, tarian ini tercipta dari penari bali bernama Wayan Limbak dan Walter Spies (Pelukis Jerman). Mereka menginisiasi tari Kecak dari tradisi Sanghyang serta kisah Ramayana. Uninknya para penari menari pada kondisi di rasuki oleh roh atau kesurupan.  </p>
-                            <p>Keunikan dari tarian ini adalah gerakannya monoton, dilakukan dengan posisi duduk melingkar dan tangan digoyangkan di atas kepala. Lalu, Gerakan tangan di atas, hal ini sebagai simbol “lidah api” yang menyala, busana yang digunakan sederhana, hanya berupa kain sebagai celana pendek dan penutup kepala. Yang paling unik adalah tarian ini diiringi bunyi dari mulut para penari saja, yakni suara cak-cak-cak. </p>
-                            <p>Keunikan dari tarian ini adalah gerakannya monoton, dilakukan dengan posisi duduk melingkar dan tangan digoyangkan di atas kepala. Lalu, Gerakan tangan di atas, hal ini sebagai simbol “lidah api” yang menyala, busana yang digunakan sederhana, hanya berupa kain sebagai celana pendek dan penutup kepala. Yang paling unik adalah tarian ini diiringi bunyi dari mulut para penari saja, yakni suara cak-cak-cak.  </p>
-                        </div>
-                        <div style="font-family: Poppins, sans-serif;font-weight: 400;" class="rekomendasi">
-                            <a href="#"  style = "background-color: #982727;border-radius: 30px; width:80px;border: none !important; box-shadow: none !important;" class="btn btn-primary "  >Tarian</a> 
-                            <a href="#"  style = "background-color: #982727;border-radius: 30px; width:80px;border: none !important; box-shadow: none !important;" class="btn btn-primary "  >Umum</a>
-                            <a href="#"  style = "background-color: #982727;border-radius: 30px; width:80px;border: none !important; box-shadow: none !important;" class="btn btn-primary "  >Adat</a>
-                            <a href="#"  style = "background-color: #982727;border-radius: 30px; width:80px;border: none !important; box-shadow: none !important;" class="btn btn-primary "  >Musik</a>
-                            <a href="#"  style = "background-color: #982727;border-radius: 30px; width:80px;border: none !important; box-shadow: none !important;" class="btn btn-primary "  >Wisata</a>
-                            <div style="padding-top: 20px;justify-content: space-between;" class="bagianIcons">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#982727" class="bi bi-chat-heart-fill" viewBox="0 0 16 16">
-                                    <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15Zm0-9.007c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z"/>
-                                </svg>
-                                <span style="font-family: Poppins, sans-serif;"class="text">265</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#982727" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
-                                    <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                                </svg>
-                                <span style="font-family: Poppins, sans-serif;"class="text">60</span>
-                            </div>
-                        </div>
-                        <!-- komen  -->
-                        <div style= "padding-top: 40px;" class=" buatKomen">
-                            <div style="background-color: #ffffff; padding-top: 20px;" class="d-flex row">    
-                                <div class="col-auto">
-                                    <img class="img-fluid" src="{{ asset('images/fotoProfil.jpeg') }}" style= "width: 50px;height: 50px;border-radius: 100%;float: right;" alt="">
-                                </div>
-                                <div class="col-auto">
-                                    <h3 style="font-family: Poppins, sans-serif;font-weight: 600;"> Steven Matthew </h3>
-                                    <h6><small style="font-family: Poppins, sans-serif;font-weight: 200;" class="text-muted">Apa Tanggapan Anda?</small></h6>
-                                </div>
-                                <div class="row">
-                                    <div style="padding-top: 50px; height: 100px; align: bottom;" class="row flex-nowrap">
-                                        <div class="col-5">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-type-bold" viewBox="0 0 16 16">
-                                                <path d="M8.21 13c2.106 0 3.412-1.087 3.412-2.823 0-1.306-.984-2.283-2.324-2.386v-.055a2.176 2.176 0 0 0 1.852-2.14c0-1.51-1.162-2.46-3.014-2.46H3.843V13H8.21zM5.908 4.674h1.696c.963 0 1.517.451 1.517 1.244 0 .834-.629 1.32-1.73 1.32H5.908V4.673zm0 6.788V8.598h1.73c1.217 0 1.88.492 1.88 1.415 0 .943-.643 1.449-1.832 1.449H5.907z"/>
-                                            </svg>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-type-italic" viewBox="0 0 16 16">
-                                                <path d="M7.991 11.674 9.53 4.455c.123-.595.246-.71 1.347-.807l.11-.52H7.211l-.11.52c1.06.096 1.128.212 1.005.807L6.57 11.674c-.123.595-.246.71-1.346.806l-.11.52h3.774l.11-.52c-1.06-.095-1.129-.211-1.006-.806z"/>
-                                            </svg>
-                                        </div>
-                                        <div class="col-7">
-                                            <a href="#" style="font-family: Poppins, sans-serif;font-weight: 200;background-color: #ffffff; color: #982727;border: none !important; box-shadow: none !important;" class="btn btn-primary">Batal</a>
-                                            <a href="#" style="font-family: Poppins, sans-serif;background-color: #982727; border: none !important; box-shadow: none !important;"class="btn btn-primary">Kirim</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- bagian isi artikel -->
+                        @foreach ($read as $r)
+                            <x-isi-article :dataArticle="$r"/>
+                            <x-input-comment :inputComment="$r"/>
+                        @endforeach
+
                         <!-- komen -->
-                        <div style= "padding-top: 30px;" class="Komen">
-                            <div style= "padding-top: 20px;background-color: #FFFFFF;" class="row"> 
-                                <div class="row">
-                                    <div class="col-auto">
-                                        <img class="img-fluid" src="{{ asset('images/fotoProfil.jpeg') }}" style= "width: 50px;height: 50px;border-radius: 100%;float: right;" alt="">
-                                    </div>
-                                    <div class="col-auto">
-                                        <h3 style="font-family: Poppins, sans-serif;font-weight: 600;"> Vierdaria </h3>
-                                        <h6 style="font-family: Poppins, sans-serif;ont-weight: 200;"> Keren Bangettt </h6>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div style="padding-top: 20px;justify-content: space-between;" class="bagianIcons">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#982727" class="bi bi-chat-heart-fill" viewBox="0 0 16 16">
-                                            <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15Zm0-9.007c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z"/>
-                                        </svg>
-                                        <span style="font-family: Poppins, sans-serif;" class="text">265</span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#982727" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
-                                                <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                                            </svg>
-                                        <span style="font-family: Poppins, sans-serif;"class="text">60</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @foreach ($comment as $c)
+                            <x-comment :comment="$c"/>
+                        @endforeach
+
+
                     <!-- <div class="col-md-1"></div> -->
                     </div>
                 </div>

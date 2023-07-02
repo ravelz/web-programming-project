@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Article;
 use App\Models\Tag;
@@ -120,4 +120,5 @@ class HomeController extends Controller
         ->with('popularArticles', $this->getPopularArticle())
         ->with('followedArticles', $this->getFollowedArticle());
     }
+
 }

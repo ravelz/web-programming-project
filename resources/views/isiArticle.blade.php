@@ -3,13 +3,10 @@
 @section('content')
 <!-- bagian isi artikel -->
 <div style= "padding-top: 40px;" class="bagBawah mx-auto text-center" >
-    <h3 style="font-family: Rubik, sans-serif;font-weight: 600;">TARI KECAK CIRI KHAS BALI</h3>
-    <img class="img-fluid mx-auto" src="{{ asset('images/tarikecak.jpg') }}" style= "width: 400px;height: 250px;" alt="" class="img-fluid">
+    <h3 style="font-family: Rubik, sans-serif;font-weight: 600;">{{$read->judul}}</h3>
 </div>
 <div style= "padding-top: 50px; padding-left: 10px;text-indent: 50px; font-family: Poppins, sans-serif;font-weight: 300;" class="isiArtikel">
-    <p>Tari kecak adalah tarian yang berasal dari Bali. Pada tahun 1930, tarian ini tercipta dari penari bali bernama Wayan Limbak dan Walter Spies (Pelukis Jerman). Mereka menginisiasi tari Kecak dari tradisi Sanghyang serta kisah Ramayana. Uninknya para penari menari pada kondisi di rasuki oleh roh atau kesurupan.  </p>
-    <p>Keunikan dari tarian ini adalah gerakannya monoton, dilakukan dengan posisi duduk melingkar dan tangan digoyangkan di atas kepala. Lalu, Gerakan tangan di atas, hal ini sebagai simbol “lidah api” yang menyala, busana yang digunakan sederhana, hanya berupa kain sebagai celana pendek dan penutup kepala. Yang paling unik adalah tarian ini diiringi bunyi dari mulut para penari saja, yakni suara cak-cak-cak. </p>
-    <p>Keunikan dari tarian ini adalah gerakannya monoton, dilakukan dengan posisi duduk melingkar dan tangan digoyangkan di atas kepala. Lalu, Gerakan tangan di atas, hal ini sebagai simbol “lidah api” yang menyala, busana yang digunakan sederhana, hanya berupa kain sebagai celana pendek dan penutup kepala. Yang paling unik adalah tarian ini diiringi bunyi dari mulut para penari saja, yakni suara cak-cak-cak.  </p>
+    {!! $data->deskripsi !!}
 </div>
 <div style="font-family: Poppins, sans-serif;font-weight: 400;" class="rekomendasi">
     <a href="#"  style = "background-color: #982727;border-radius: 30px; width:80px;border: none !important; box-shadow: none !important;" class="btn btn-primary "  >Tarian</a> 

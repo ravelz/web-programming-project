@@ -4,18 +4,17 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class IsiArticle extends Component
+class comment extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-
-     public $dataArticle;
-    public function __construct($dataArticle)
+    public $comment;
+    public function __construct($comment)
     {
-        $this->dataArticle = $dataArticle;  
+        $this->comment = $comment;
     }
 
     /**
@@ -25,6 +24,6 @@ class IsiArticle extends Component
      */
     public function render()
     {
-        return view('components.isi-article');
+        return view('components.comment');
     }
 }
