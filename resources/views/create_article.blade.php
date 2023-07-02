@@ -16,13 +16,10 @@
             <div class="container d-flex flex-column" style="position: relative; height: 90vh; max-width: 1200px; margin: auto; background-color: #F5EFEF; padding: 50px; overflow: hidden; top: 5vh;">
                 <div class="d-flex flex-wrap justify-content-end align-items-center">
                     <div>
-                        <img src="{{ asset('images/logo.png') }}" class="mb-5" style="max-height: 120px; max-width: 100%;">
+                        <img src="{{ asset('images/logo.png') }}" class="mb-5" style="max-height: 80px; max-width: 100%;">
                     </div>
                     <div style="margin-left: auto;">
                         <button type="submit" class="btn btn-primary" style="background-color: #982727; padding: 8px 16px; font-size: 18px; color: white; outline: none; margin-right: 10px;">Posting</button>
-                    </div>
-                    <div>
-                        <img class="card-img-top mx-auto" src="{{ asset('images/fotoProfil.jpeg') }}" style="width: 80px; height: 80px; border-radius: 100%;" class="img-fluid" alt="...">
                     </div>
                 </div>
                 <form style="width: 100%;">
@@ -31,6 +28,16 @@
                         <div style="border: 2px solid black; background-color: #F5EFEF;">
                             <input type="text" name="judul" class="form-control rounded" id="judul" style="background-color: #F5EFEF; border: none; width: 100%;">
                         </div>
+                    </div>
+                    <div class="mb-3">
+                        <table class="table table-bordered" id="table">
+                            <tr>
+                                <th>Add Tag</th>
+                                <th>Action</th>    
+                            </tr>
+                            <td><input type="text" name="inputs[0]['tag_name']" placeholder="Add tag here" class="form-control"></td>
+                            <td><button type="button" name="add_tag" id="add_tag" class="btn btn-success">Add More</button> </td>    
+                        </table> 
                     </div>
                     <div class="mb-3">
                         <label for="deskripsi" class="form-label" style="font-size: 20px;">Apa Ceritamu?</label>
@@ -55,6 +62,13 @@
                 .catch( error => {
                         console.error( error );
                 } );
+
+        // var i = 0; 
+        // $('#add_tag').click(function(){
+        //     ++i;
+        //     $('#table').append('
+        //     ')
+        // })
     </script>
 </body> 
 </body>
