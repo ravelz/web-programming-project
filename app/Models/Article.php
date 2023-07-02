@@ -20,6 +20,11 @@ class Article extends Model
         'jml_comment',
         'id_user'
     ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
   
     public function user(){
         return $this->belongsTo(User::class, 'id_user', 'id_user');

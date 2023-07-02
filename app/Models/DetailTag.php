@@ -16,6 +16,11 @@ class DetailTag extends Model
         'updated_at'
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
+
     public function article(){
         return $this->belongsToMany(Article::class, 'id_article', 'id_article');
     }
