@@ -1,3 +1,9 @@
+@if($errors->any())
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <h4>{{$errors->first()}}</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
 @extends('layouts.app')
 
 <!doctype html>
@@ -151,7 +157,7 @@
                                         </div>
                                     </div>
                                     <div class="p-0 m-0">
-                                        <button type="button" class="btn btn-outline-secondary" style="color: black; border-radius: 20px;">Follow</button>
+                                        <a type="submit" value="send" class="btn btn-outline-secondary" style="color: black; border-radius: 20px;" href="{{ route('follow', ['id' => $author->id_user]) }}">Follow</a>
                                     </div>
                                 </div>
                             @endforeach

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Article;
 use App\Models\Tag;
+use App\Models\Follower;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 
@@ -85,7 +86,8 @@ class HomeController extends Controller
         foreach ($articles as $article) {
             $article->authorName = User::select('name')->where('id_user', $article->id_user)->first()->name;
         }
-        // dd($articles);
+        
+        
         return $articles;
     }
     public function getDifferenceDate($collections){
@@ -109,7 +111,17 @@ class HomeController extends Controller
         ->get();
         ;
         $joinFollow = $this->getDifferenceDate($joinFollow);
+        // dd($joinFollow[0]->id_article);
         return $joinFollow;
+    }
+
+    public function follow($id){
+        // dd($id);
+        $follow = Follower::create([
+            'id_user_f' => $id,
+            'id_user_m' => Auth::id()
+        ]);
+        return back()->withErrors(['msg' => 'The Message']);;
     }
     
     public function index()
