@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -24,6 +26,8 @@ class AuthController extends Controller
             'username' => 'The provided credentials do not match our records.',
         ]);
     }
+
+    
     public function showRegistrationForm()
     {
         return view('register');
@@ -36,12 +40,17 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users,email|max:255',
             'password' => 'required|min:8|max:255|confirmed',
         ]);
-        $lastIdUser = User::select('id_user')->orderBy('id_user','desc')->first();
-        if(!$lastIdUser){
+        $lastIdUser = User::select('id_user')->orderBy('id_user','desc')->count();
+        $idUser = (int)substr($lastIdUser , -3);
+        $idUser = "USR".str_pad($idUser+1, 3, '0', STR_PAD_LEFT);
+        dd($idUser);
+
+        if($lastIdUser == 0){
             $idUser = "USR001";
         }else{
-            $idUser = (int)substr($lastIdUser , -3);
-            $idUser = 'USR'.$lastIdUser+1;
+            $idUser = (int)substr($lastIdUser , -1);
+            
+            $idUser = "USR".str_pad($idUser+1, 3, '0', STR_PAD_LEFT);
         }
         $user = User::create([
             'id_user' => $idUser,
@@ -53,5 +62,14 @@ class AuthController extends Controller
         
         auth()->login($user);
         return redirect('/home');
+    }
+
+    public function logout()
+    {
+        Session::flush();
+        
+        Auth::logout();
+
+        return redirect('');
     }
 }

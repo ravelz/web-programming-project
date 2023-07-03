@@ -3,29 +3,44 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Models\Article;
+use App\Models\Tag;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
+
 
 class HomeController extends Controller
 {
-    public function showHome(){
-        $author = DB::table('users')->where('role', '=' ,'2')
-                ->inRandomOrder()
-                ->limit(2)
-                ->get();
-        $article = DB::table('articles')
-            ->inRandomOrder()
-            ->limit(10)
-            ->get();
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
+    public function showHome(){
         $joinFollow = DB::table('users')
         ->where('users.id_user', '=', Auth::id())
         ->join('followers', 'users.id_user', '=', 'followers.id_user_m')
         ->select('followers.id_user_f', 'articles.*')
         ->join('articles', 'followers.id_user_f', '=', 'articles.id_user')
         ->inRandomOrder()
-        ->limit(10)
         ->get();
+
+        $joinFollows = User::find(Auth::id())->followers;
+
+        foreach($joinFollows as $caption)
+        {
+            $providers_arr[] = Article::find($caption->pivot);
+        }
+
+        $providers_collection = collect($providers_arr)->unique();
+
+        // $oji = '';
+        // foreach($joinFollows as $join){
+        //     $oji = $join->id_user_m;
+        // }
 
         $readList = DB::table('bookmarks')
         ->where('bookmarks.id_user', '=', Auth::id())
@@ -33,9 +48,77 @@ class HomeController extends Controller
         ->inRandomOrder()
         ->limit(5)
         ->get();
-
-        dd($author, $article->first()->judul, $joinFollow, Auth::id(), $readList);
-
-        return view('home');
     }
+
+    public function getAuthor(){
+        $authors = User::where('role', '2')->inRandomOrder()->paginate(5);
+        return $authors;
+    }
+
+    public function getTag(){
+        $tags = Tag::inRandomOrder()->limit(10)->get();
+        // dd($tags[0]->toArray());
+        return $tags;
+    }
+
+    public function getClickedTag($tagName){
+        $taggedArticle = DB::table('detailtags')
+        ->where('detailtags.id_tag', '=', $tagName)
+        ->join('articles', 'articles.id_article', '=', 'detailtags.id_article')
+        ->get()
+        ;
+        foreach ($taggedArticle as $article) {
+            $article->deskripsi = Str::limit($article->deskripsi, 150);
+            $article->differenceDate = Carbon::now()->diffInDays(Carbon::parse($article->tgl_publish));
+            $article->authorName = User::select('name')->where('id_user', $article->id_user)->first()->name;
+        }
+        return view('Home/home')
+        ->with('authors', $this->getAuthor())
+        ->with('tags', $this->getTag())
+        ->with('popularArticles', $taggedArticle)
+        ->with('followedArticles', $this->getFollowedArticle());
+    }
+
+    public function getPopularArticle(){
+        $articles = Article::inRandomORder()->limit(6)->get();
+        $articles = $this->getDifferenceDate($articles);
+        foreach ($articles as $article) {
+            $article->authorName = User::select('name')->where('id_user', $article->id_user)->first()->name;
+        }
+        // dd($articles);
+        return $articles;
+    }
+    public function getDifferenceDate($collections){
+        foreach ($collections as $collection) {
+            $collection->deskripsi = Str::limit($collection->deskripsi, 150);
+            $collection->differenceDate = Carbon::now()->diffInDays(Carbon::parse($collection->tgl_publish));
+        }
+        return $collections;
+    }
+
+    public function getFollowedArticle(){
+        $joinFollow = DB::table('users')
+        ->where('users.id_user', '=', Auth::id())
+        ->join('followers', 'users.id_user', '=', 'followers.id_user_m')
+        ->select('followers.id_user_f', 'users.name as authorName', 'articles.*', 'detailtags.*', 'tags.*', DB::raw("GROUP_CONCAT(tags.title_tag SEPARATOR ', ') as title_group"))
+        ->join('articles', 'followers.id_user_f', '=', 'articles.id_user')
+        ->join('detailtags', 'detailtags.id_article', '=', 'articles.id_article')
+        ->join('tags', 'tags.id_tag', '=', 'detailtags.id_tag')
+        ->inRandomOrder()
+        ->groupBy('articles.id_article')
+        ->get();
+        ;
+        $joinFollow = $this->getDifferenceDate($joinFollow);
+        return $joinFollow;
+    }
+    
+    public function index()
+    {
+        return view('Home/home')
+        ->with('authors', $this->getAuthor())
+        ->with('tags', $this->getTag())
+        ->with('popularArticles', $this->getPopularArticle())
+        ->with('followedArticles', $this->getFollowedArticle());
+    }
+
 }

@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class UserSeeder extends Seeder
 {
@@ -19,8 +20,11 @@ class UserSeeder extends Seeder
         //
         $faker = Faker::create('id_ID');
         for($i = 0; $i<10; $i++){
+            $lastIdUser = User::select('id_user')->orderBy('id_user','desc')->count();
+            $idUser = (int)substr($lastIdUser , -3);
+            $idUser = "USR".str_pad($idUser+1, 3, '0', STR_PAD_LEFT);
             DB::table('users')->insert([
-                'id_user' => 'USR'.$i+2,
+                'id_user' => $idUser,
                 'username' => $faker->userName,
                 'name' => $faker->name,
                 'email' => $faker->email,

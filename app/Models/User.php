@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -35,7 +35,35 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'created_at',
+        'updated_at'
     ];
+
+    public function followers(){
+        return $this->belongsToMany(User::class, 'followers',
+        'id_user_m',
+        'id_user_f');
+    }
+
+    public function articles(){
+        return $this->belongsToMany(Article::class,
+        'articles',
+        'id_user',
+        'id_user'
+    );
+    }
+
+    public function likes(){
+        return $this->belongsToMany(Like::class, 'id_user', 'id_user');
+    }
+
+    public function comment(){
+        return $this->belongsToMany(Comment::class, 'id_user', 'id_user');
+    }
+
+    // public function article(){
+    //     return $this->hasMany(Article::class, 'id_user', 'id_user');
+    // }
 
     /**
      * The attributes that should be cast.
@@ -45,4 +73,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    
 }
