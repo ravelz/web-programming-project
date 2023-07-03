@@ -792,7 +792,7 @@ html,body{
 
   #intro{
     height: 100vh !important;
-    background-image: url("../../img/payment/suc.png");
+    background-image: url("/storage/upload/suc.png");
     background-size: 50%;
     background-repeat: no-repeat;
     background-position-x: center;
@@ -808,7 +808,7 @@ html,body{
   }
 
   .bg-profile-header{
-    background-image: url('../../img/Home/header.jpg');
+    background-image: url('/storage/upload/Header.jpg'); 
     background-size: cover;
     background-position: center;
     height: 300px; 

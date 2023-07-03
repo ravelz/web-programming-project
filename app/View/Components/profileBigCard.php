@@ -15,6 +15,6 @@ class profileBigCard extends Component
 
     public function render()
     {
-        return view('components.profileBigCard');
+        return view('components.profile-big-card');
     }
 }
