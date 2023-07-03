@@ -60,4 +60,22 @@ Route::middleware([User::class])->group(function () {
     Route::get('/user', function () {
         return view('test')->with('id', Auth::user());
     });
+    
+
+
+    Route::get('/payment', function () {
+        return view('Layout/payment');
+    })->name("payment");
+    
+    Route::get('/paySuccess', function () {
+        return view('Layout/paySuccess');
+    })->name('paySuccess');
+    
+    Route::get('/profile', function () {
+        return view('Layout/profile');
+    });
+    
+    Route::get('/visitProfile', function () {
+        return view('Layout/visitProfile');
+    });
 });
