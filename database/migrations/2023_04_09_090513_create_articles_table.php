@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('status_member');
             $table->string('deskripsi', 255);
             $table->integer('jml_like');
+            $table->timestamps();
         });
     }
 
