@@ -52,7 +52,22 @@ class HomeController extends Controller
     }
 
     public function getAuthor(){
-        $authors = User::where('role', '2')->inRandomOrder()->paginate(5);
+        
+        $following = DB::table('users')
+        ->join('followers', 'users.id_user', '=', 'followers.id_user_m')
+        ->where('users.id_user', '=', Auth::id())
+        ->get();
+        // dd($following);
+        $authors = User::where('role', '2')->whereNotIn('id_user', function($q){
+            $q->select(DB::raw('followers.id_user_f from users'))
+            ->join('followers', 'users.id_user', '=', 'followers.id_user_m')
+            ->where('users.id_user', '=', Auth::id());
+        })
+        ->where('id_user', '!=', Auth::id())
+        // ->toSql();
+        ->inRandomOrder()->paginate(5);
+        // dd($authors);
+        $aut = DB::table('bookmarks');
         return $authors;
     }
 

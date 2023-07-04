@@ -10,6 +10,7 @@ use App\Http\Controllers\CreateArticleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DiscoverArticleController;
 use App\Http\Controllers\TopicsController;
+use App\Http\Controllers\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,27 +56,24 @@ Route::middleware([User::class])->group(function () {
     Route::get('/populer', [DiscoverArticleController::class, 'populer'])->name('populer');
     Route::get('/diikuti', [DiscoverArticleController::class, 'diikuti'])->name('diikuti');
 
-    Route::get('/{id}', [HomeController::class, 'follow'])->name('follow');
+    Route::get('/follow/{id}', [HomeController::class, 'follow'])->name('follow');
     
     Route::get('/user', function () {
         return view('test')->with('id', Auth::user());
     });
     
+    Route::get('/profile/{username}', [ProfileController::class, 'index'])->name('profile');
 
 
     Route::get('/payment', function () {
-        return view('Layout/payment');
+        return view('payment');
     })->name("payment");
     
     Route::get('/paySuccess', function () {
-        return view('Layout/paySuccess');
+        return view('paySuccess');
     })->name('paySuccess');
     
-    Route::get('/profile', function () {
-        return view('Layout/profile');
-    });
-    
     Route::get('/visitProfile', function () {
-        return view('Layout/visitProfile');
+        return view('visitProfile');
     });
 });
