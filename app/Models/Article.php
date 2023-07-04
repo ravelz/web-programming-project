@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     use HasFactory;
+    public $incrementing = false;
     protected $primaryKey = 'id_article';
     protected $fillable = [
         'id_article',

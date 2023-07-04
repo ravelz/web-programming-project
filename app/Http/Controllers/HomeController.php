@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Article;
 use App\Models\Tag;
+use App\Models\Follower;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 
@@ -51,7 +52,22 @@ class HomeController extends Controller
     }
 
     public function getAuthor(){
-        $authors = User::where('role', '2')->inRandomOrder()->paginate(5);
+        
+        $following = DB::table('users')
+        ->join('followers', 'users.id_user', '=', 'followers.id_user_m')
+        ->where('users.id_user', '=', Auth::id())
+        ->get();
+        // dd($following);
+        $authors = User::where('role', '2')->whereNotIn('id_user', function($q){
+            $q->select(DB::raw('followers.id_user_f from users'))
+            ->join('followers', 'users.id_user', '=', 'followers.id_user_m')
+            ->where('users.id_user', '=', Auth::id());
+        })
+        ->where('id_user', '!=', Auth::id())
+        // ->toSql();
+        ->inRandomOrder()->paginate(5);
+        // dd($authors);
+        $aut = DB::table('bookmarks');
         return $authors;
     }
 
@@ -83,9 +99,14 @@ class HomeController extends Controller
         $articles = Article::inRandomORder()->limit(6)->get();
         $articles = $this->getDifferenceDate($articles);
         foreach ($articles as $article) {
-            $article->authorName = User::select('name')->where('id_user', $article->id_user)->first()->name;
+            $user = User::select('name', 'username')->where('id_user', $article->id_user)->first();
+            // dd($user);
+            $article->authorName = $user->name;
+            $article->username = $user->username;
         }
         // dd($articles);
+        
+        
         return $articles;
     }
     public function getDifferenceDate($collections){
@@ -97,19 +118,32 @@ class HomeController extends Controller
     }
 
     public function getFollowedArticle(){
-        $joinFollow = DB::table('users')
-        ->where('users.id_user', '=', Auth::id())
-        ->join('followers', 'users.id_user', '=', 'followers.id_user_m')
-        ->select('followers.id_user_f', 'users.name as authorName', 'articles.*', 'detailtags.*', 'tags.*', DB::raw("GROUP_CONCAT(tags.title_tag SEPARATOR ', ') as title_group"))
+        $joinFollow = DB::table('users as u')
+        ->where('u.id_user', '=', Auth::id())
+        ->join('followers', 'u.id_user', '=', 'followers.id_user_m')
+        ->select('followers.id_user_f', 'articles.*', 'detailtags.*', 'tags.*', DB::raw("GROUP_CONCAT(tags.title_tag SEPARATOR ', ') as title_group"), 'u1.username', 'u1.name as authorName')
         ->join('articles', 'followers.id_user_f', '=', 'articles.id_user')
         ->join('detailtags', 'detailtags.id_article', '=', 'articles.id_article')
         ->join('tags', 'tags.id_tag', '=', 'detailtags.id_tag')
+        ->join('users as u1', 'followers.id_user_f', '=', 'u1.id_user')
         ->inRandomOrder()
         ->groupBy('articles.id_article')
+        // ->toSql();
         ->get();
         ;
+        // dd($joinFollow);
         $joinFollow = $this->getDifferenceDate($joinFollow);
+        
         return $joinFollow;
+    }
+
+    public function follow($id){
+        // dd($id);
+        $follow = Follower::create([
+            'id_user_f' => $id,
+            'id_user_m' => Auth::id()
+        ]);
+        return back()->withErrors(['msg' => 'The Message']);;
     }
     
     public function index()

@@ -1,15 +1,10 @@
 <?php
 
-use App\Http\Middleware\User;
-use Illuminate\Support\Facades\Auth;
-
-use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CreateArticleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DiscoverArticleController;
-use App\Http\Controllers\TopicsController;
+use App\Http\Controllers\TopicsController;use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,8 +47,25 @@ Route::middleware([User::class])->group(function () {
     Route::get('/rekomendasi', [DiscoverArticleController::class, 'rekomendasi'])->name('rekomendasi');
     Route::get('/populer', [DiscoverArticleController::class, 'populer'])->name('populer');
     Route::get('/diikuti', [DiscoverArticleController::class, 'diikuti'])->name('diikuti');
+
+    Route::get('/follow/{id}', [HomeController::class, 'follow'])->name('follow');
     
     Route::get('/user', function () {
         return view('test')->with('id', Auth::user());
+    });
+    
+    Route::get('/profile/{username}', [ProfileController::class, 'index'])->name('profile');
+
+
+    Route::get('/payment', function () {
+        return view('payment');
+    })->name("payment");
+    
+    Route::get('/paySuccess', function () {
+        return view('paySuccess');
+    })->name('paySuccess');
+    
+    Route::get('/visitProfile', function () {
+        return view('visitProfile');
     });
 });

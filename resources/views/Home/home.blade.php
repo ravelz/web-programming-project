@@ -1,3 +1,9 @@
+@if($errors->any())
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <h4>{{$errors->first()}}</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
 @extends('layouts.app')
 
 <!doctype html>
@@ -141,17 +147,19 @@
                             @auth
                             @foreach ($authors as $author)
                                 <div id = side-top class="d-flex flex-row justify-content-between">
-                                    <div class="ikuti-img">
-                                        <img id = "top-img" src="img/Home/profile.jpg" class="rounded-circle " alt="..." width="47px" height="47px">
-                                    </div>
-                                    <div class="mx-2">
-                                        <h1 id = "top-name" class = "nama-ikuti" >{{ $author->name }}</h1>
-                                        <div class="kotak-tulisan"> 
-                                            <p id = "top-desc" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, eum.</p>
+                                    <a href="{{ route('profile', ['username' => $author->username]) }}" class="d-flex flex-row justify-content-between text-decoration-none text-black">
+                                        <div class="ikuti-img">
+                                            <img id = "top-img" src="img/Home/profile.jpg" class="rounded-circle " alt="..." width="47px" height="47px">
                                         </div>
-                                    </div>
+                                        <div class="mx-2">
+                                            <h1 id = "top-name" class = "nama-ikuti" >{{ $author->name }}</h1>
+                                            <div class="kotak-tulisan"> 
+                                                <p id = "top-desc" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, eum.</p>
+                                            </div>
+                                        </div>
+                                    </a>
                                     <div class="p-0 m-0">
-                                        <button type="button" class="btn btn-outline-secondary" style="color: black; border-radius: 20px;">Follow</button>
+                                        <a type="submit" value="send" class="btn btn-outline-secondary" style="color: black; border-radius: 20px;" href="{{ route('follow', ['id' => $author->id_user]) }}">Follow</a>
                                     </div>
                                 </div>
                             @endforeach

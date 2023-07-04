@@ -19,7 +19,7 @@ class FollowerSeeder extends Seeder
         $faker = Faker::Create('id_ID');
         for($i=0; $i<10; $i++){
             $followA = DB::table('users')->where('id_user', '=', 'USR001')->limit(1)->get()->first()->id_user;
-            $followB = DB::table('users')->where('id_user', '=', 'USR005')->get()->first()->id_user;
+            $followB = DB::table('users')->where('id_user', '=', 'USR5')->get()->first()->id_user;
 
             DB::table("followers")->insert([
                 'id_user_f' => $followB,
