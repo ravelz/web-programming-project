@@ -30,6 +30,7 @@
             </div>
         </div>
     </div>
+    
     <script src="./js/Home/payment.js"></script>
 </body>
 </html>

@@ -33,6 +33,9 @@
                         <x-profile-stats-att></x-profile-stats-att>
                     </div>
                 </div>
+                <button type="button" id = "status-berlangganan" class="btn btn-danger text-nowrap ms-2 mt-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"  data-bs-toggle="modal" data-bs-target="#exampleModal4"><span class="tulisan-status-berlangganan text-wrap fs-5">
+                Status Berlangganan : Aktif</span></button>
+                <x-show-benefit></x-show-benefit>
             </div>
              {{-- ==============     KANAN     ============== --}}
             <div class="offset-1 col-7">

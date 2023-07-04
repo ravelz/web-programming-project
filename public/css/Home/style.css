@@ -976,6 +976,53 @@ html,body{
     padding-right: 0px !important;
   }
 
+  #edit-profile{
+    background-color: #5E5D2D !important;
+    border-color: #5E5D2D;
+  }
+
+  #edit-profile:hover{
+    background-color: #B7B679 !important;
+    border: #B7B679 ;
+  }
+
+  .modal-logo{
+    width: 120px;
+    height: 90px;
+  }
+
+  .isi-ben{
+    height: 420px; 
+    background-color:#982727;
+  }
+
+  .ben-logo{
+    width: 220px;
+    height: 220px;
+  }
+
+  .modal-logo-ben{
+    width: 30%;
+    height: 30%;
+  }
+
+  .ben-desc{
+    width : 70%;
+  }
+
+  .ben-desc{
+    font-size: clamp(0.75rem, 0.571rem + 0.476vw, 1rem);
+  }
+
+  .gasEdit{
+    background-color:#982727; 
+    border-color:#982727;
+  }
+
+  .gasEdit:hover{
+    background-color: #B05151 !important;
+    border: #B05151 ;
+  }
 
 
 

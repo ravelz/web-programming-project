@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Article;
 use App\Models\Tag;
+use App\Models\Follower;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 
@@ -51,7 +52,22 @@ class HomeController extends Controller
     }
 
     public function getAuthor(){
-        $authors = User::where('role', '2')->inRandomOrder()->paginate(5);
+        
+        $following = DB::table('users')
+        ->join('followers', 'users.id_user', '=', 'followers.id_user_m')
+        ->where('users.id_user', '=', Auth::id())
+        ->get();
+        // dd($following);
+        $authors = User::where('role', '2')->whereNotIn('id_user', function($q){
+            $q->select(DB::raw('followers.id_user_f from users'))
+            ->join('followers', 'users.id_user', '=', 'followers.id_user_m')
+            ->where('users.id_user', '=', Auth::id());
+        })
+        ->where('id_user', '!=', Auth::id())
+        // ->toSql();
+        ->inRandomOrder()->paginate(5);
+        // dd($authors);
+        $aut = DB::table('bookmarks');
         return $authors;
     }
 
@@ -85,7 +101,8 @@ class HomeController extends Controller
         foreach ($articles as $article) {
             $article->authorName = User::select('name')->where('id_user', $article->id_user)->first()->name;
         }
-        // dd($articles);
+        
+        
         return $articles;
     }
     public function getDifferenceDate($collections){
@@ -109,7 +126,17 @@ class HomeController extends Controller
         ->get();
         ;
         $joinFollow = $this->getDifferenceDate($joinFollow);
+        // dd($joinFollow[0]->id_article);
         return $joinFollow;
+    }
+
+    public function follow($id){
+        // dd($id);
+        $follow = Follower::create([
+            'id_user_f' => $id,
+            'id_user_m' => Auth::id()
+        ]);
+        return back()->withErrors(['msg' => 'The Message']);;
     }
     
     public function index()

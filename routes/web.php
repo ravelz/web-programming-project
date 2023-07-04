@@ -16,18 +16,58 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/payment', function () {
-    return view('Layout/payment');
-})->name("payment");
-
-Route::get('/paySuccess', function () {
-    return view('Layout/paySuccess');
-})->name('paySuccess');
-
-Route::get('/profile', function () {
-    return view('Layout/profile');
+Route::get('/', function() {
+    return view('login');
 });
 
-Route::get('/visitProfile', function () {
-    return view('Layout/visitProfile');
+Route::get('/article', [articleController::class, 'index']);
+// Route::get('/home', [HomeController::class, 'showHome']);
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+Route::get('/article', [CreateArticleController::class, 'show'])->name('article');
+
+Route::get('/create-article', [CreateArticleController::class, 'create'])->name('create');
+Route::post('/upload-image', [CreateArticleController::class, 'uploadImage'])->name('upload');
+Route::post('/create-article', [CreateArticleController::class, 'store'])->name('store'); 
+Route::get('/read-article/{id}/{judul}', [CreateArticleController::class, 'readArticle'])->name('read');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/topics', [TopicsController::class, 'index'])->name('topics');
+Route::get('/like/{id}', [ArticleController::class, 'like'])->name('like_article');
+Route::post('/comment/{id}', [ArticleController::class, 'comment'])->name('comment_article');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/', function () {
+//     return view('Home/home');
+// })->middleware(User::class);
+Route::middleware([User::class])->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('index');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/cari/tag/{tagName}', [DiscoverArticleController::class, 'getByTopic'])->name('clickedTag');
+
+    Route::get('/rekomendasi', [DiscoverArticleController::class, 'rekomendasi'])->name('rekomendasi');
+    Route::get('/populer', [DiscoverArticleController::class, 'populer'])->name('populer');
+    Route::get('/diikuti', [DiscoverArticleController::class, 'diikuti'])->name('diikuti');
+
+    Route::get('/follow/{id}', [HomeController::class, 'follow'])->name('follow');
+    
+    Route::get('/user', function () {
+        return view('test')->with('id', Auth::user());
+    });
+    
+    Route::get('/profile/{username}', [ProfileController::class, 'index'])->name('profile');
+
+
+    Route::get('/payment', function () {
+        return view('payment');
+    })->name("payment");
+    
+    Route::get('/paySuccess', function () {
+        return view('paySuccess');
+    })->name('paySuccess');
+    
+    Route::get('/visitProfile', function () {
+        return view('visitProfile');
+    });
 });

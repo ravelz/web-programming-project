@@ -4,7 +4,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <img class="modal-logo" src="{{ asset('storage') }}/upload/LOGO WEB.png" alt=""height = "70px" width="120px">
+                <img class="modal-logo" src="{{ asset('storage') }}/upload/LOGO WEB.png" alt="">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <h1 class="modal-title fs-3 fw-bold ms-auto me-auto" id="exampleModalLabel">BCA Payment</h1>
