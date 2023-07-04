@@ -40,7 +40,7 @@ if($profile[0]->id_article == null){
                     </div>
                 @else
                     <div class="d-flex flex-column justify-content-between col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <h1 class="prof-dat text-black display-6 fw-bold text-nowrap text-center">70</h1>
+                        <h1 class="prof-dat text-black display-6 fw-bold text-nowrap text-center">{{ $count }}</h1>
                         <p class="prof-dats text-black-50 text-center fs-5  text-center">Posting</p>
                     </div>
                 @endif
