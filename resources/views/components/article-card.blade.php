@@ -14,11 +14,8 @@
         <div class="last-layer d-flex justify-content-between">
             <div class="foto-penulis">
                 <a href=""><img id = "prof-small" src="img/Home/profile.jpg" class="img rounded-circle " alt="..." width="32px" height="32px"></a>
-                <a href="" style="text-decoration: none" id = "name-small" class="nama-penulis text-wrap">{{ $article->authorName }}</a>
+                <a href="{{ route('profile', ['username' => $article->username]) }}" style="text-decoration: none" id = "name-small" class="nama-penulis text-wrap">{{ $article->authorName }}</a>
             </div>
-
-            
-
             <div class="baca-lebih">
                 <a href = ""style = "text-decoration : none" id = "read-small" class="sub text-wrap">Baca Lebih</a>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="background: #5E5D2D;" class="bi bi-arrow-right panah" viewBox="0 0 16 16">

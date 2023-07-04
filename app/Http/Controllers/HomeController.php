@@ -99,8 +99,12 @@ class HomeController extends Controller
         $articles = Article::inRandomORder()->limit(6)->get();
         $articles = $this->getDifferenceDate($articles);
         foreach ($articles as $article) {
-            $article->authorName = User::select('name')->where('id_user', $article->id_user)->first()->name;
+            $user = User::select('name', 'username')->where('id_user', $article->id_user)->first();
+            // dd($user);
+            $article->authorName = $user->name;
+            $article->username = $user->username;
         }
+        // dd($articles);
         
         
         return $articles;
@@ -114,19 +118,22 @@ class HomeController extends Controller
     }
 
     public function getFollowedArticle(){
-        $joinFollow = DB::table('users')
-        ->where('users.id_user', '=', Auth::id())
-        ->join('followers', 'users.id_user', '=', 'followers.id_user_m')
-        ->select('followers.id_user_f', 'users.name as authorName', 'articles.*', 'detailtags.*', 'tags.*', DB::raw("GROUP_CONCAT(tags.title_tag SEPARATOR ', ') as title_group"))
+        $joinFollow = DB::table('users as u')
+        ->where('u.id_user', '=', Auth::id())
+        ->join('followers', 'u.id_user', '=', 'followers.id_user_m')
+        ->select('followers.id_user_f', 'articles.*', 'detailtags.*', 'tags.*', DB::raw("GROUP_CONCAT(tags.title_tag SEPARATOR ', ') as title_group"), 'u1.username', 'u1.name as authorName')
         ->join('articles', 'followers.id_user_f', '=', 'articles.id_user')
         ->join('detailtags', 'detailtags.id_article', '=', 'articles.id_article')
         ->join('tags', 'tags.id_tag', '=', 'detailtags.id_tag')
+        ->join('users as u1', 'followers.id_user_f', '=', 'u1.id_user')
         ->inRandomOrder()
         ->groupBy('articles.id_article')
+        // ->toSql();
         ->get();
         ;
+        // dd($joinFollow);
         $joinFollow = $this->getDifferenceDate($joinFollow);
-        // dd($joinFollow[0]->id_article);
+        
         return $joinFollow;
     }
 

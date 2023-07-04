@@ -6,7 +6,6 @@ if($profile[0]->id_article == null){
 }else{
     $count = count($profile);
 }
-    
 @endphp
 <div class="isi">
     <div class="row">
@@ -27,16 +26,28 @@ if($profile[0]->id_article == null){
                     <p class="prof-dats text-black-50 text-center fs-5  text-center">Mengikuti</p>
                 </div>
             </div>
+
+
             <div class="ms-2 border border-dark border-opacity-10 rounded row p-3">
-                <div class="d-flex flex-column justify-content-between col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 ">
-                    <h1 class="prof-dat text-black display-6 fw-bold text-nowrap text-center">17</h1>
-                    <p class="prof-dats text-black-50 text-center fs-5 text-center">Markah</p>
-                </div>
-                <div class="d-flex flex-column justify-content-between col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <h1 class="prof-dat text-black display-6 fw-bold text-nowrap text-center">{{ $count }}</h1>
-                    <p class="prof-dats text-black-50 text-center fs-5  text-center">Posting</p>
-                </div>
+                @if (Auth::user()->username == $username)
+                    <div class="d-flex flex-column justify-content-between col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 ">
+                        <h1 class="prof-dat text-black display-6 fw-bold text-nowrap text-center">17</h1>
+                        <p class="prof-dats text-black-50 text-center fs-5 text-center">Markah</p>
+                    </div>
+                    <div class="d-flex flex-column justify-content-between col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <h1 class="prof-dat text-black display-6 fw-bold text-nowrap text-center">{{ $count }}</h1>
+                        <p class="prof-dats text-black-50 text-center fs-5  text-center">Posting</p>
+                    </div>
+                @else
+                    <div class="d-flex flex-column justify-content-between col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <h1 class="prof-dat text-black display-6 fw-bold text-nowrap text-center">70</h1>
+                        <p class="prof-dats text-black-50 text-center fs-5  text-center">Posting</p>
+                    </div>
+                @endif
+                
             </div>
+
+
             @if ($profile[0]->status_member != 2)
             <button type="button" id = "status-berlangganan" class="btn btn-danger text-nowrap ms-2 mt-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><span class="tulisan-status-berlangganan text-wrap">
                 Status Berlangganan: Tidak aktif</span></button>
@@ -62,9 +73,6 @@ if($profile[0]->id_article == null){
                     <p id="profile-sort-postingan" class="profile-sort">urutkan</p> 
                 </div>
             </div>
-
-
-
             <div class="row d-flex flex-column justify-content-between">
                 <div class="col-11 col-sm-11 col-md-11 col-lg-12 col-xl-12 border-bottom border-1 mt-1 profile-garis" style="max-width: 1100px"></div>
 
