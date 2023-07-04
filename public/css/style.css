@@ -1,3 +1,447 @@
 html, body {
     font-family: 'Rubik', sans-serif !important;
 }
+
+html,body{
+    background-color: #F5F0F0;
+    overflow-x: hidden;
+}
+
+
+                                                /*=============SET UP FONT ================*/
+
+
+/*=====Rubik=====*/
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('Font/Rubik-Regular.ttf') format('truetype');
+}
+
+    /* Regular */
+@font-face {
+    font-family: 'Rubik';
+    src: url('Font/Rubik-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Bold */
+@font-face {
+    font-family: 'Rubik';
+    src: url('Font/Rubik-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/*Medium*/
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('Font/Rubik-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+                                                            /*============= ELEMENT ================*/
+
+/*========= HEADER ========== */    
+.Header {
+    background-image: url('../../img/Home/Header.jpg');
+    padding-left: 24px; 
+    padding-right: 24px;
+    padding-top: 24px;
+    background-size: cover;
+    box-sizing: border-box;
+    height: 792px;
+}
+
+/*List*/
+
+.bi-list{
+    width: 8vw;
+    height: 8vh;
+}
+
+
+
+/*Daftar, Masuk, Foto Profil*/
+
+.daftar{
+    background-color: #982727;
+    color: white;
+    border-radius: 10px;
+    width: 134px;
+    height: 40px;
+    font-family:'Rubik', sans-serif;
+    font-weight:500;
+    font-size: 18px;
+    font-style: normal;
+    z-index:99;
+}
+
+.masuk{
+    background-color: #982727;
+    color: white;
+    border-radius: 10px;
+    width: 134px;
+    height: 40px;
+    font-family:'Rubik', sans-serif;
+    font-weight:500;
+    font-size: 18px;
+    font-style: normal;
+    z-index:99;
+}
+
+.profile{
+    width: 64.27px;
+    height: 64px;
+}
+
+.prof{
+    padding-left: 32px;
+    padding-bottom: 16px;
+}
+
+/*Search Bar*/
+
+.logo-search{
+    padding-bottom: 100px !important;
+    top: -72px;
+    position: relative;
+}
+
+
+.form-group.has-search .form-control {
+    padding-left: 45px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: none;
+    font-size: 18px;
+}
+
+.bi-search {
+    position: absolute;
+    z-index: 2;
+    margin-top: 12px;
+    margin-left: 16px;
+    color: #4E4E4E;
+    font-weight: bold;
+}
+
+.search-form{
+    width: 10% ;
+}
+
+.form-control{
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+}
+
+.search-form{
+    margin-top: 2.5rem;
+}
+
+.web-logo{
+    padding-top: 100px;
+    height: 350px;
+}
+
+.pembatas-bawah{
+    background-color: #982727;
+    width: 100%;
+    height: 1rem;
+    box-sizing: border-box;
+}
+
+.log{
+    margin-top: -100px;
+    padding-right: 40px;
+    margin-left: 16px;
+}
+
+.log .prof{
+    padding-right: 20px;
+    padding-top: 20px;
+}
+
+
+/*======================================================= ISI ================================================================== */
+
+.banner{
+    background-color: white ;
+    box-shadow: inset;
+    font-size: 32px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);;
+    padding-top: 21px;
+    margin-top: -5px;
+    text-align: center;
+}
+
+.sign{
+    color: #982727;
+
+}
+
+.view-all{
+    padding-top: 24px;
+    font-family: 'Rubik',sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+}
+
+
+.ikuti{
+    margin-top: 4.5rem;
+}
+
+.ikuti .judul-ikuti{
+    font-family: 'Rubik', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    font-style: normal;
+    color: black;
+}
+
+.ikuti-card{
+    margin-top: 2rem;
+}
+
+.waktu-upload{
+    display: flex;
+    justify-content: end;
+}
+
+.kategori-waktu{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.kategori{
+    color: #6E798C;
+    font-size: 13px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+}
+
+.waktu{
+    color: #6E798C;
+    font-size: 13px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+}
+
+.judul{
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.deskripsi{
+    font-family: 'Rubik', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    margin-top: 28px;
+}
+
+.last-layer{
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.nama-penulis{
+    color: #5E5D2D;
+    font-size: 13px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    margin-left: 10px;
+    margin-top: 8px;
+    white-space: nowrap;
+}
+
+.baca-lebih{
+    display: flex;
+}
+
+.baca-lebih .sub{
+    color: #5E5D2D;
+    font-size: 13px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    margin-top: 8px;
+    margin-left: 24px;
+    white-space: nowrap;
+}
+
+.baca-lebih .panah{
+    margin-top: 10px;
+    margin-left: 4px;
+}
+
+.ikuti-juga{
+    padding-top: 36px;
+    box-sizing: border-box ;
+    border-left: black ;
+    border-bottom: black;
+    border-right: black;
+    position: fixed;
+}
+
+.ikuti-juga .sub{
+    font-family: 'Rubik', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.rekomen-follow{
+    margin-top: 28px;
+}
+
+.nama-rekom{
+    font-family: 'Rubik', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.sidebar-kanan{
+    position: relative;
+    bottom: 712px;
+    z-index: 999;
+    background-color: #F5F0F0;
+    width: 100%;
+}
+
+#sidebar-right{
+    right:136px 
+}
+
+.ikuti-author{
+    padding-left: 24px;
+}
+
+.nama-ikuti{
+    font-family: 'Rubik', sans-serif; font-size: 20px; font-weight :550; font-style: normal;
+}
+
+.kotak-tulisan{
+    max-width: 246.36px;
+  
+}
+
+.kotak-tombol{
+    padding-right: 70px;
+    padding-top: 24px;
+}
+
+/*======================================================= HEADER ================================================================== */
+@media (max-width: 992px){
+
+    body{
+        overflow-x: hidden;
+    }
+
+    .daftar{
+        display: none;
+    }
+
+    .masuk{
+        display: none;
+    }
+
+    .prof{
+        display: none;
+    }
+
+    .Header{
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-left: 0px;
+        box-sizing: border-box;
+    }
+
+    .back-nav{
+        padding-left: 32px;
+        position: fixed;
+        background-color: #982727;
+        left:0px;
+        z-index: 999;
+    }
+
+    .web-logo{
+        margin-top: 100px;
+        width: 50vh !important;
+    }
+
+    .sidebar-kanan{
+        display: none;
+    }
+    
+}
+
+@media(max-width: 1380px){
+    #sidebar-right{
+        position: fixed;
+        right: -20px;
+    }
+}
+
+
+
+
+/*======================================================= ISI ================================================================== */
+
+.arrow-glide btn:focus{
+    outline: none !important;
+}
+/*======================================================= FOOTER ================================================================== */
+
+@media(max-width: 1380px){
+    .mid-1, .mid-2, .mid-3, .mid4{
+        flex: 50% !important;
+    }
+}
+  
+
+
+
+
+#button-atas:hover{
+    background-color: #B05151 !important;
+    color: white !important;
+}
+
+#button-tag:hover{
+    background-color: #B05151 !important;
+    color: white;
+}
+
+.top-tag:hover{
+    background-color: #B05151;
+    color: white;
+}
+
+.footer-button:hover{
+    background-color:#B5B5B5 !important;
+}
+
+
+
+
+
+
+
+
+
+html, body {
+    font-family: 'Rubik', sans-serif !important;
+}

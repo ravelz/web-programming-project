@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DiscoverArticleController;
+use App\Http\Controllers\TopicsController;use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 
 /*
@@ -15,33 +16,15 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function() {
+    return view('login');
 });
 
-Route::get('/home', [HomeController::class, 'showHome']);
-
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
-Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
-
-Route::get('/homes', function () {
+Route::get('/home', function () {
     return view('Layout/home');
 });
 
-Route::get('/payment', function () {
-    return view('Layout/payment');
-})->name("payment");
-
-Route::get('/paySuccess', function () {
-    return view('Layout/paySuccess');
-})->name('paySuccess');
-
-Route::get('/profile', function () {
-    return view('Layout/profile');
+Route::get('/test', function () {
+    return view('test');
 });
 
-Route::get('/visitProfile', function () {
-    return view('Layout/visitProfile');
-});

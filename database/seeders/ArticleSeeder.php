@@ -23,7 +23,7 @@ class ArticleSeeder extends Seeder
                 'judul' => $faker->city.$i+1,
                 'tgl_publish' => $faker->date,
                 'jml_comment' => $faker->numberBetween($min = 10, $max = 100),
-                'id_user' => 'USR5',
+                'id_user' => 'USR005',
                 'status_member' => '1',
                 'deskripsi' => $faker->realText($maxNbChars = 200, $indexSize = 2),
                 'jml_like' => $faker->numberBetween($min = 1, $max=1000),
