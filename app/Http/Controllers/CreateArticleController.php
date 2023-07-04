@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Carbon\Carbon;
 use App\Models\Article;
+use App\Models\DetailTag;
+use App\Models\Tag;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -38,17 +40,32 @@ class CreateArticleController extends Controller
     }
 
     public function store(Request $request){
-        $deskripsi = $request->deskripsi;
+        $data = $request->all();
+        // dd($data);
         $user = Auth::User()->id_user;
-        $last_id_article =  Article::select('id_article')->orderBy('id_article', 'desc')->count();
 
-        if($last_id_article == 0){
+        //INPUT USER ID
+        $last_id_article =  Article::select('id_article')->orderBy('id_article', 'desc')->count();
+        $idArticle = (int)substr($last_id_article, -3);
+
+        if($idArticle == 0){
             $idArtc = "ART001";
         }else{
-            $idArtc = (int)substr($last_id_article, -3);
-            $idArtc = 'ART'.str_pad($idArtc+1, 3, '0', STR_PAD_LEFT);
+            $idArtc = 'ART'.str_pad($idArticle+1, 3, '0', STR_PAD_LEFT);
         }
 
+        //INPUT ID TAG
+        $last_idtag = Tag::select('id_tag')->orderBy('id_tag', 'desc')->count();
+        $id_tag = (int)substr($last_idtag, -3);
+
+        if($id_tag == 0){
+            $idtag = "TAG001";
+        }
+
+        //GET ISI ARTIKEL
+        $deskripsi = $request->deskripsi;
+
+        //MASUKKIN ARTIKEL KE DATABASE
         $article = Article::create([
             'id_article' => $idArtc,
             'judul' => $request->judul,
@@ -59,6 +76,39 @@ class CreateArticleController extends Controller
             'deskripsi' => $deskripsi,
             'jml_like' => 0 
         ]);
+
+        //UBAH INPUT TAG JADI LOWERCASE
+        foreach($data['inputs'] as &$key){
+            $key['name'] = Str::lower($key['name']);
+        }   
+
+        //CEK SEMUA INPUT APAKAH UDH EXIST DI TAG
+        $array = array();
+        foreach($data['inputs'] as &$key){
+            $condition = Tag::where('title_tag', '=', $key['name'])->first();
+            if($condition){
+                array_push($array, $condition->id_tag);
+            }
+            else{
+                $idtag = 'TAG'.str_pad($id_tag+1, 3, '0', STR_PAD_LEFT);
+                Tag::create([
+                    'id_tag' => $idtag,
+                    'title_tag' => $key['name']
+                ]);
+                array_push($array, $idtag);
+            }
+        }
+
+        //MASUKKIN DATA BY LOOPING ARRAY KE DETAIL TAG
+
+        foreach($array as &$key){
+            $value2 = [
+                'id_tag' =>$key, 
+                'id_article' =>$idArtc
+            ];
+            DetailTag::create($value2);
+        }
+
         return redirect('article');
     }
 
