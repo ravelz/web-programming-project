@@ -39,6 +39,6 @@ class Article extends Model
     }
 
     public function tag(){
-        return $this->belongsToMany(DetailTag::class, 'id_article', 'id_article');
+        return $this->hasMany(DetailTag::class, 'id_article', 'id_article');
     }
 }
