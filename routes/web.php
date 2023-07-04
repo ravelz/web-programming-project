@@ -16,15 +16,18 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function() {
-    return view('login');
+Route::get('/payment', function () {
+    return view('Layout/payment');
+})->name("payment");
+
+Route::get('/paySuccess', function () {
+    return view('Layout/paySuccess');
+})->name('paySuccess');
+
+Route::get('/profile', function () {
+    return view('Layout/profile');
 });
 
-Route::get('/home', function () {
-    return view('Layout/home');
+Route::get('/visitProfile', function () {
+    return view('Layout/visitProfile');
 });
-
-Route::get('/test', function () {
-    return view('test');
-});
-
