@@ -10,6 +10,8 @@ use App\Http\Controllers\CreateArticleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DiscoverArticleController;
 use App\Http\Controllers\TopicsController;
+use App\Http\Controllers\ProfileCOntroller;
+
 
 /*
 |--------------------------------------------------------------------------
