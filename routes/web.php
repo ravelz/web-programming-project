@@ -1,9 +1,15 @@
 <?php
 
+use App\Http\Middleware\User;
+use Illuminate\Support\Facades\Auth;
+
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CreateArticleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DiscoverArticleController;
-use App\Http\Controllers\TopicsController;use App\Http\Controllers\AuthController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TopicsController;
 
 /*
 |--------------------------------------------------------------------------
