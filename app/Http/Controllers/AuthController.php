@@ -40,8 +40,8 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users,email|max:255',
             'password' => 'required|min:8|max:255|confirmed',
         ]);
-        $lastIdUser = User::select('id_user')->orderBy('id_user','desc')->count();
-        $idUser = (int)substr($lastIdUser , -3);
+        $lastIdUser = User::select('id_user')->orderBy('id_user','desc')->first();
+        $idUser = (int)substr($lastIdUser->id_user, 3);
         $idUser = "USR".str_pad($idUser+1, 3, '0', STR_PAD_LEFT);
         dd($idUser);
 

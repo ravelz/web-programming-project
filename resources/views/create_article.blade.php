@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body>
-    <form method="POST" action="{{ route('create')}}">
+    <form method="POST" action="{{ route('store')}}">
         @csrf
         <div class="my-div" style="position: relative; height: 100vh;">
             <div class="background-image" style="background-image: url('https://images.unsplash.com/photo-1571235908642-0459c9475ac3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'); background-size: cover; background-position: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;"></div>
@@ -35,8 +36,10 @@
                                 <th>Add Tag</th>
                                 <th>Action</th>    
                             </tr>
-                            <td><input type="text" name="inputs[0]['tag_name']" placeholder="Add tag here" class="form-control"></td>
-                            <td><button type="button" name="add_tag" id="add_tag" class="btn btn-success">Add More</button> </td>    
+                            <tr>
+                                <td><input type="text" name="inputs[0][name]" placeholder="Add tag here" class="form-control"></td>
+                                <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button> </td>    
+                            </tr>
                         </table> 
                     </div>
                     <div class="mb-3">
@@ -50,6 +53,17 @@
         </div>
     </form>
 
+    <script type="text/javascript">
+        var i = 0;
+        $('#add').click(function(){
+            ++i;
+            $('#table').append('<tr><td><input type="text" name="inputs['+1+'][name]" placeholder="Add tag here" class="form-control"></td><td><button type="button" name="remove" id="remove" class="btn btn-danger remove-btn">Remove</button> </td></tr>');
+        });
+        $(document).on('click', '.remove-btn', function () {
+            $(this).parents('tr').remove();
+        });
+    </script>
+
     <script>
         ClassicEditor
                 .create( document.querySelector( '#deskripsi' ), {
@@ -62,13 +76,6 @@
                 .catch( error => {
                         console.error( error );
                 } );
-
-        // var i = 0; 
-        // $('#add_tag').click(function(){
-        //     ++i;
-        //     $('#table').append('
-        //     ')
-        // })
     </script>
 </body> 
 </body>

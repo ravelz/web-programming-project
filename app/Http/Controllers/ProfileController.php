@@ -16,11 +16,12 @@ class ProfileController extends Controller
 {
     public function index($username)
     {
-        $this->getFollower();
         return view('profile')
+        ->with('username', $username)
         ->with('profile', $this->getProfile($username))
-        ->with('follower', $this->getFollower())
-        ->with('following', $this->getFollowing());
+        ->with('follower', $this->getFollower($username))
+        ->with('following', $this->getFollowing($username))
+        ;
     }
 
     public function getDifferenceDate($collections){
@@ -32,7 +33,7 @@ class ProfileController extends Controller
     }
     public function getProfile($username){
         $profile = DB::table('users')
-        ->where('users.id_user', '=', Auth::id())
+        ->where('users.username', '=', $username)
         ->select('username', 'name','users.name as authorName', 'role','status_member', 'articles.*','detailtags.*', 'tags.*', DB::raw("GROUP_CONCAT(tags.title_tag SEPARATOR ', ') as title_group"))
         ->leftjoin('articles', 'users.id_user', '=', 'articles.id_user')
         ->leftjoin('detailtags', 'detailtags.id_article', '=', 'articles.id_article')
@@ -44,18 +45,18 @@ class ProfileController extends Controller
         // dd($profile);
         return $profile;
     }
-    public function getFollower(){
+    public function getFollower($username){
         $follower = DB::table('users')
         ->join('followers', 'users.id_user', '=', 'followers.id_user_f')
-        ->where('users.id_user', '=', Auth::id())
+        ->where('users.username', '=', $username)
         ->get();
         // dd($follower);
         return count($follower);
     }
-    public function getFollowing(){
+    public function getFollowing($username){
         $following = DB::table('users')
         ->join('followers', 'users.id_user', '=', 'followers.id_user_m')
-        ->where('users.id_user', '=', Auth::id())
+        ->where('users.username', '=', $username)
         ->get();
         return count($following);
     }

@@ -24,7 +24,7 @@
                 </div>                
                 <div class="d-flex flex-row p-2">
                     <img style = "margin-bottom: 8px;"id = "follow-img"src="img/Home/profile.jpg" class="rounded-circle " alt="..." width="44px" height="44px">
-                    <a href = "" id = "follow-name" style="text-decoration:none;color:#5E5D2D;font-size:20px; font-weight:600; font-family:'Rubik', sans-serif;">{{ $article->authorName }}</a>
+                    <a href = "{{ route('profile', ['username' => $article->username]) }}" id = "follow-name" style="text-decoration:none;color:#5E5D2D;font-size:20px; font-weight:600; font-family:'Rubik', sans-serif;">{{ $article->authorName }}</a>
                     
                     <div class="ms-auto" style="margin-top:8px">
                         <a href = "{{route('read', ['id'=>$article->id_article, 'judul'=>$article->judul])}}"style="text-decoration : none; padding-top: 8px; padding-right:32px;color:#5E5D2D;font-size:20px; font-weight:600; font-family:'Rubik', sans-serif;">Baca Lebih 

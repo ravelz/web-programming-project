@@ -1,9 +1,17 @@
 <?php
 
+use App\Http\Middleware\User;
+use Illuminate\Support\Facades\Auth;
+
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CreateArticleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DiscoverArticleController;
-use App\Http\Controllers\TopicsController;use App\Http\Controllers\AuthController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TopicsController;
+use App\Http\Controllers\ProfileCOntroller;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,16 +39,14 @@ Route::get('/article', [CreateArticleController::class, 'show'])->name('article'
 
 Route::get('/create-article', [CreateArticleController::class, 'create'])->name('create');
 Route::post('/upload-image', [CreateArticleController::class, 'uploadImage'])->name('upload');
-Route::post('/create-article', [CreateArticleController::class, 'store'])->name('store'); 
+Route::post('/store-article', [CreateArticleController::class, 'store'])->name('store'); 
+
 Route::get('/read-article/{id}/{judul}', [CreateArticleController::class, 'readArticle'])->name('read');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/topics', [TopicsController::class, 'index'])->name('topics');
 Route::get('/like/{id}', [ArticleController::class, 'like'])->name('like_article');
 Route::post('/comment/{id}', [ArticleController::class, 'comment'])->name('comment_article');
-// Route::get('/home', [HomeController::class, 'index'])->name('home');
-// Route::get('/', function () {
-//     return view('Home/home');
-// })->middleware(User::class);
+
 Route::middleware([User::class])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::get('/home', [HomeController::class, 'index'])->name('home');

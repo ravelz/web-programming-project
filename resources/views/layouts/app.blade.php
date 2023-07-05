@@ -61,6 +61,14 @@
                                 </li>
                             @endif
                         @else
+                            <a href="{{route('create')}}" class="p-0 m-auto">
+                                <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="24" cy="24" r="24" fill="#982727"/>
+                                    <path d="M25.995 8.70006L12.9958 22.4592C12.505 22.9817 12.03 24.0109 11.935 24.7234L11.3491 29.8534C11.1433 31.7059 12.4733 32.9726 14.31 32.6559L19.4083 31.7851C20.1208 31.6584 21.1183 31.1359 21.6091 30.5976L34.6083 16.8384C36.8566 14.4634 37.87 11.7559 34.3708 8.44673C30.8875 5.16923 28.2433 6.32506 25.995 8.70006Z" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M23.8262 10.9958C24.507 15.3658 28.0537 18.7067 32.4553 19.15" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9.75 37.8334H38.25" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <img src="img/Home/profile.jpg" class="img rounded-circle profile">
