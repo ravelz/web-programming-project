@@ -12,12 +12,15 @@ use App\Models\Tag;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class CreateArticleController extends Controller
 {
     public function show(){
-        $articles = DB::table('articles')->get();
+        $articles = DB::table('articles')
+                    ->join('users', 'users.id_user', '=', 'articles.id_user')
+                    ->get();
         $articles = $this->getDifferenceDate($articles);
         foreach ($articles as $article) {
             // $article->deskripsi = Str::limit($article->deskripsi, 150);
@@ -41,7 +44,6 @@ class CreateArticleController extends Controller
 
     public function store(Request $request){
         $data = $request->all();
-        // dd($data);
         $user = Auth::User()->id_user;
 
         //INPUT USER ID
@@ -65,6 +67,12 @@ class CreateArticleController extends Controller
         //GET ISI ARTIKEL
         $deskripsi = $request->deskripsi;
 
+        //THUMBNAIL
+
+        $image = $request->file('image');
+        $imageName = $request->judul.'.'.$image->getClientOriginalExtension();
+        $moveImg = Storage::disk('public')->putFileAs('uploads/', $image, $imageName);
+
         //MASUKKIN ARTIKEL KE DATABASE
         $article = Article::create([
             'id_article' => $idArtc,
@@ -74,7 +82,8 @@ class CreateArticleController extends Controller
             'id_user' => $user,
             'status_member' => 0,
             'deskripsi' => $deskripsi,
-            'jml_like' => 0 
+            'jml_like' => 0 ,
+            'thumbnail' => $imageName
         ]);
 
         //UBAH INPUT TAG JADI LOWERCASE

@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
             ArticleSeeder::class,
             TagSeeder::class,
             BookmarkSeeder::class,
-            FollowerSeeder::class,
-            DetailTagSeeder::class
+            DetailTagSeeder::class,
+            FollowerSeeder::class
             
         ]);
     }

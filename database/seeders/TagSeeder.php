@@ -20,7 +20,7 @@ class TagSeeder extends Seeder
         for($i = 0; $i<25; $i++){
             $thisDate = $faker->date;
             DB::table('tags')->insert([
-                'id_tag' => $i + 1,
+                'id_tag' => 'TAG'.str_pad($i+1, 3, '0', STR_PAD_LEFT),
                 'title_tag' => $faker->city,
                 'created_at' => $thisDate,
                 'updated_at' =>  $thisDate

@@ -19,7 +19,7 @@ class ArticleSeeder extends Seeder
         $faker = Faker::create('id_ID');
         for($i = 0; $i<25; $i++){
             DB::table('articles')->insert([
-                'id_article' => "ART".$i+1,
+                'id_article' => 'ART'.str_pad($i+1, 3, '0', STR_PAD_LEFT),
                 'judul' => $faker->city.$i+1,
                 'tgl_publish' => $faker->date,
                 'jml_comment' => $faker->numberBetween($min = 10, $max = 100),
