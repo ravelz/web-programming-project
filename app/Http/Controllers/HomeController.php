@@ -96,7 +96,7 @@ class HomeController extends Controller
     }
 
     public function getPopularArticle(){
-        $articles = Article::inRandomORder()->limit(6)->get();
+        $articles = Article::inRandomORder()->limit(10)->get();
         $articles = $this->getDifferenceDate($articles);
         foreach ($articles as $article) {
             $user = User::select('name', 'username')->where('id_user', $article->id_user)->first();

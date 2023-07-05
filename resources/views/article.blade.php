@@ -11,10 +11,10 @@
                     <img class="img-fluid" src="{{ asset('storage/facebook.png') }}" alt="">
                     <div class="d-flex flex-column">
                         <div class="">
-                            <p> Christiella </p>
+                            <p>{{ $read->name }}</p>
                         </div>
                         <div class="">
-                            <p> Christiella </p>
+                            <p>{{ $read->date_publish }} </p>
                         </div>
                     </div>
                 </div>
@@ -64,10 +64,8 @@
 
             <div class="">
                 <!-- bagian isi artikel -->
-                @foreach ($read as $r)
-                    <x-isi-article :dataArticle="$r"/>
-                    <x-input-comment :inputComment="$r"/>
-                @endforeach
+                <x-isi-article :dataArticle="$read" :tag="$tag"/>
+                <x-input-comment :inputComment="$read"/>
             </div>
             
 

@@ -20,8 +20,6 @@ class CreateArticleController extends Controller
         $articles = DB::table('articles')->get();
         $articles = $this->getDifferenceDate($articles);
         foreach ($articles as $article) {
-            // $article->deskripsi = Str::limit($article->deskripsi, 150);
-            // $article->differenceDate = Carbon::now()->diffInDays(Carbon::parse($article->tgl_publish));
             $article->authorName = User::select('name')->where('id_user', $article->id_user)->first()->name;
         }
         return view('listArticles')->with('articles', $articles);
@@ -130,11 +128,28 @@ class CreateArticleController extends Controller
     public function readArticle($id, $judul){
         $read = DB::table('articles')
                 ->join('users', 'users.id_user', '=', 'articles.id_user')
+                ->select('users.*','articles.*',)
                 ->where([
                     ['articles.id_article', '=', $id],
                     ['articles.judul', '=', $judul]
-                ])->get();   
+                ])
+                ->selectRaw(
+                    'DATE_FORMAT(articles.tgl_publish, \'%W, %d %M %Y\') AS date_publish'
+                )
+                ->get();   
 
+        $tag = DB::table('articles')
+                ->join('users', 'users.id_user', '=', 'articles.id_user')
+                ->join('detailtags', 'detailtags.id_article', '=', 'articles.id_article')
+                ->join('tags', 'tags.id_tag', '=', 'detailtags.id_tag')
+                ->select('tags.*')
+                ->where([
+                    ['articles.id_article', '=', $id],
+                    ['articles.judul', '=', $judul]
+                ])
+                ->get();
+
+                ;
         $comment = DB::table('comments')
                     ->join('articles', 'comments.id_article', '=', 'articles.id_article')
                     ->join('users', 'users.id_user', '=', 'articles.id_user')
@@ -142,7 +157,13 @@ class CreateArticleController extends Controller
                         ['articles.id_article', '=', $id],
                         ['articles.judul', '=', $judul]
                     ])->get();
-        return view('article', ['read'=>$read, 'comment'=>$comment]);                       
+
+        // dd(Auth::user());
+        return view('article', [
+            'read'=>$read[0], 
+            'comment'=>$comment,
+            'tag'=>$tag
+        ]);                       
     }
 
 }

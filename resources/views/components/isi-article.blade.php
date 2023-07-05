@@ -7,14 +7,13 @@
     </div>
 
 
-
-
-    <div style="font-family: Poppins, sans-serif;font-weight: 400;" class="rekomendasi">
-        <a href="#"  style = "background-color: #982727;border-radius: 30px; width:80px;border: none !important; box-shadow: none !important;" class="btn btn-primary "  >Tarian</a> 
+    <div>
+        @foreach ($tag as $t)
+            <a href="{{ route('clickedTag', ['tagName' => $t->id_tag]) }}" style=" background-color:#982727; border:none; " class="btn btn-primary "  >
+                {{ $t->title_tag }}
+            </a> 
+        @endforeach
     </div>
-
-
-
 
     <div style="padding-top: 20px;justify-content: space-between;" class="bagianIcons">
         <a href="{{route('like_article', ['id'=>$dataArticle->id_article])}}">
