@@ -6,12 +6,11 @@ use Illuminate\View\Component;
 
 class profileBigCard extends Component
 {
-    public $message;
-
-    // public function __construct($message)
-    // {
-    //     $this->message = $message;
-    // }
+    public $article;
+    public function __construct($article)
+    {
+        $this->article = $article;
+    }
 
     public function render()
     {

@@ -11,9 +11,12 @@ class profileStatsAtt extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $angka;
+    public $att;
+    public function __construct($angka, $att)
     {
-        //
+        $this->angka = $angka;
+        $this->att = $att;
     }
 
     /**

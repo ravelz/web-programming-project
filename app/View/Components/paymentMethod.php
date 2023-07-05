@@ -10,10 +10,15 @@ class paymentMethod extends Component
      * Create a new component instance.
      *
      * @return void
+     * 
      */
-    public function __construct()
+
+    public $payId;
+    public $radioCheck;
+    public function __construct($payId, $radioCheck)
     {
-        //
+        $this->payId = $payId;
+        $this->radioCheck = $radioCheck;
     }
 
     /**
