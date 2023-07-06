@@ -41,6 +41,7 @@ class ProfileController extends Controller
         ->groupBy('articles.id_article')
         // ->toSql();
         ->get();
+        // dd($profile);
         $profile = $this->getDifferenceDate($profile);
         // dd($profile);
         return $profile;

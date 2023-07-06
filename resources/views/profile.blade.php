@@ -92,24 +92,18 @@ if($profile[0]->id_article == null){
 
                 <div id = "pills-tabContent" class=" tab-content profile-card-box mb-3 mt-4 col-11 col-sm-11 col-md-11 col-lg-12 col-xl-12" style="max-width: 1100px;">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-                        1ok
-                        2ok
-                        @for ($i = 0; $i <$count; $i++) 
-                            <x-profile-big-card :article="$profile[0]"/>
+                        @for ($i = 0; $i <$count; $i++)
+                            <x-profile-big-card :article="$profile[$i]"/>
                         @endfor
                     </div>
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
-                        3ok
-                        4ok
                         @for ($i = 0; $i <$count; $i++)
-                            <x-profile-big-card :article="$profile[0]"/>
+                            <x-profile-big-card :article="$profile[$i]"/>
                         @endfor
                     </div>
                     <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
-                        5ok
-                        6ok
                         @for ($i = 0; $i <$count; $i++)
-                            <x-profile-big-card :article="$profile[0]"/>
+                            <x-profile-big-card :article="$profile[$i]"/>
                         @endfor
                     </div>  
                 </div>
