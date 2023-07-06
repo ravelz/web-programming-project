@@ -2,7 +2,7 @@
 
 <section class="footer border-top">
     <div class=" d-flex justify-content-center" style="padding-top: 100px;">
-        <img src="img/Home/LOGO WEB.png" alt="" style="width : 400px; height:200px;">
+        <img src="{{ asset('storage') }}/upload/LOGO WEB.png" alt="" style="width : 400px; height:200px;">
     </div>  
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#982727" fill-opacity="1" d="M0,128L48,138.7C96,149,192,171,288,176C384,181,480,171,576,160C672,149,768,139,864,154.7C960,171,1056,213,1152,224C1248,235,1344,213,1392,202.7L1440,192L1440,320L1392,320C1344,320,
         1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
@@ -13,16 +13,16 @@
         </button>
         <div class="d-flex flex-row justify-content-between" style="padding-bottom:32px">
             <a id = "face" href="">
-                <img src="img\Home\facebook.png" alt="">  
+                <img src="{{ asset('storage') }}/upload/facebook.png" alt="">  
             </a>
             <a id = "git" href="">
-                <img src="img\Home\github.png" alt="">  
+                <img src="{{ asset('storage') }}/upload/github.png" alt="">  
             </a>
             <a id = "tele"href="">
-                <img src="img\Home\telegram.png" alt="">  
+                <img src="{{ asset('storage') }}/upload/telegram.png" alt="">  
             </a>
             <a id = "home" href="">
-                <img src="img\Home\instagram.png" alt="">  
+                <img src="{{ asset('storage') }}/upload/instagram.png" alt="">  
             </a>
         </div>
         <div class="d-flex flex-row justify-content-between" style="width: 100%;">
