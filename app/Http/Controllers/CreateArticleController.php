@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use App\Models\Article;
 use App\Models\DetailTag;
 use App\Models\Tag;
+use App\Models\Bookmark;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -158,12 +159,30 @@ class CreateArticleController extends Controller
                         ['articles.judul', '=', $judul]
                     ])->get();
 
-        // dd(Auth::user());
+        // dd($read[0]->id_article);
         return view('article', [
             'read'=>$read[0], 
             'comment'=>$comment,
             'tag'=>$tag
-        ]);                       
+        ]);
+                           
+    }
+
+
+
+    public function bookmark($id){
+        // dd($id);
+        try{
+            $follow = Bookmark::create([
+                'id_user' => Auth::id(),
+                'id_article' => $id
+            ]);
+        }catch (\Illuminate\Database\QueryException $exception) {
+            $errorInfo = $exception->errorInfo;
+
+            return back()->withErrors(['msg' => 'Article sudah ada di bookmark!']);
+        }
+        return back()->withErrors(['msg' => 'Bookmark berhasil ditambahkan']);;
     }
 
 }

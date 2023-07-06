@@ -76,10 +76,6 @@ class DiscoverArticleController extends Controller
         // ->tosql();
         ->paginate(10);
         ;
-
-        // dd($joinFollow);
-
-        // dd(Route::currentRouteName());
         $joinFollow = $this->getDifferenceDate($joinFollow);
         return $joinFollow;
     }

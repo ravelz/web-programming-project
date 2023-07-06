@@ -1,4 +1,12 @@
+@if($errors->any())
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <h4>{{$errors->first()}}</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
 @extends('layouts.app')
+@section('title', $read->judul)
 
 @section('content')
 <!-- header -->
@@ -39,26 +47,30 @@
                             </filter>
                         </defs>
                     </svg>
-                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g filter="url(#filter0_d_280_1033)">
-                            <circle cx="25" cy="22" r="21" fill="#5E5D2D"/>
-                            <path d="M17.8149 33.7292C19.0107 32.4459 20.8337 32.5479 21.8837 33.9479L23.3566 35.9167C24.5378 37.4771 26.4482 37.4771 27.6295 35.9167L29.1024 33.9479C30.1524 32.5479 31.9753 32.4459 33.1712 33.7292C35.767 36.5 37.8816 35.5813 37.8816 31.7021V15.2667C37.8962 9.3896 36.5253 7.91669 31.0128 7.91669H19.9878C14.4753 7.91669 13.1045 9.3896 13.1045 15.2667V31.6875C13.1045 35.5813 15.2337 36.4854 17.8149 33.7292Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M19.667 15.2083H31.3337" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M21.125 21.0417H29.875" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </g>
-                        <defs>
-                            <filter id="filter0_d_280_1033" x="0" y="0" width="50" height="50" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-                                <feOffset dy="3"/>
-                                <feGaussianBlur stdDeviation="2"/>
-                                <feComposite in2="hardAlpha" operator="out"/>
-                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_280_1033"/>
-                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_280_1033" result="shape"/>
-                            </filter>
-                        </defs>
-                    </svg>
+
+                    
+                    <a href="{{ route('bookmark', ['id' => $read->id_article]) }}">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g filter="url(#filter0_d_280_1033)">
+                                <circle cx="25" cy="22" r="21" fill="#5E5D2D"/>
+                                <path d="M17.8149 33.7292C19.0107 32.4459 20.8337 32.5479 21.8837 33.9479L23.3566 35.9167C24.5378 37.4771 26.4482 37.4771 27.6295 35.9167L29.1024 33.9479C30.1524 32.5479 31.9753 32.4459 33.1712 33.7292C35.767 36.5 37.8816 35.5813 37.8816 31.7021V15.2667C37.8962 9.3896 36.5253 7.91669 31.0128 7.91669H19.9878C14.4753 7.91669 13.1045 9.3896 13.1045 15.2667V31.6875C13.1045 35.5813 15.2337 36.4854 17.8149 33.7292Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M19.667 15.2083H31.3337" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M21.125 21.0417H29.875" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            <defs>
+                                <filter id="filter0_d_280_1033" x="0" y="0" width="50" height="50" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                    <feOffset dy="3"/>
+                                    <feGaussianBlur stdDeviation="2"/>
+                                    <feComposite in2="hardAlpha" operator="out"/>
+                                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_280_1033"/>
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_280_1033" result="shape"/>
+                                </filter>
+                            </defs>
+                        </svg>
+                    </a>
                 </div>
             </div>
 

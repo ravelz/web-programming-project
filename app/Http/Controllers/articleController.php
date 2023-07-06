@@ -23,26 +23,45 @@ class articleController extends Controller
                 ->where('likes.id_article', '=', $id)
                 ->where('likes.id_user', '=', $user)
                 ->exists();
-        
+
+        $likeCount = DB::table('likes')
+            ->where('likes.id_article', '=', $id)
+            ->selectraw('COUNT(id_user) as count')
+            ->get()
+        ;
+
+        // dd($likeCount);
         if($exist){ //unlike
-            $jml_likee = intval($jml_likee) - 1;
+            
             DB::table('likes')
                 ->where('likes.id_user', '=', $user)
                 ->where('likes.id_article', '=', $id)
-                ->delete();            
+                ->delete();
+            $likeCount = DB::table('likes')
+                ->where('likes.id_article', '=', $id)
+                ->selectraw('COUNT(id_user) as count')
+                ->get()
+            ;
+            $jml_likee = intval($likeCount[0]->count);
         }else{
-            $jml_likee = intval($jml_likee) + 1;
             Like::create([
                 'id_user' => $user,
                 'id_article' => $id, 
                 'created_at' => Carbon::now(),  
                 'updated_at' => Carbon::now()
             ]);
+            $likeCount = DB::table('likes')
+                ->where('likes.id_article', '=', $id)
+                ->selectraw('COUNT(id_user) as count')
+                ->get()
+            ;
+            $jml_likee = intval($likeCount[0]->count);
         }
 
         DB::table('articles')
             ->where('id_article', $id)
             ->update(['jml_like' => $jml_likee]);
+
         return redirect()->back();
     }
 
