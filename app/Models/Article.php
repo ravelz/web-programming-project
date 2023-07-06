@@ -19,7 +19,8 @@ class Article extends Model
         'deskripsi',
         'jml_like',
         'jml_comment',
-        'id_user'
+        'id_user',
+        'thumbnail'
     ];
 
     protected $hidden = [
