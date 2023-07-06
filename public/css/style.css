@@ -406,6 +406,10 @@ html,body{
     font-family:'Rubik', sans-serif;
 }
 
+.tulisan-edit-profile{
+  font-size: clamp(0.75rem, 0.482rem + 0.714vw, 1.125rem) !important;
+}
+
 .tulisan-tampilkan-lebih{
     background-color: #F5F0F0;
     color: #5E5D2D; 
@@ -987,7 +991,7 @@ html,body{
   }
 
   .modal-logo{
-    width: 120px;
+    width: 200px;
     height: 90px;
   }
 
@@ -1026,6 +1030,8 @@ html,body{
 
   .border-edit-prof{
     cursor: pointer;
+    height: 100px !important;
+    width: 110px !important;
   }
 
   .success-logo{
@@ -1068,7 +1074,7 @@ html,body{
   }
 
   .back-img2{
-    transform: rotate(45deg);
+    transform: rotate(135deg);
   }
 
 
@@ -1080,5 +1086,21 @@ html,body{
     bottom: 100px;
   }
 
+  .nav-pills .active{
+    background-color: #982727 !important;
+    color: white !important;
+  }
+
+  .edit-deskripsi{
+    max-height: 100px;
+  }
+
+  #btn-ikuti-text{
+    font-size:  clamp(0.75rem, 0.482rem + 0.714vw, 1.125rem);
+  }
+
+  .tulisan-edit-foto{
+    cursor: pointer;
+  }
 
 

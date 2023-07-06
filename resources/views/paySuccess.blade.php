@@ -44,7 +44,7 @@
                     <a href = {{ route('home') }} type="button" class="btn btn-light shadow shadow-lg btn-tamat"><span class="tamat fw-semibold">Kembali Ke Home</span></a>
                 </div>
             </div>  
-            <div class="offset-5 col-6 backReport2 position-absolute">
+            <div class="offset-4 col-6 backReport2 position-absolute">
                 <img src="{{ asset('storage') }}/upload/premium.png" class="back-img2 img-fluid mt-5" alt="">
             </div>
         </div>

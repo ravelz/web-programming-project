@@ -14,4 +14,19 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.style.display = 'none ';
     });
   });
+
+function toggleButton() {
   
+    var button = document.getElementById('follow-other');
+    var buttonText = document.getElementById('btn-ikuti-text');
+
+    if (buttonText.textContent === 'Ikuti') {
+        buttonText.textContent = 'Berhenti Mengikuti';
+        button.classList.remove('btn-primary');
+        button.classList.add('btn-danger');
+    } else {
+        buttonText.textContent = 'Ikuti';
+        button.classList.remove('btn-danger');
+        button.classList.add('btn-primary');
+    }
+}
