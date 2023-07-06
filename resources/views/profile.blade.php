@@ -16,46 +16,48 @@ if($profile[0]->id_article == null){
             <p class="text-justify prof-sub-pengguna fw-light ms-2 fs-5 color-5E5D2D  text-wrap">{{ '@'.$profile[0]->username }}</p>
             <p class="text-wrap text-justify text-black-50 ms-2 desc-profile">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero ex dolores voluptates magni assumenda adipisci officia illum deserunt quibusdam vitae deleniti, 
                 voluptate maiores hic labore rem ut illo aliquam blanditiis.</p>
+            @if (Auth::user()->username == $username)
+                <button type="button" id = "follow-other" class="btn btn-primary ms-2 mt-1 text-nowrap col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3"><span class="text-wrap fs-5">Ikuti</span></button>
+            @endif
             <div class="ms-2 border border-dark border-opacity-10 rounded row p-3">
-                <div class="d-flex flex-column justify-content-between col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 ">
-                    <h1 class="prof-dat text-black display-6 fw-bold text-nowrap text-center">{{ $follower }}</h1>
-                    <p class="prof-dats text-black-50 text-center fs-5 text-center">Pengikut</p>
+                <div class="d-flex flex-column justify-content-between col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 ">
+                    <x-profile-stats-att :angka="$follower" att="Pengikut"/>
                 </div>
-                <div class="d-flex flex-column justify-content-between col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <h1 class="prof-dat text-black display-6 fw-bold text-nowrap text-center">{{ $following }}</h1>
-                    <p class="prof-dats text-black-50 text-center fs-5  text-center">Mengikuti</p>
+                <div class="d-flex flex-column justify-content-between col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <x-profile-stats-att :angka="$following" att="Mengikuti"/>
                 </div>
             </div>
 
 
             <div class="ms-2 border border-dark border-opacity-10 rounded row p-3">
                 @if (Auth::user()->username == $username)
-                    <div class="d-flex flex-column justify-content-between col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 ">
+                    <div class="d-flex flex-column justify-content-between col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 ">
                         <h1 class="prof-dat text-black display-6 fw-bold text-nowrap text-center">17</h1>
                         <p class="prof-dats text-black-50 text-center fs-5 text-center">Markah</p>
                     </div>
-                    <div class="d-flex flex-column justify-content-between col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                        <h1 class="prof-dat text-black display-6 fw-bold text-nowrap text-center">{{ $count }}</h1>
-                        <p class="prof-dats text-black-50 text-center fs-5  text-center">Posting</p>
+                    <div class="d-flex flex-column justify-content-between col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <x-profile-stats-att :angka="$count" att="Posting"/>
+                        {{-- <x-profile-stats-att :angka="$profile[0]"/> --}}
                     </div>
                 @else
                     <div class="d-flex flex-column justify-content-between col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <h1 class="prof-dat text-black display-6 fw-bold text-nowrap text-center">{{ $count }}</h1>
-                        <p class="prof-dats text-black-50 text-center fs-5  text-center">Posting</p>
+                        <x-profile-stats-att :angka = "$count", att = "Posting"/>
                     </div>
                 @endif
-                
             </div>
 
 
             @if ($profile[0]->status_member != 2)
-            <button type="button" id = "status-berlangganan" class="btn btn-danger text-nowrap ms-2 mt-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><span class="tulisan-status-berlangganan text-wrap">
+            <button type="button" id = "status-berlangganan" class="btn btn-danger text-nowrap ms-2 mt-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"  data-bs-toggle="modal" data-bs-target="#exampleModal4"><span class="tulisan-status-berlangganan text-wrap">
                 Status Berlangganan: Tidak aktif</span></button>
             @elseif ($profile[0]->role == 2)
-            <button type="button" id = "status-berlangganan" class="btn btn-success text-nowrap ms-2 mt-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"><span class="tulisan-status-berlangganan text-wrap">
+            <button type="button" id = "status-berlangganan" class="btn btn-success text-nowrap ms-2 mt-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"  data-bs-toggle="modal" data-bs-target="#exampleModal4"><span class="tulisan-status-berlangganan text-wrap">
                 Status Berlangganan: Aktif</span></button>
             @endif
-            
+            <x-show-benefit></x-show-benefit>
+            <button type="button" id = "edit-profile" class="btn btn-primary ms-2 mt-3 text-nowrap col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">
+                <span class="text-wrap fs-5">Edit Profile</span></button>
+            <x-edit-profile-form/>
         </div>
 
             {{-- ==============     KANAN     ============== --}}
@@ -78,7 +80,7 @@ if($profile[0]->id_article == null){
 
                 <div class="profile-card-box mb-3 mt-4 col-11 col-sm-11 col-md-11 col-lg-12 col-xl-12" style="max-width: 1100px;">
                     @for ($i = 0; $i <$count; $i++)
-                        <x-article-item :article="$profile[0]"/>
+                        <x-profile-big-card :article="$profile[0]"/>
                     @endfor
                 </div>
             </div>
@@ -87,5 +89,7 @@ if($profile[0]->id_article == null){
 </div>
 
 <script src="./js/Home/profile.js"></script>
+
+</body>
 
 @endsection

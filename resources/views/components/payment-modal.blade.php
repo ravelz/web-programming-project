@@ -1,14 +1,27 @@
+@php
+    if ($methodId== 1 ) {
+        $method = "bca2.png";
+        $methods = "BCA Payment";
+    } elseif ($methodId == 2) {
+        $method = "paypal.png";
+        $methods = "Paypal Payment";
+    } else {
+        $method = "visaFix.png";
+        $methods = "Visa Payment";
+    }
+@endphp
+
 {{-- =============MODAL 1============ --}} 
 
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <img class="modal-logo" src="{{ asset('storage') }}/upload/LOGO WEB.png" alt=""height = "70px" width="120px">
+                <img class="modal-logo" src="{{ asset('storage') }}/upload/LOGO WEB.png" alt="">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <h1 class="modal-title fs-3 fw-bold ms-auto me-auto" id="exampleModalLabel">BCA Payment</h1>
-            <img class="modal-logo ms-auto me-auto mt-2 border border-dark border-opacity-25 p-3" src="{{ asset('storage') }}/upload/bca2.png" alt=""height = "120px" width="160px">
+            <h1 class="modal-title fs-3 fw-bold ms-auto me-auto" id="exampleModalLabel">{{$methods}}</h1>
+            <img class="modal-logo ms-auto me-auto mt-2 border border-dark border-opacity-25 p-3" src="{{ asset('storage') }}/upload/{{$method}}" alt=""height = "120px" width="160px">
             <div class="modal-body text-start">
                 {{-- ========ISI MODAL======== --}}
                 <div class="row">
@@ -17,13 +30,6 @@
                             <label for="exampleFormControlInput1" class="form-label fw-bold">Nama Panjang</label>
                             <input id = "exampleFormControlInput1" type="text" class="form-control" placeholder="Misal: Oren" >
                         </form>
-                        {{-- <form class="was-validated" novalidate>
-                            <label for="validationTextarea" class="form-label fw-bold">Nama Panjang</label>
-                            <input id = "validationTextarea" type="text" class="form-control" placeholder="Misal: Oren" required>
-                            <div class="invalid-feedback">
-                                Mohon Diisi
-                            </div>
-                        </form> --}}
                     </div>
                     <div class="mt-2 col-6">
                         <label for="exampleFormControlInput1" class="form-label fw-bold">Alamat Email</label>

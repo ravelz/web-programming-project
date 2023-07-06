@@ -4,19 +4,16 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class paymentModal extends Component
+class benCarousel extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
-     * 
      */
-
-    public $methodId;
-    public function __construct($methodId)
+    public function __construct()
     {
-        $this->methodId = $methodId;
+        //
     }
 
     /**
@@ -26,6 +23,6 @@ class paymentModal extends Component
      */
     public function render()
     {
-        return view('components.payment-modal');
+        return view('components.ben-carousel');
     }
 }
