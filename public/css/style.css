@@ -4,8 +4,6 @@ html,body{
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
-
-
                                                 /*=============SET UP FONT ================*/
 
 /*=====Rubik=====*/
@@ -729,8 +727,8 @@ html,body{
 
 .payMethod{
     background-color:#982727 ; 
-    width:25%; 
-    height:25%;
+    width:30%; 
+    height:30%;
     cursor: pointer;
     border: solid 2px rgba(0, 0, 0, 0.5);
     color: white;
@@ -991,7 +989,7 @@ html,body{
   }
 
   .modal-logo{
-    width: 200px;
+    width: 150px !important;
     height: 90px;
   }
 
@@ -1101,6 +1099,23 @@ html,body{
 
   .tulisan-edit-foto{
     cursor: pointer;
+  }
+
+  .method-card{
+    margin-top: 17vh;
+    margin-bottom: 20.8vh;
+  }
+
+  .pay-tit{
+
+  }
+
+  .pay-subtit{
+
+  }
+
+  .pay-mets{
+    font-size: clamp(0.75rem, 0.393rem + 0.952vw, 1.25rem);
   }
 
 
