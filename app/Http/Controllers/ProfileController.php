@@ -21,6 +21,7 @@ class ProfileController extends Controller
         ->with('profile', $this->getProfile($username))
         ->with('follower', $this->getFollower($username))
         ->with('following', $this->getFollowing($username))
+        ->with('bookmark', $this->getBookmark($username))
         ;
     }
 
@@ -47,18 +48,55 @@ class ProfileController extends Controller
         return $profile;
     }
     public function getFollower($username){
-        $follower = DB::table('users')
-        ->join('followers', 'users.id_user', '=', 'followers.id_user_f')
-        ->where('users.username', '=', $username)
+        $follower = DB::table('users as u1')
+        ->join('followers', 'u1.id_user', '=', 'followers.id_user_f')
+        ->join('users as u2', 'u2.id_user', '=', 'followers.id_user_m')
+        ->where('u1.username', '=', $username)
+        ->select('u2.*')
         ->get();
         // dd($follower);
-        return count($follower);
+        $x = User::where('username', $username);
+        // dd($x->first()->id_user);
+        $a = User::find($x->first()->id_user);
+        // $a = User::find(Auth::id());
+        // dd($a->id_user);
+        $a_followers = $a->followers()->get();
+        // $isFollowing = User::find(Auth::id())->isFollowing($a->id_user);
+        // dd($isFollowing);
+        return $a_followers;
     }
     public function getFollowing($username){
-        $following = DB::table('users')
-        ->join('followers', 'users.id_user', '=', 'followers.id_user_m')
+        // $following = DB::table('users as u1')
+        
+        // ->join('followers', 'u1.id_user', '=', 'followers.id_user_m')
+        // ->join('users as u2', 'u2.id_user', '=', 'followers.id_user_f')
+        // ->where('u1.username', '=', $username)
+        // ->select('u2.*')
+        // // ->toSql();
+        // ->get();
+        $x = User::where('username', $username);
+        // dd($x->first()->id_user);
+        $a = User::find($x->first()->id_user);
+        $a_followers = $a->following()->get();
+
+        return $a_followers;
+    }
+    public function getBookmark($username){
+        $profile = DB::table('users')
         ->where('users.username', '=', $username)
+        ->select('username', 'name','users.name as authorName', 'role','status_member', 'articles.*','detailtags.*', 'tags.*', DB::raw("GROUP_CONCAT(tags.title_tag SEPARATOR ', ') as title_group"))
+        // left join `bookmarks` on users.id_user = bookmarks.id_user
+        ->leftjoin('bookmarks', 'users.id_user', '=', 'bookmarks.id_user')
+        ->leftjoin('articles', 'bookmarks.id_article', '=', 'articles.id_article')
+        ->leftjoin('detailtags', 'detailtags.id_article', '=', 'articles.id_article')
+        ->leftjoin('tags', 'tags.id_tag', '=', 'detailtags.id_tag')
+        ->groupBy('articles.id_article')
+        // ->toSql();
         ->get();
-        return count($following);
+        // dd($profile);
+        $profile = $this->getDifferenceDate($profile);
+
+        return $profile;
+
     }
 }

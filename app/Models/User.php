@@ -39,11 +39,11 @@ class User extends Authenticatable
         'updated_at'
     ];
 
-    public function followers(){
-        return $this->belongsToMany(User::class, 'followers',
-        'id_user_m',
-        'id_user_f');
-    }
+    // public function followers(){
+    //     return $this->belongsToMany(User::class, 'followers',
+    //     'id_user_m',
+    //     'id_user_f');
+    // }
 
     public function articles(){
         return $this->belongsToMany(Article::class,
@@ -73,6 +73,30 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // users that are followed by this user
+    public function following() {
+        return $this->belongsToMany(User::class, 'followers',
+        'id_user_m',
+        'id_user_f');
+    }
+
+    // users that follow this user
+    public function followers() {
+        return $this->belongsToMany(User::class, 'followers',
+        'id_user_f',
+        'id_user_m');
+    }
+
+    public function isFollowing($user)
+    {
+        return  !!  $this->following()->where('id_user_f', $user);
+    }
+
+    public function isFollowedBy($user)
+    {
+        return  !! $this->followers()->where('id_user_m', $user);
+    }
 
     
 }
