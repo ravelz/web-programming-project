@@ -10,6 +10,10 @@ if($profile[0]->id_article == null){
 $bookmarkCount = count($bookmark);
 $followerCount = count($follower);
 $followingCount = count($following);
+if($profile[0]->id_article == null){
+    // dd("Asi");
+}
+// dd($profile[0]->id_article);
 @endphp
 <div class="isi">
     <div class="row">
@@ -18,8 +22,7 @@ $followingCount = count($following);
             <img src="img/Home/profile.jpg" class="img rounded-circle profile border border-5 header-profile-img prof-stat" alt="...">
             <h1 class="prof-nama-pengguna text-black display-6 fw-bold ms-2 mt-3 text-wrap">{{ $profile[0]->name }}</h1>
             <p class="text-justify prof-sub-pengguna fw-light ms-2 fs-5 color-5E5D2D  text-wrap">{{ '@'.$profile[0]->username }}</p>
-            <p class="text-wrap text-justify text-black-50 ms-2 desc-profile">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero ex dolores voluptates magni assumenda adipisci officia illum deserunt quibusdam vitae deleniti, 
-                voluptate maiores hic labore rem ut illo aliquam blanditiis.</p>
+            <p class="text-wrap text-justify text-black-50 ms-2 desc-profile">{{$profile[0]->aboutme}}</p>
             @if (Auth::user()->username != $username)
                 <button  type="button" id = "follow-other" class="btn btn-primary ms-2 mt-1 text-nowrap col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3" onclick="toggleButton()"><span id = "btn-ikuti-text" class="text-nowrap">Ikuti</span></button>
             @endif
@@ -51,7 +54,7 @@ $followingCount = count($following);
             </div>
 
 
-            @if ($profile[0]->status_member != 2)
+            @if ($profile[0]->role != 2)
             <button type="button" id = "status-berlangganan" class="btn btn-danger text-nowrap ms-2 mt-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"  data-bs-toggle="modal" data-bs-target="#exampleModal4"><span class="tulisan-status-berlangganan text-wrap">
                 Status Berlangganan: Tidak aktif</span></button>
             @elseif ($profile[0]->role == 2)
@@ -59,9 +62,12 @@ $followingCount = count($following);
                 Status Berlangganan: Aktif</span></button>
             @endif
             <x-show-benefit></x-show-benefit>
-            <button type="button" id = "edit-profile" class="btn btn-primary ms-2 mt-3 text-nowrap col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">
-                <span class="text-wrap tulisan-edit-profile">Edit Profile</span></button>
-            <x-edit-profile-form/>
+            @if (Auth::user()->username == $username)
+                <button type="button" id = "edit-profile" class="btn btn-primary ms-2 mt-3 text-nowrap col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">
+                    <span class="text-wrap tulisan-edit-profile">Edit Profile</span></button>
+                <x-edit-profile-form :profile="$profile"/>
+            @endif
+            
         </div>
 
             {{-- ==============     KANAN     ============== --}}
@@ -100,12 +106,19 @@ $followingCount = count($following);
                 <div id = "pills-tabContent" class=" tab-content profile-card-box mb-3 mt-4 col-11 col-sm-11 col-md-11 col-lg-12 col-xl-12" style="max-width: 1100px;">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
                         @for ($i = 0; $i <$count; $i++)
-                            <x-profile-big-card :article="$profile[$i]"/>
+                            @if ($profile[$i]->id_article != null)
+                                <x-profile-big-card :article="$profile[$i]"/>
+                            @endif
+                            
                         @endfor
                     </div>
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
                         @for ($i = 0; $i < $bookmarkCount; $i++)
-                            <x-profile-big-card :article="$bookmark[$i]"/>
+                            @if ($bookmark[$i]->id_article != null)
+                                <x-profile-big-card :article="$bookmark[$i]"/>
+                            @endif
+                           
+                            
                         @endfor
                     </div>
                     <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">

@@ -28,8 +28,9 @@ class UserSeeder extends Seeder
                 'username' => $faker->userName,
                 'name' => $faker->name,
                 'email' => $faker->email,
+                'aboutme' => $faker->realText($maxNbChars = 200, $indexSize = 2),
                 'password' => bcrypt('Seeder123'),
-                'role' => rand(1,2),
+                'role' => rand(1,3),
                 'jml_followers' => $faker->numberBetween($min = 1000, $max = 9000),
                 'created_at' => "2023-05-22 07:36:11",
                 'updated_at' => "2023-05-22 07:36:11"

@@ -24,7 +24,7 @@ class ArticleSeeder extends Seeder
                 'tgl_publish' => $faker->date,
                 'jml_comment' => $faker->numberBetween($min = 10, $max = 100),
                 'id_user' => 'USR005',
-                'status_member' => '1',
+                'membership' => '1',
                 'deskripsi' => $faker->realText($maxNbChars = 200, $indexSize = 2),
                 'jml_like' => $faker->numberBetween($min = 1, $max=1000),
                 'created_at' => $faker->date,

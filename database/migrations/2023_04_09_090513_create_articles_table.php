@@ -20,8 +20,8 @@ return new class extends Migration
             $table->integer('jml_comment');
             $table->string('id_user');
             $table->foreign('id_user')->references('id_user')->on('users');
-            $table->integer('status_member');
-            $table->string('deskripsi', 255);
+            $table->integer('membership');
+            $table->text('deskripsi');
             $table->integer('jml_like');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
