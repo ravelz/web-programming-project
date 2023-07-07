@@ -37,7 +37,7 @@
         <div class="row" >
             <div class="logo-search mb5">
                 <div class=" d-flex justify-content-center ">
-                    <img src="{{ asset('storage') }}/upload/LOGO WEB.png" alt="" class="web-logo " style="width : 470px;">
+                    <img src="{{ asset('storage') }}/LOGO WEB.png" alt="" class="web-logo " style="width : 470px;">
                 </div> 
                 <div class="row justify-content-center mb-5">
                     <form class="search-form col-md-6 col-lg-4 col-12 col-sm-8 mx-auto" style="width: 48.3%">
@@ -149,7 +149,7 @@
                                 <div id = side-top class="d-flex flex-row justify-content-between">
                                     <a href="{{ route('profile', ['username' => $author->username]) }}" class="d-flex flex-row justify-content-between text-decoration-none text-black">
                                         <div class="ikuti-img">
-                                            <img id = "top-img" src="{{ asset('storage') }}/upload/Profile.jpg" class="rounded-circle " alt="..." width="47px" height="47px">
+                                            <img id = "top-img" src="{{ asset('storage') }}/Profile.jpg" class="rounded-circle " alt="..." width="47px" height="47px">
                                         </div>
                                         <div class="mx-2">
                                             <h1 id = "top-name" class = "nama-ikuti" >{{ $author->name }}</h1>

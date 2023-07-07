@@ -46,7 +46,7 @@ html,body{
 
 /*========= HEADER ========== */    
 .Header {
-    background-image: url('/storage/upload/Header.jpg'); ;
+    background-image: url('/storage/Header.jpg'); ;
     padding-left: 24px; 
     padding-right: 24px;
     padding-top: 24px;
