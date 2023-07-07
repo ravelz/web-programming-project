@@ -6,7 +6,7 @@
         1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
     </svg>
     <div class="footer-last d-flex flex-column justify-content-between align-items-center" style="height:auto; width:100%; background-color:#982727">
-        <a href="{{ route('payment') }}" id = "subs" type="button" class="btn btn-secondary footer-button" style="margin-bottom:48px;font-family:'Rubik',sans-serif; font-size:24px; font-weight:600; color:black;
+        <a href="{{ route('subsType') }}" id = "subs" type="button" class="btn btn-secondary footer-button" style="margin-bottom:48px;font-family:'Rubik',sans-serif; font-size:24px; font-weight:600; color:black;
             background-color:white;box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);border-radius: 5px;">Subscribe Now
         </a>
         <div class="d-flex flex-row justify-content-between" style="padding-bottom:32px">

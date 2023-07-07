@@ -1,9 +1,9 @@
-
 html,body{
     background-color: #F5F0F0;
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
+
                                                 /*=============SET UP FONT ================*/
 
 /*=====Rubik=====*/
@@ -1117,5 +1117,27 @@ html,body{
   .pay-mets{
     font-size: clamp(0.75rem, 0.393rem + 0.952vw, 1.25rem);
   }
+
+  .btn-subsType{
+    background-color: #982727 !important;
+
+  }
+
+  .btn-subsType:hover{
+    background-color: #B05151 !important;
+    border: #B05151 ;
+  }
+
+  .gelombang-bayar{
+    z-index: 1;
+    bottom: -50px !important;
+  }
+
+  .subsType-container{
+    z-index: 2;
+  }
+
+ 
+
 
 
