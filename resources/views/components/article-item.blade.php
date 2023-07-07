@@ -2,7 +2,7 @@
 <div id = "follow-card" class="card d-flex flex-column mb-4" style="height: auto">
     <div class="d-flex flex-row">
         <div class="col-md-4" style="height: auto">
-            <img id = "follow-img" src="img\Home\hakim.jpg" class="img-fluid" alt="..." style="height:100%; width:100%; object-fit:cover;" >
+            <img id = "follow-img" src="{{ asset('storage') }}/upload/hakim.jpg" class="img-fluid" alt="..." style="height:100%; width:100%; object-fit:cover;" >
         </div>
         <div class="col-md-8">
             <div class="card-body" style="height: auto">
@@ -23,7 +23,7 @@
                     ;font-size:20px; font-weight:400; font-family:'Rubik', sans-serif; padding-top:24px">{{ $article->deskripsi }}</p>
                 </div>                
                 <div class="d-flex flex-row p-2">
-                    <img style = "margin-bottom: 8px;"id = "follow-img"src="img/Home/profile.jpg" class="rounded-circle " alt="..." width="44px" height="44px">
+                    <img style = "margin-bottom: 8px;"id = "follow-img"src="{{ asset('storage') }}/upload/Profile.jpg" class="img-fluid rounded-circle " alt="..." width="44px" height="44px">
                     <a href = "{{ route('profile', ['username' => $article->username]) }}" id = "follow-name" style="text-decoration:none;color:#5E5D2D;font-size:20px; font-weight:600; font-family:'Rubik', sans-serif;">{{ $article->authorName }}</a>
                     
                     <div class="ms-auto" style="margin-top:8px">
