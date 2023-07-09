@@ -207,7 +207,7 @@ class CreateArticleController extends Controller
                     ->telegram()
                     ->whatsapp()
                   ;
-
+                  
         return view('article', [
             'read'=>$read[0], 
             'comment'=>$comment,
