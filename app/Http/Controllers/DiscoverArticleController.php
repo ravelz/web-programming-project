@@ -91,7 +91,37 @@ class DiscoverArticleController extends Controller
         ;
         $articles = $this->getDifferenceDate($articles);
         return $articles;
+    }
+    public function searchTopic(Request $request){
+        $tag =  DB::table('tags')->where('title_tag', '=', $request->title)->first();
+        if($tag != null){
+            return redirect()->route('clickedTag', ['tagName' => $tag->id_tag]);;
+        }else{
+            return redirect()->back()->withErrors("Topic tidak ditemukan")->withInput();
+        }
+              
+        return $articles;
+    }
 
+    public function searchArticle(Request $request){
+        // dd($request->title);
+        $article = DB::table('articles')
+		->where('judul','like',"%".$request->title."%")
+        ->join('users', 'users.id_user', '=', 'articles.id_user')
+        ->select('users.name as authorName', 'users.username', "articles.*")
+        ->inRandomOrder()
+        ->paginate(10);
+        $article = $this->getDifferenceDate($article);
+        if($article != null){
+            return view('discover/discoverArticle')
+            ->with('authors', $this->getAuthor())
+            ->with('tags', $this->getTag())
+            ->with('popularArticles', $article)
+            ->with('followedArticles', $this->getFollowedArticle());
+        }else{
+            return redirect()->back()->withErrors("Article tidak ditemukan")->withInput();
+        }
+        return $articles;
     }
 
     public function index()

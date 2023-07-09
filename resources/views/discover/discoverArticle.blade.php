@@ -12,24 +12,40 @@
                     <h2>Konten</h2>
                     @if (Route::currentRouteName() == "rekomendasi")
                         @php
-                            $data =  $popularArticles
+                            $titleKonten = Route::currentRouteName();
+                            $data =  $popularArticles;
                         @endphp
                         @include("discover.rekomendasi")
                     @elseif (Route::currentRouteName() == "populer")
                         @php
-                            $data =  $popularArticles
+                            $titleKonten = Route::currentRouteName();
+                            $data =  $popularArticles;
                         @endphp
                         @include("discover.populer")
                     @elseif (Route::currentRouteName() == "diikuti")
                         @php
-                            $data =  $followedArticles
+                            $titleKonten = Route::currentRouteName();
+                            $data =  $followedArticles;
                         @endphp
                         @include("discover.diikuti")
-                    @else
+                    @elseif (Route::currentRouteName() == "clickedTag")
                         @php
-                            $data =  $popularArticles
+                            $titleKonten = "G";
+                            $data =  $popularArticles;
                         @endphp
-                        @include("discover.diikuti")
+                        @include("discover.none")
+                    @elseif (Route::currentRouteName() == "searchTopic")
+                        @php
+                            $titleKonten = "H";
+                            $data =  $popularArticles;
+                        @endphp
+                        @include("discover.none")
+                    @elseif (Route::currentRouteName() == "searchArticle")
+                        @php
+                            $titleKonten = "I";
+                            $data =  $popularArticles;
+                        @endphp
+                        @include("discover.none")
                     @endif
                 </div>
                 <!-- ========TOP TOPIC======= -->
@@ -63,15 +79,20 @@
 
             <div class="d-flex flex-column col-8 offset-1">
                 <h1 class="judul-ikuti mb-5 text-capitalize">
-                    @if (strcmp(Route::currentRouteName(), "ClickedTag") !== 0 )
-                        {{ Route::currentRouteName() }}
+                    @if ($titleKonten == "G")
+                        {{"Berdasarkan Topic"}}
+                    @elseif ($titleKonten == "H")
+                        {{"Hasil pencarian topic"}}
+                    @elseif ($titleKonten == "I")
+                        {{"Hasil pencarian article"}}
                     @else
-                        Oji
+                        {{ $titleKonten }}
                     @endif
+                    
                 </h1>
                 <div>
                     @foreach ($data as $article)
-                        <x-article-item :article="$article"/>
+                        <x-profile-big-card :article="$article"/>
                     @endforeach
                 </div>
                 <div class="d-flex justify-content-start flex-column">

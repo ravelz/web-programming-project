@@ -77,7 +77,7 @@ if($profile[0]->id_article == null){
                 <div class="col-10 mt-4 profile-search d-flex">
                     <div class="input-group mb-3">
                         <span class="input-group-text profile-search-icon" id="basic-addon1"><i class="bi bi-search"></i></span>
-                        <input style="max-width: 1050px" id = "profile-cari-postingan" type="text" class="form-control text-center profile-search-input" placeholder="Cari Postingan. . . ." aria-label="Username" aria-describedby="basic-addon1">
+                        <input style="max-width: 1050px" id = "profile-cari-postingan" type="text" class="form-control text-center profile-search-input" placeholder="Cari article. . . ." aria-label="Username" aria-describedby="basic-addon1">
                     </div>  
                 </div>
                 <div class="col-1 col-sm-2 col-md-1 col-lg-1 col-xl-1 mt-4 d-flex" style="cursor: pointer; max-width: 10px">
