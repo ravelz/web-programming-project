@@ -40,7 +40,7 @@
                   <p class="card-text fw-normal">Dengan Subrek, kamu bisa menjelajahi 7 galaxy.</p>
                   <p class="fs-2 fw-semibold">Rp 20.000,-</p>
                   <p class="fs-4 fw-bold text-danger">Permanent</p>
-                  <a type = "button" href="{{ route('payment') }}" class="btn text-light fw-normal btn-subsType w-50">Gas Beli !</a>
+                  <a type = "button" href="{{ route('payment', ['role', '1']) }}" class="btn text-light fw-normal btn-subsType w-50">Gas Beli !</a>
                 </div>
                 <div class="benefit-subrek border-top border-dark border-opacity-25">
                     <p class="fs-5 text-start ms-3 mt-4 fw-semibold mb-3">Fitur Tambahan</p>
@@ -61,7 +61,7 @@
                 <p class="card-text fw-normal">Dengan Subrek, kamu bisa menjelajahi 7 galaxy.</p>
                 <p class="fs-2 fw-semibold">Rp 50.000,-</p>
                 <p class="fs-4 fw-bold text-danger">Permanent</p>
-                <a type = "button" href="{{ route('payment') }}" class="btn text-light fw-normal btn-subsType w-50">Gas Beli !</a>
+                <a type = "button" href="{{ route('payment', ['role', '1']) }}" class="btn text-light fw-normal btn-subsType w-50">Gas Beli !</a>
               </div>
               <div class="benefit-subrek border-top border-dark border-opacity-25">
                   <p class="fs-5 text-start ms-3 mt-4 fw-semibold mb-3">Fitur Tambahan</p>

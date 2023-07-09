@@ -59,7 +59,7 @@
                         </div>
                     </div>                                                            
                     <div style="margin-top : 12px; padding-left:24px; padding-bottom:32px;">
-                        <a style="color: #5E5D2D; font-size:16px; font-weight:400; font-family:'Rubik', sans-serif;" >Lihat lebih banyak saran...</a>
+                        <a style="color: #5E5D2D; font-size:16px; font-weight:400; font-family:'Rubik', sans-serif;" href="{{ route('topics') }}">Lihat lebih banyak saran...</a>
                     </div>
                 </div>
                 <div class="d-flex flex-row mb-5">

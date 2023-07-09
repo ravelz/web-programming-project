@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DiscoverArticleController;
 use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\ProfileCOntroller;
+use App\Http\Controllers\PaymentController;
 
 
 /*
@@ -70,11 +71,10 @@ Route::middleware([User::class])->group(function () {
     });
     
     Route::get('/profile/{username}', [ProfileController::class, 'index'])->name('profile');
+    Route::post('/profile', [ProfileController::class, 'changePassword'])->name('changePassword');
 
 
-    Route::get('/payment', function () {
-        return view('payment');
-    })->name("payment");
+    Route::get('/payment/{role}', [PaymentController::class, 'index'])->name('payment');
     
     Route::get('/paySuccess', function () {
         return view('paySuccess');

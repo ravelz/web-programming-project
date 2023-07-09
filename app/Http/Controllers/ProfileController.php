@@ -11,6 +11,8 @@ use App\Models\Tag;
 use App\Models\Follower;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use App\Rules\MatchOldPassword;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -122,5 +124,19 @@ class ProfileController extends Controller
 
         return $profile;
 
+    }
+
+    public function changePassword(Request $request)
+    {
+        dd(Auth::user(), $request->fileInput, $request->current_password, $request->new_password, $request->new_confirm_password);
+        $request->validate([
+            'current_password' => ['required', new MatchOldPassword],
+            'new_password' => ['required'],
+            'new_confirm_password' => ['same:new_password'],
+        ]);
+   
+        User::find(Auth::user()->id_user)->update(['password'=> Hash::make($request->new_password)]);
+   
+        dd('Password change successfully.');
     }
 }
