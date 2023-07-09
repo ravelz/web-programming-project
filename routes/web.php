@@ -41,6 +41,8 @@ Route::get('/create-article', [CreateArticleController::class, 'create'])->name(
 Route::post('/upload-image', [CreateArticleController::class, 'uploadImage'])->name('upload');
 Route::post('/store-article', [CreateArticleController::class, 'store'])->name('store'); 
 
+Route::get('/edit-article', [ArticleController::class, 'edit'])->name('edit');
+
 Route::get('/read-article/{id}/{judul}', [CreateArticleController::class, 'readArticle'])->name('read');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/topics', [TopicsController::class, 'index'])->name('topics');

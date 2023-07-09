@@ -8,6 +8,17 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+    {{-- input text field --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
+
+
 </head>
 <body>
     <form method="POST" action="{{ route('store')}}" enctype="multipart/form-data">
@@ -25,12 +36,18 @@
                 </div>
                 <div style="width: 100%;">
                     <div class="mb-3 text-start align-items-lg-center">
-                        <label for="judul" class="form-label" style="font-size: 20px;">Judul</label>
-                        <input type="text" name="judul" class="form-control rounded" id="judul" style="background-color: #ffffff; width: 100%;" placeholder="Tulis judul artikelmu">
+                        <label for="Judul" class="form-label" style="font-size: 20px;">Judul</label>
+                        <input type="text" value="{{old('Judul')}}" name="Judul" class="form-control rounded @error('Judul') is-invalid @enderror" id="Judul" style="background-color: #ffffff; width: 100%;" placeholder="Tulis judul artikelmu">
+                        @error('Judul')
+                            <div class="text-danger"> {{$message}} </div>
+                        @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="image" class="form-label" style="margin-top: 10px">Thumbnail</label>
-                        <input class="form-control" type="file" name="image" id="image">
+                        <label for="Thumbnail" class="form-label" style="margin-top: 10px">Thumbnail</label>
+                        <input value="{{old('Thumbnail')}}" class="form-control @error('Thumbnail') is-invalid @enderror" type="file" name="Thumbnail" id="Thumbnail">
+                        @error('Thumbnail')
+                            <div class="text-danger"> {{$message}} </div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <table class="table table-bordered" id="table">
@@ -39,15 +56,17 @@
                                 <th>Action</th>    
                             </tr>
                             <tr>
-                                <td><input type="text" name="inputs[0][name]" placeholder="Tambahkan tag artikel" class="form-control"></td>
-                                <td><button type="button" name="add" id="add" class="btn btn-success">Tambah</button> </td>    
+                                <td><input value="{{old('Tag')}}" type="text" name="Tag" id="Tag" placeholder="Tambahkan tag artikel" class="form-control @error('Tag') is-invalid @enderror" multiple="multiple"></td>
                             </tr>
+                            @error('Tag')
+                            <div class="text-danger"> {{$message}} </div>
+                            @enderror
                         </table> 
                     </div>
                     <div class="mb-3">
                         <label for="deskripsi" class="form-label" style="font-size: 20px;">Apa Ceritamu?</label>
                         <div style="border: 2px solid black; background-color: #F5EFEF;">
-                            <textarea name="deskripsi" class="deskripsi form-control rounded" id="deskripsi" cols="70" rows="1000" style="background-color: #F5EFEF; border: none; width: 100%;"></textarea>
+                            <textarea name="deskripsi" class="deskripsi form-control rounded" id="deskripsi" cols="70" rows="1000" style="background-color: #F5EFEF; border: none; width: 100%;">{{old('deskripsi')}}</textarea>
                         </div>
                     </div>
                 </div>
@@ -56,14 +75,9 @@
     </form>
 
     <script type="text/javascript">
-        var i = 0;
-        $('#add').click(function(){
-            ++i;
-            $('#table').append('<tr><td><input type="text" name="inputs['+1+'][name]" placeholder="Tambahkan tag artikel" class="form-control"></td><td><button type="button" name="remove" id="remove" class="btn btn-danger remove-btn">Hapus</button> </td></tr>');
-        });
-        $(document).on('click', '.remove-btn', function () {
-            $(this).parents('tr').remove();
-        });
+        $(document).ready(function(){
+            $('#Tag').tokenfield();
+        })
     </script>
 
     <script>
