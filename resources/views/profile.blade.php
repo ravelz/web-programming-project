@@ -19,7 +19,7 @@ if($profile[0]->id_article == null){
     <div class="row">
         {{-- ==============      KIRI    ============== --}}
         <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-2 offset-1" style="max-width: 500px">        
-            <img src="img/Home/profile.jpg" class="img rounded-circle profile border border-5 header-profile-img prof-stat" alt="...">
+            <img src="{{ asset("storage/".Auth::user()->profile_picture) }}" class="img rounded-circle profile border border-5 header-profile-img prof-stat" alt="...">
             <h1 class="prof-nama-pengguna text-black display-6 fw-bold ms-2 mt-3 text-wrap">{{ $profile[0]->name }}</h1>
             <p class="text-justify prof-sub-pengguna fw-light ms-2 fs-5 color-5E5D2D  text-wrap">{{ '@'.$profile[0]->username }}</p>
             <p class="text-wrap text-justify text-black-50 ms-2 desc-profile">{{$profile[0]->aboutme}}</p>

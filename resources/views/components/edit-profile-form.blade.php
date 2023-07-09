@@ -26,7 +26,7 @@
           </div>
           <div class="mb-3">
             <label for="message-text" class="col-form-label fw-semibold">Tentang saya<span class="text-secondary fw-normal"> </span></label>
-            <textarea class="form-control edit-deskripsi" id="message-text" value="{{ $profile[0]->aboutme }}"></textarea>
+            <textarea class="form-control edit-deskripsi" id="message-text" >{{ $profile[0]->aboutme }}</textarea>
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label fw-semibold">Password Lama</label>

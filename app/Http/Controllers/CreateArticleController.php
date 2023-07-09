@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Symfony\Contracts\Service\Attribute\Required;
+use URL;
 
 class CreateArticleController extends Controller
 {
@@ -197,9 +198,15 @@ class CreateArticleController extends Controller
                     ])->get();
 
         $shareButtons1 = \Share::page(
-                    'https://makitweb.com/datatables-ajax-pagination-with-search-and-sort-in-laravel-8/'
-                  )
-                  ->facebook();
+                        URL::current(),
+                        $read[0]->judul
+                    )
+                    ->facebook()
+                    ->twitter()
+                    ->linkedin()
+                    ->telegram()
+                    ->whatsapp()
+                  ;
 
         return view('article', [
             'read'=>$read[0], 

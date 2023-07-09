@@ -148,6 +148,8 @@ class HomeController extends Controller
     
     public function index()
     {
+
+        // dd(Auth::user());
         return view('Home/home')
         ->with('authors', $this->getAuthor())
         ->with('tags', $this->getTag())

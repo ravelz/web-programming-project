@@ -103,7 +103,7 @@
                             </a>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <img src="{{ asset('storage') }}/upload/Profile.jpg" class="img rounded-circle profile">
+                                    <img src="{{ asset("storage/".Auth::user()->profile_picture) }}" class="img rounded-circle profile">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('profile', ['username' => Auth::user()->username]) }}">Profile</a>
