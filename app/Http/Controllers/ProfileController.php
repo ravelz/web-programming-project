@@ -128,7 +128,11 @@ class ProfileController extends Controller
 
     public function changePassword(Request $request)
     {
-        dd(Auth::user(), $request->fileInput, $request->current_password, $request->new_password, $request->new_confirm_password);
+        $image = $request->file('fileInput');
+        dd(Auth::user(), $request->files->all(), $request->fileInput, $request->current_password, $request->new_password, $request->new_confirm_password);
+        
+        $imageName = $request->username.'.'.$image->getClientOriginalExtension();
+        $moveImg = Storage::disk('public')->putFileAs('uploads/', $image, $imageName);
         $request->validate([
             'current_password' => ['required', new MatchOldPassword],
             'new_password' => ['required'],
