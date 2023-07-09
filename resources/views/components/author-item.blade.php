@@ -1,4 +1,5 @@
-<div id = side-top class="d-flex flex-row justify-content-between">
+
+<div id = "side-top" class="d-flex flex-row justify-content-between col-5">
     <div class="ikuti-img">
         <img id = "top-img" src="img/Home/profile.jpg" class="rounded-circle " alt="..." width="47px" height="47px">
     </div>

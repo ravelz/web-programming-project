@@ -6,7 +6,9 @@
                 <div class="row">
                     <div style="display: flex; align-items:center">
                         <img class="img-fluid" src="{{ asset('images/fotoProfil.jpeg') }}" style= "width: 50px;height: 50px;border-radius: 100%;float:left;" alt="">
-                        <h4 style="font-family: Poppins, sans-serif;font-weight: 600; margin-left: 15px; padding-top: 10px"> {{$inputComment->name}} </h3>
+                        <h4 style="font-family: Poppins, sans-serif;font-weight: 600; margin-left: 15px; padding-top: 10px"> 
+                            {{Auth::user()->name}} 
+                        </h3>
                     </div>
                 </div>
                 <div class="mb-3" style="padding-top: 20px">

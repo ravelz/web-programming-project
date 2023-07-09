@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Article;
 use App\Models\Tag;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Route;
-use Carbon\Carbon;
+use Carbon\Carbon; 
+use Illuminate\Support\Facades\DB;
 
 class DiscoverArticleController extends Controller
 {
@@ -46,7 +46,10 @@ class DiscoverArticleController extends Controller
         $articles = Article::inRandomORder()->paginate(10);
         $articles = $this->getDifferenceDate($articles);
         foreach ($articles as $article) {
-            $article->authorName = User::select('name')->where('id_user', $article->id_user)->first()->name;
+            $user = User::select('name', 'username')->where('id_user', $article->id_user)->first();
+            // dd($user);
+            $article->authorName = $user->name;
+            $article->username = $user->username;
         }
         // dd($articles);
         return $articles;
@@ -60,38 +63,29 @@ class DiscoverArticleController extends Controller
     }
 
     public function getFollowedArticle(){
-        $joinFollow = DB::table('users')
-        ->where('users.id_user', '=', Auth::id())
-        ->join('followers', 'users.id_user', '=', 'followers.id_user_m')
-        ->select(
-            'followers.id_user_f', 
-            'users.name as authorName', 
-            'articles.id_article', 'articles.judul', 'articles.tgl_publish', 'articles.jml_comment', 'articles.id_user','articles.deskripsi','articles.jml_like',      
-            'tags.*', 
-            DB::raw("GROUP_CONCAT(tags.title_tag SEPARATOR ', ') as title_group"))
+        $joinFollow = DB::table('users as u')
+        ->where('u.id_user', '=', Auth::id())
+        ->join('followers', 'u.id_user', '=', 'followers.id_user_m')
+        ->select('followers.id_user_f', 'articles.*', 'tags.id_tag' ,'tags.title_tag', DB::raw("GROUP_CONCAT(tags.title_tag SEPARATOR ', ') as title_group"), 'u1.username', 'u1.name as authorName')
         ->join('articles', 'followers.id_user_f', '=', 'articles.id_user')
         ->join('detailtags', 'detailtags.id_article', '=', 'articles.id_article')
         ->join('tags', 'tags.id_tag', '=', 'detailtags.id_tag')
+        ->join('users as u1', 'followers.id_user_f', '=', 'u1.id_user')
         ->inRandomOrder()
         ->groupBy('articles.id_article')
+        // ->tosql();
         ->paginate(10);
         ;
-
-        // dd($joinFollow->links());
-
-        // dd(Route::currentRouteName());
         $joinFollow = $this->getDifferenceDate($joinFollow);
         return $joinFollow;
     }
 
-    public function getArticleByTopic($id){
-        // SELECT * FROM `detailtags` t JOIN articles a ON a.id_article = t.id_article JOIN users u ON u.id_user = u.id_user WHERE id_tag = 24
-        
+    public function getArticleByTopic($id){        
         $articles = DB::table('detailtags')
         ->where('detailtags.id_tag', '=', $id)
         ->join('articles', 'articles.id_article', '=', 'detailtags.id_article')
         ->join('users', 'users.id_user', '=', 'articles.id_user')
-        ->select('users.name as authorName', "articles.*", "detailtags.*")
+        ->select('users.name as authorName', 'users.username', "articles.*", "detailtags.*")
         ->inRandomOrder()
         ->paginate(10);
         ;

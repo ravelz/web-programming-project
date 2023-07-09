@@ -12,10 +12,12 @@ class IsiArticle extends Component
      * @return void
      */
 
-     public $dataArticle;
-    public function __construct($dataArticle)
+    public $dataArticle;
+    public $tag;
+    public function __construct($dataArticle, $tag)
     {
-        $this->dataArticle = $dataArticle;  
+        $this->dataArticle = $dataArticle;
+        $this->tag = $tag;
     }
 
     /**

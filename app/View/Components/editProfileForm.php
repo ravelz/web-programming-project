@@ -11,9 +11,11 @@ class editProfileForm extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $profile;
+    public function __construct($profile)
     {
-        //
+        // dd($profile);
+        $this->profile = $profile;
     }
 
     /**

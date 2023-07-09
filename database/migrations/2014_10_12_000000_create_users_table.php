@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('id_user')->primary(); //nnti dia hasil string combine dengan id yang angkanya tuh dari autoincrement
             $table->string('username')->unique();
             $table->string('name'); 
+            $table->text('aboutme');
+            $table->string('profile_picture')->default('/default.png');
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('role')->default(1);

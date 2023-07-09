@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 function toggleButton() {
-  
     var button = document.getElementById('follow-other');
     var buttonText = document.getElementById('btn-ikuti-text');
 
