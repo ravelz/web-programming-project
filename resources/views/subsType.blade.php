@@ -16,7 +16,7 @@
 
   .subs-type-card {
     box-shadow: 0 0 0 rgba(0, 0, 0, 0); 
-    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out; 
+    transition: box-shadow 0.3s ease-in-out, transform 0.5s ease-in-out; 
   }
 
   .subs-type-card:hover {
@@ -34,7 +34,7 @@
         </div>
         
         <div class="d-flex align-items-center justify-content-center ms-auto me-auto subs-type-container mt-5 flex-wrap">
-            <div class="card subs-type-card text-center mt-3 ms-5" style="width: 25rem;">
+            <div class="card subs-type-card text-center mt-3 ms-5 border-3" style="width: 25rem;">
                 <div class="card-body">
                   <h5 class="card-title fw-semibold fs-3 text-secondary">Role 1</h5>
                   <p class="card-text fw-normal">Dengan Subrek, kamu bisa menjelajahi 7 galaxy.</p>
@@ -55,7 +55,7 @@
                 </div> 
             </div>
               
-            <div class="card subs-type-card text-center mt-3 ms-5" style="width: 25rem;">
+            <div class="card subs-type-card text-center mt-3 ms-5 border-3" style="width: 25rem;">
               <div class="card-body">
                 <h5 class="card-title fw-semibold fs-3 text-warning">Role 2</h5>
                 <p class="card-text fw-normal">Dengan Subrek, kamu bisa menjelajahi 7 galaxy.</p>

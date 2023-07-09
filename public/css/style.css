@@ -1131,7 +1131,20 @@ html,body{
     z-index: 2;
   }
 
- 
+  .kaRed{
+    background-color: #982727;
+  }
+
+  .krem{
+    background: rgb(152,39,39);
+    background: linear-gradient(277deg, rgba(152,39,39,1) 0%, rgba(245,240,240,1) 100%);
+  }
+
+  .report-container{
+    margin-top: 12vh !important;
+  }
+
+
 
 
 
