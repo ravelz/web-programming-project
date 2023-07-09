@@ -9,7 +9,7 @@
         <form>
           <div class="mb-3 text-center d-flex flex-column align-items-center">
             <label for="fileInput" class="file-input-label">
-              <img type = "file" class="border-edit-prof img-thumbnail rounded-circle" src="{{ asset('storage') }}/upload/Profile.jpg" alt="">
+              <img type = "file" class="border-edit-prof img-thumbnail rounded-circle" src="{{ asset('storage') }}/Profile.jpg" alt="">
             </label>
             <label for="fileInput" class="file-input-label">
               <h5 class="text-danger fw-semibold mt-3 tulisan-edit-foto">Edit Foto Profile</h5>
@@ -18,15 +18,15 @@
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label fw-semibold">Nama</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="text" class="form-control" id="recipient-name" value="{{ $profile[0]->name }}">
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label fw-semibold">Username</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="text" class="form-control" id="recipient-name" value="{{ $profile[0]->username }}">
           </div>
           <div class="mb-3">
-            <label for="message-text" class="col-form-label fw-semibold">Deskripsi<span class="text-secondary fw-normal"> (Maks. xxx Karakter)</span></label>
-            <textarea class="form-control edit-deskripsi" id="message-text"></textarea>
+            <label for="message-text" class="col-form-label fw-semibold">Tentang saya<span class="text-secondary fw-normal"> </span></label>
+            <textarea class="form-control edit-deskripsi" id="message-text" >{{ $profile[0]->aboutme }}</textarea>
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label fw-semibold">Password Lama</label>

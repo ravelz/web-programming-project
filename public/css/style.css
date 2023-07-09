@@ -1,10 +1,9 @@
-
 html,body{
     background-color: #F5F0F0;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    padding-top: 40px; 
 }
-
 
                                                 /*=============SET UP FONT ================*/
 
@@ -46,13 +45,10 @@ html,body{
 
 /*========= HEADER ========== */    
 .Header {
-    background-image: url('/storage/upload/Header.jpg'); ;
-    padding-left: 24px; 
-    padding-right: 24px;
-    padding-top: 24px;
+    background-image: url('/storage/Header.jpg');
     background-size: cover;
     box-sizing: border-box;
-    height: 792px;
+    height: 90vh;
 }
 
 /*List*/
@@ -729,8 +725,8 @@ html,body{
 
 .payMethod{
     background-color:#982727 ; 
-    width:25%; 
-    height:25%;
+    width:30%; 
+    height:30%;
     cursor: pointer;
     border: solid 2px rgba(0, 0, 0, 0.5);
     color: white;
@@ -828,10 +824,6 @@ html,body{
     width: 150px;
     height: 150px;
   }
- 
-.prof-stat{
-    margin-top: -70px;
-}
 
 .display-6 {
     font-size: 1.75rem;
@@ -991,7 +983,7 @@ html,body{
   }
 
   .modal-logo{
-    width: 200px;
+    width: 150px !important;
     height: 90px;
   }
 
@@ -1102,5 +1094,44 @@ html,body{
   .tulisan-edit-foto{
     cursor: pointer;
   }
+
+  .method-card{
+    margin-top: 17vh;
+    margin-bottom: 20.8vh;
+  }
+
+  .pay-tit{
+
+  }
+
+  .pay-subtit{
+
+  }
+
+  .pay-mets{
+    font-size: clamp(0.75rem, 0.393rem + 0.952vw, 1.25rem);
+  }
+
+  .btn-subsType{
+    background-color: #982727 !important;
+
+  }
+
+  .btn-subsType:hover{
+    background-color: #B05151 !important;
+    border: #B05151 ;
+  }
+
+  .gelombang-bayar{
+    z-index: 1;
+    bottom: -50px !important;
+  }
+
+  .subsType-container{
+    z-index: 2;
+  }
+
+ 
+
 
 

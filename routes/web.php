@@ -54,6 +54,9 @@ Route::middleware([User::class])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/cari/tag/{tagName}', [DiscoverArticleController::class, 'getByTopic'])->name('clickedTag');
+    Route::post('/cari/tag/', [DiscoverArticleController::class, 'searchTopic'])->name('searchTopic');
+
+    Route::post('/cari/article/', [DiscoverArticleController::class, 'searchArticle'])->name('searchArticle');
 
     Route::get('/rekomendasi', [DiscoverArticleController::class, 'rekomendasi'])->name('rekomendasi');
     Route::get('/populer', [DiscoverArticleController::class, 'populer'])->name('populer');
@@ -80,4 +83,8 @@ Route::middleware([User::class])->group(function () {
     Route::get('/visitProfile', function () {
         return view('visitProfile');
     });
+
+    Route::get('/subsType', function () {
+        return view('subsType');
+    })->name("subsType");
 });

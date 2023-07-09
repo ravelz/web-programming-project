@@ -33,22 +33,19 @@
 
 <body>
     @section('content')
-    <section class="Header">
+    <section class="Header d-flex align-items-center d-flex justify-content-center col">
         <div class="row" >
-            <div class="logo-search mb5">
-                <div class=" d-flex justify-content-center ">
-                    <img src="{{ asset('storage') }}/upload/LOGO WEB.png" alt="" class="web-logo " style="width : 470px;">
-                </div> 
-                <div class="row justify-content-center mb-5">
-                    <form class="search-form col-md-6 col-lg-4 col-12 col-sm-8 mx-auto" style="width: 48.3%">
-                        <div class="form-group has-search">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4E4E4E" class="bi bi-search fw-bold" viewBox="0 0 16 16">
-                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                                </svg>
-                            <input type="text" id = "klik-hilang" class="form-control" placeholder="Cari apapun tentang Indonesia... ">
+            <div class=" d-flex justify-content-center">
+                <img src="{{ asset('storage') }}/LOGO WEB.png" alt="" style="width : 470px;">
+            </div> 
+            <div class="row justify-content-center mb-5">
+                <form action="{{ route('searchArticle') }}" name="searchTopic" method="POST" class="col-12 mt-4 profile-search d-flex">
+                    @csrf
+                        <div class="input-group mb-3">
+                            <span class="input-group-text profile-search-icon" id="basic-addon1"><i class="bi bi-search"></i></span>
+                            <input id = "profile-cari-postingan" type="text" class="form-control text-center profile-search-input" placeholder="Cari topic. . . ." aria-label="Username" aria-describedby="basic-addon1" name="title">
                         </div>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
     </section>
@@ -128,7 +125,7 @@
                         <!-- ========BIG CARD======= -->
                     <div>
                         @foreach ($popularArticles as $article)
-                            <x-article-item :article="$article"/>
+                            <x-profile-big-card :article="$article"/>
                         @endforeach
                     </div>
                     <div>
@@ -149,7 +146,7 @@
                                 <div id = side-top class="d-flex flex-row justify-content-between">
                                     <a href="{{ route('profile', ['username' => $author->username]) }}" class="d-flex flex-row justify-content-between text-decoration-none text-black">
                                         <div class="ikuti-img">
-                                            <img id = "top-img" src="{{ asset('storage') }}/upload/Profile.jpg" class="rounded-circle " alt="..." width="47px" height="47px">
+                                            <img id = "top-img" src="{{ asset('storage') }}/Profile.jpg" class="rounded-circle " alt="..." width="47px" height="47px">
                                         </div>
                                         <div class="mx-2">
                                             <h1 id = "top-name" class = "nama-ikuti" >{{ $author->name }}</h1>
@@ -181,7 +178,7 @@
                             </div>
                         </div>                                                            
                         <div style="margin-top : 12px; padding-left:24px; padding-bottom:32px;">
-                            <a style="color: #5E5D2D; font-size:16px; font-weight:400; font-family:'Rubik', sans-serif;" >Lihat lebih banyak saran...</a>
+                            <a style="color: #5E5D2D; font-size:16px; font-weight:400; font-family:'Rubik', sans-serif;" href="{{ route('topics') }}" >Lihat lebih banyak saran...</a>
                         </div>
                     </div>
                 </div>

@@ -17,7 +17,7 @@
     <label class="form-check-label" for={{$radioCheck}}>
         <img class="img-fluid" src="{{asset('storage')}}/upload/{{$method}}"alt="">
         <div class="form-check">
-            <input class="form-check-input ms-auto me-auto" type="radio" name="flexRadioDefault" id="{{ $radioCheck }}"><span class="h5 pt-2 pe-3">{{ $methods }}</span>
+            <input class="form-check-input ms-auto me-auto" type="radio" name="flexRadioDefault" id="{{ $radioCheck }}"><span class="fw-semibold text-nowrap pay-mets pt-2 pe-3">{{ $methods }}</span>
         </div>
     </label>
 </div>

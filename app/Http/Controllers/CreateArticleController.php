@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Symfony\Contracts\Service\Attribute\Required;
+use URL;
 
 class CreateArticleController extends Controller
 {
@@ -129,7 +130,7 @@ class CreateArticleController extends Controller
                 'tgl_publish' => Carbon::now()->toDateTimeString(),
                 'jml_comment' => 0,
                 'id_user' => $user,
-                'status_member' => 0,
+                'membership' => 1,
                 'deskripsi' => $deskripsi,
                 'jml_like' => 0 ,
                 'thumbnail' => $imageName
@@ -146,7 +147,7 @@ class CreateArticleController extends Controller
             DetailTag::create($value2);
         }
 
-        return redirect('article');
+        return redirect('index');
     }
 
     public function uploadImage(Request $request): JsonResponse{
@@ -197,9 +198,15 @@ class CreateArticleController extends Controller
                     ])->get();
 
         $shareButtons1 = \Share::page(
-                    'https://makitweb.com/datatables-ajax-pagination-with-search-and-sort-in-laravel-8/'
-                  )
-                  ->facebook();
+                        URL::current(),
+                        $read[0]->judul
+                    )
+                    ->facebook()
+                    ->twitter()
+                    ->linkedin()
+                    ->telegram()
+                    ->whatsapp()
+                  ;
 
         return view('article', [
             'read'=>$read[0], 
