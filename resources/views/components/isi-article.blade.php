@@ -6,7 +6,6 @@
         {!! $dataArticle->deskripsi !!}
     </div>
 
-
     <div>
         @foreach ($tag as $t)
             <a href="{{ route('clickedTag', ['tagName' => $t->id_tag]) }}" style=" background-color:#982727; border:none; " class="btn btn-primary "  >
@@ -14,7 +13,7 @@
             </a> 
         @endforeach
     </div>
-
+    
     <div style="padding-top: 20px;justify-content: space-between;" class="bagianIcons">
         <a href="{{route('like_article', ['id'=>$dataArticle->id_article])}}">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#982727" class="bi bi-chat-heart-fill" viewBox="0 0 16 16">
@@ -29,5 +28,4 @@
         </a>
         <span style="font-family: Poppins, sans-serif;"class="text">{{$dataArticle->jml_comment}}</span>
     </div>
-    
 </div>
