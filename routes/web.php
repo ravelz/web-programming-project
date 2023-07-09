@@ -79,4 +79,8 @@ Route::middleware([User::class])->group(function () {
     Route::get('/visitProfile', function () {
         return view('visitProfile');
     });
+
+    Route::get('/subsType', function () {
+        return view('subsType');
+    })->name("subsType");
 });
