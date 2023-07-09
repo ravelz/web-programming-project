@@ -20,7 +20,7 @@ class BookmarkSeeder extends Seeder
         for($i = 0; $i <5; $i++){
             DB::table('bookmarks')->insert([
                 'id_user' => "USR001",
-                'id_article' => "ART".$i+1,
+                'id_article' => "ART00".$i+1,
                 'created_at' => $faker->date,
                 'updated_at' => $faker->date
             ]);
