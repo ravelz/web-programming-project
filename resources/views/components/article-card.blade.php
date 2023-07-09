@@ -1,6 +1,10 @@
 <div id="card-kecil" class=" ikuti-card">
     <div class="card" style="height:auto; border-radius: 0px;">
-        <img id = "pic-small" src="../img/Home/smallCard.jpg" class="card-img-top" alt="..." style="border-radius: 0px;">
+        @if ($article->thumbnail == null)
+                <img id = "pic-small" src="{{asset('storage')}}/uploads/karyabudaya.png" class="img-fluid" alt="..." style="height:100%; width:100%; object-fit:cover;" >
+            @else 
+                <img id = "pic-small" src="{{asset('storage')}}/uploads/{{$article->thumbnail}}" class="img-fluid" alt="..." style="height:100%; width:100%; object-fit:cover;" >
+            @endif
         <div class="card-body">
         <div class="first-layer">
             <div class="kategori-waktu">
