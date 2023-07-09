@@ -74,7 +74,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+                    <div class="col-10">
                         <form action="{{ route('searchArticle') }}" name="searchTopic" method="POST" class="d-flex">
                             @csrf
                                 <div class="input-group">
@@ -82,7 +82,7 @@
                                     <input type="search" class="form-control text-center profile-search-input" placeholder="Cari topic. . . ." aria-label="Username" aria-describedby="basic-addon1" name="title">
                                 </div>
                         </form>
-                    </ul>
+                    </div>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
