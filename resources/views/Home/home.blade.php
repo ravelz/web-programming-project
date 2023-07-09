@@ -33,21 +33,19 @@
 
 <body>
     @section('content')
-    <section class="Header">
+    <section class="Header d-flex align-items-center d-flex justify-content-center col">
         <div class="row" >
-            <div class="logo-search mb5">
-                <div class=" d-flex justify-content-center ">
-                    <img src="{{ asset('storage') }}/LOGO WEB.png" alt="" class="web-logo " style="width : 470px;">
-                </div> 
-                <div class="row justify-content-center mb-5">
-                    <form action="{{ route('searchArticle') }}" name="searchTopic" method="POST" class="col-7 mt-4 profile-search d-flex">
-                        @csrf
-                            <div class="input-group mb-3">
-                                <span class="input-group-text profile-search-icon" id="basic-addon1"><i class="bi bi-search"></i></span>
-                                <input id = "profile-cari-postingan" type="text" class="form-control text-center profile-search-input" placeholder="Cari topic. . . ." aria-label="Username" aria-describedby="basic-addon1" name="title">
-                            </div>
-                    </form>
-                </div>
+            <div class=" d-flex justify-content-center">
+                <img src="{{ asset('storage') }}/LOGO WEB.png" alt="" style="width : 470px;">
+            </div> 
+            <div class="row justify-content-center mb-5">
+                <form action="{{ route('searchArticle') }}" name="searchTopic" method="POST" class="col-12 mt-4 profile-search d-flex">
+                    @csrf
+                        <div class="input-group mb-3">
+                            <span class="input-group-text profile-search-icon" id="basic-addon1"><i class="bi bi-search"></i></span>
+                            <input id = "profile-cari-postingan" type="text" class="form-control text-center profile-search-input" placeholder="Cari topic. . . ." aria-label="Username" aria-describedby="basic-addon1" name="title">
+                        </div>
+                </form>
             </div>
         </div>
     </section>

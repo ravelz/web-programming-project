@@ -2,6 +2,7 @@ html,body{
     background-color: #F5F0F0;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    padding-top: 40px; 
 }
 
                                                 /*=============SET UP FONT ================*/
@@ -44,13 +45,10 @@ html,body{
 
 /*========= HEADER ========== */    
 .Header {
-    background-image: url('/storage/Header.jpg'); ;
-    padding-left: 24px; 
-    padding-right: 24px;
-    padding-top: 24px;
+    background-image: url('/storage/Header.jpg');
     background-size: cover;
     box-sizing: border-box;
-    height: 792px;
+    height: 90vh;
 }
 
 /*List*/
@@ -826,10 +824,6 @@ html,body{
     width: 150px;
     height: 150px;
   }
- 
-.prof-stat{
-    margin-top: -70px;
-}
 
 .display-6 {
     font-size: 1.75rem;
