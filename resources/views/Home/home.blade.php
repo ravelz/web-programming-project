@@ -107,7 +107,7 @@
                             startAt: 1,
                             perView: 4,
                             gap: 16,
-                            autoplay: 1000,
+                            autoplay: 1500,
                             hoverpause: true,
                             focusAt: 0,  // set focus on the center slide
                         }).mount();

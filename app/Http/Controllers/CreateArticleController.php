@@ -150,7 +150,7 @@ class CreateArticleController extends Controller
         return redirect('index');
     }
 
-    public function imageUpload(Request $request): JsonResponse{
+    public function uploadImage(Request $request): JsonResponse{
         if ($request->hasFile('upload')) {
             $originName = $request->file('upload')->getClientOriginalName();
             $fileName = pathinfo($originName, PATHINFO_FILENAME);

@@ -104,24 +104,44 @@
         </div>
     </form>
 
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('#Tag').tokenfield();
-        })
-    </script>
-
     <script>
         ClassicEditor
                 .create( document.querySelector( '#deskripsi' ), {
                     ckfinder:{
-                        uploadUrl: '{{route('upload',['_token'=>csrf_token()])}}',
                         uploadUrl: 'https://ckeditor.com/apps/ckfinder/3.5.0/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
+                        uploadUrl: '{{route('upload',['?_token='.csrf_token()])}}',
                         filebrowserUploadMethod : 'form',
+                    },
+                    image: {
+                        resizeUnit: 'px',
+                        resizeOptions: [
+                            {
+                                name: 'resizeImage:original',
+                                value: null,
+                                icon: 'original'
+                            },
+                            {
+                                name: 'resizeImage:800',
+                                value: '800',
+                                icon: 'medium'
+                            },
+                            {
+                                name: 'resizeImage:600',
+                                value: '600',
+                                icon: 'small'
+                            }
+                        ]
                     }
                 } )
                 .catch( error => {
                         console.error( error );
                 } );
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#Tag').tokenfield();
+        })
     </script>
 </body>
 </html>

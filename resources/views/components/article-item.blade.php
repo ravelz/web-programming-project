@@ -2,7 +2,11 @@
 <div id = "follow-card" class="card d-flex flex-column mb-4" style="height: auto">
     <div class="d-flex flex-row">
         <div class="col-md-4" style="height: auto">
-            <img id = "follow-img" src="{{ asset('storage') }}/upload/hakim.jpg" class="img-fluid" alt="..." style="height:100%; width:100%; object-fit:cover;" >
+            @if ($article->thumbnail == null)
+                <img id = "follow-img" src="{{asset('storage')}}/uploads/karyabudaya.png" class="img-fluid" alt="..." style="height:100%; width:100%; object-fit:cover;" >
+            @else 
+                <img id = "follow-img" src="{{asset('storage')}}/uploads/{{$article->thumbnail}}" class="img-fluid" alt="..." style="height:100%; width:100%; object-fit:cover;" >
+            @endif
         </div>
         <div class="col-md-8">
             <div class="card-body" style="height: auto">
