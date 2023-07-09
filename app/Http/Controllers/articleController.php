@@ -27,10 +27,8 @@ class articleController extends Controller
         $likeCount = DB::table('likes')
             ->where('likes.id_article', '=', $id)
             ->selectraw('COUNT(id_user) as count')
-            ->get()
-        ;
+            ->get();
 
-        // dd($likeCount);
         if($exist){ //unlike
             
             DB::table('likes')
@@ -85,6 +83,11 @@ class articleController extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+
+        $comment = Article::where('id_article', '=', $id)->value('jml_comment');
+        $jml_comment = intval($comment);
+        $jml_comment += 1;
+        Article::where('id_article', $id)->update(['jml_comment'=>$jml_comment]);
 
         return redirect()->back();
     }
