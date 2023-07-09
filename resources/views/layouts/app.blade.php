@@ -16,6 +16,7 @@
     <!--Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
 
     <!--Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -24,8 +25,39 @@
     <!--CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url('/css/style.css') }}" />
 
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Share JS -->
+    <script src="{{ asset('js/share.js') }}"></script>
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <style>
+        #social-links ul{
+             padding-left: 0;
+        }
+        #social-links ul li {
+             display: inline-block;
+        } 
+        #social-links ul li a {
+            width: 100px;
+            height: 100px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            margin: 5px;
+            font-size: 25px;
+        }
+        #social-links .fa-facebook{
+              color: #0d6efd;
+        }
+        </style>
 </head>
 <body>
     <div id="app">

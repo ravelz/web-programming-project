@@ -28,7 +28,7 @@
                 </div>
                 
                 <div class="d-flex">
-                    <svg width="50px" height="50px" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {{-- <svg width="50px" height="50px" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g filter="url(#filter0_d_280_1024)">
                             <circle cx="25" cy="22" r="21" fill="#5E5D2D"/>
                             <path d="M23.8688 11.1688L36.3521 17.4104C41.9521 20.2104 41.9521 24.7896 36.3521 27.5896L23.8688 33.8313C15.4688 38.0313 12.0417 34.5896 16.2417 26.2042L17.5104 23.6813C17.8313 23.0396 17.8313 21.975 17.5104 21.3333L16.2417 18.7958C12.0417 10.4104 15.4834 6.96876 23.8688 11.1688Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -46,7 +46,9 @@
                             <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_280_1024" result="shape"/>
                             </filter>
                         </defs>
-                    </svg>
+                    </svg> --}}
+
+                    <div class="social-btn-sp"> {!!$share!!} </div>
 
                     
                     <a href="{{ route('bookmark', ['id' => $read->id_article]) }}">

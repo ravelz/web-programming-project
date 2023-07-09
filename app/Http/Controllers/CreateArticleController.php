@@ -47,7 +47,6 @@ class CreateArticleController extends Controller
         $data = $request->all();
         $user = Auth::User()->id_user;
 
-        //INPUT USER ID
         $last_id_article =  Article::select('id_article')->orderBy('id_article', 'desc')->count();
         $idArticle = (int)substr($last_id_article, -3);
 
@@ -61,7 +60,8 @@ class CreateArticleController extends Controller
         $deskripsi = $request->deskripsi;
 
         //UBAH INPUT TAG JADI LOWERCASE
-        $converted = explode(',', $request->add);
+        $converted = explode(',', $request->Tag);
+        // dd($converted); 
 
         $rules = [
             'Judul' => 'required',
@@ -88,10 +88,15 @@ class CreateArticleController extends Controller
         
         foreach($converted as &$key){
             $key = Str::lower($key);
-        }   
+            $key = trim($key);
+        }
+
+        // foreach($converted as &$key){
+        //     $key = trim($key);
+        // }
 
         //CEK SEMUA INPUT APAKAH UDH EXIST DI TAG
-        $array = array();
+        $array = [];
         foreach($converted as &$key){
             //INPUT ID TAG
             $last_idtag = Tag::select('id_tag')->orderBy('id_tag', 'desc')->count();
@@ -130,6 +135,8 @@ class CreateArticleController extends Controller
                 'thumbnail' => $imageName
             ]);
         }
+
+        // dd($array);
 
         foreach($array as &$key){
             $value2 = [
@@ -180,8 +187,7 @@ class CreateArticleController extends Controller
                     ['articles.judul', '=', $judul]
                 ])
                 ->get();
-
-                ;
+                    
         $comment = DB::table('comments')
                     ->join('articles', 'comments.id_article', '=', 'articles.id_article')
                     ->join('users', 'users.id_user', '=', 'articles.id_user')
@@ -190,17 +196,21 @@ class CreateArticleController extends Controller
                         ['articles.judul', '=', $judul]
                     ])->get();
 
-        // dd($read[0]->id_article);
+        $shareButtons1 = \Share::page(
+                    'https://makitweb.com/datatables-ajax-pagination-with-search-and-sort-in-laravel-8/'
+                  )
+                  ->facebook();
+
         return view('article', [
             'read'=>$read[0], 
             'comment'=>$comment,
-            'tag'=>$tag
+            'tag'=>$tag,
+            'share'=>$shareButtons1
         ]);
                            
     }
 
     public function bookmark($id){
-        // dd($id);
         try{
             $follow = Bookmark::create([
                 'id_user' => Auth::id(),
