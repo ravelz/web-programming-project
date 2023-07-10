@@ -1,6 +1,8 @@
 <div>
     <div style= "padding-top: 40px;f" class="bagBawah mx-auto text-center" >
         <h3 style="font-family: Poppins, sans-serif;font-weight: 600;"> {{$dataArticle->judul}} </h3>
+    <div class="bagBawah mx-auto" >
+        <h1 style="font-family: Rubik, sans-serif;font-weight: 800;" > {{$dataArticle->judul}} </h1>
     </div>
     <div style= "padding-top: 20px; font-family: Poppins, sans-serif;" class="isiArtikel">
         {!! $dataArticle->deskripsi!!}
