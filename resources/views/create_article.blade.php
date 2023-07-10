@@ -91,6 +91,7 @@
                         <label for="" class="mb-3">Tambahkan tag</label>
                         <input value="{{old('Tag')}}" type="text" name="Tag" id="Tag" placeholder="Tambahkan tag artikel" class="form-control @error('Tag') is-invalid @enderror" multiple="multiple">
                         @error('Tag')
+
                             <div class="text-danger"> {{$message}} </div>
                         @enderror 
                     </div>
