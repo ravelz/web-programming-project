@@ -186,12 +186,14 @@ class CreateArticleController extends Controller
                     
         $comment = DB::table('comments')
                     ->join('articles', 'comments.id_article', '=', 'articles.id_article')
-                    ->join('users', 'users.id_user', '=', 'articles.id_user')
+                    ->join('users', 'users.id_user', '=', 'comments.id_user')
+                    ->select('comments.*', 'users.id_user', 'users.name', 'users.username', 'users.profile_picture')
                     ->where([
                         ['articles.id_article', '=', $id],
                         ['articles.judul', '=', $judul]
                     ])->get();
 
+        // dd($comment);
         $shareButtons1 = \Share::page(
                         URL::current(),
                         $read[0]->judul
