@@ -39,23 +39,24 @@ class AuthController extends Controller
             'username' => 'required|unique:users|max:255',
             'email' => 'required|email|unique:users,email|max:255',
             'password' => 'required|min:8|max:255|confirmed',
+            'password_confirmation' => ['same:password']
         ]);
         $lastIdUser = User::select('id_user')->orderBy('id_user','desc')->first();
         $idUser = (int)substr($lastIdUser->id_user, 3);
         $idUser = "USR".str_pad($idUser+1, 3, '0', STR_PAD_LEFT);
-        dd($idUser);
+        // dd($lastIdUser->id_user);
 
-        if($lastIdUser == 0){
+        if($lastIdUser->id_user == null){
             $idUser = "USR001";
         }else{
-            $idUser = (int)substr($lastIdUser , -1);
-            
+            $idUser = (int)substr($lastIdUser->id_user, 3);
             $idUser = "USR".str_pad($idUser+1, 3, '0', STR_PAD_LEFT);
         }
         $user = User::create([
             'id_user' => $idUser,
             'name' => $validatedData['name'],
             'username' => $validatedData['username'],
+            'aboutme' => "",
             'email' => $validatedData['email'],
             'password' => bcrypt($validatedData['password']),
         ]);

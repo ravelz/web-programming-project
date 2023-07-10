@@ -1,4 +1,7 @@
 <style>
+    html{
+        padding-top: 0px !important;
+    }
     body {
         background-image: url('https://images.pexels.com/photos/2583847/pexels-photo-2583847.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
         background-size: cover;
@@ -6,6 +9,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding-top: 0px !important;
     }
     .password-icon {
         position: absolute;

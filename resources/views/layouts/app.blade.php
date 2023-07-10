@@ -65,7 +65,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top p-0 m-0">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('storage') }}/LOGO WEB.png" alt="" style="width : 100px;">
+                    <img src="{{ asset('storage') }}/LOGO WEB.png" alt="" style="width : 200px;">
                 </a>
                 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
