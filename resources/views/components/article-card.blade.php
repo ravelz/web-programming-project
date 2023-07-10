@@ -1,7 +1,7 @@
-<div id="card-kecil" class=" ikuti-card">
+<div id="card-kecil">
     <div class="card" style="height:auto; border-radius: 0px;">
         @if ($article->thumbnail == null)
-                <img id = "pic-small" src="{{asset('storage')}}/uploads/karyabudaya.png" class="img-fluid" alt="..." style="height:100%; width:100%; object-fit:cover;" >
+                <img id = "pic-small" src="{{asset('storage')}}/hakim.jpg" class="img-fluid" alt="..." style="height:100%; width:100%; object-fit:cover;" >
             @else 
                 <img id = "pic-small" src="{{asset('storage')}}/uploads/{{$article->thumbnail}}" class="img-fluid" alt="..." style="height:100%; width:100%; object-fit:cover;" >
             @endif
@@ -17,7 +17,7 @@
         <p style = "color: black;" id = "deskripsi-small" class="deskripsi text-wrap">{{ $article->deskripsi }}</p>
         <div class="last-layer d-flex justify-content-between">
             <div class="foto-penulis">
-                <a href=""><img id = "prof-small" src="img/Home/profile.jpg" class="img rounded-circle " alt="..." width="32px" height="32px"></a>
+                <a href=""><img id = "prof-small" src="{{ asset('storage/'.$article->profile_picture) }}" class="img rounded-circle " alt="..." width="32px" height="32px"></a>
                 <a href="{{ route('profile', ['username' => $article->username]) }}" style="text-decoration: none" id = "name-small" class="nama-penulis text-wrap">{{ $article->authorName }}</a>
             </div>
             <div class="baca-lebih">

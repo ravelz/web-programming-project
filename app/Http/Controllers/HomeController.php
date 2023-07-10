@@ -99,10 +99,11 @@ class HomeController extends Controller
         $articles = Article::inRandomORder()->limit(10)->get();
         $articles = $this->getDifferenceDate($articles);
         foreach ($articles as $article) {
-            $user = User::select('name', 'username')->where('id_user', $article->id_user)->first();
+            $user = User::select('name', 'username', 'profile_picture')->where('id_user', $article->id_user)->first();
             // dd($user);
             $article->authorName = $user->name;
             $article->username = $user->username;
+            $article->profile_picture = $user->profile_picture;
         }
         // dd($articles);
         
@@ -121,7 +122,7 @@ class HomeController extends Controller
         $joinFollow = DB::table('users as u')
         ->where('u.id_user', '=', Auth::id())
         ->join('followers', 'u.id_user', '=', 'followers.id_user_m')
-        ->select('followers.id_user_f', 'articles.*', 'detailtags.*', 'tags.*', DB::raw("GROUP_CONCAT(tags.title_tag SEPARATOR ', ') as title_group"), 'u1.username', 'u1.name as authorName')
+        ->select('followers.id_user_f', 'u1.profile_picture', 'articles.*', 'detailtags.*', 'tags.*', DB::raw("GROUP_CONCAT(tags.title_tag SEPARATOR ', ') as title_group"), 'u1.username', 'u1.name as authorName')
         ->join('articles', 'followers.id_user_f', '=', 'articles.id_user')
         ->join('detailtags', 'detailtags.id_article', '=', 'articles.id_article')
         ->join('tags', 'tags.id_tag', '=', 'detailtags.id_tag')
@@ -139,10 +140,12 @@ class HomeController extends Controller
 
     public function follow($id){
         // dd($id);
-        $follow = Follower::create([
-            'id_user_f' => $id,
-            'id_user_m' => Auth::id()
-        ]);
+        // $follow = Follower::create([
+        //     'id_user_f' => $id,
+        //     'id_user_m' => Auth::id()
+        // ]);
+        $user = User::find($id);
+        $user->followers()->attach(Auth::id());
         return back()->withErrors(['msg' => 'The Message']);;
     }
     

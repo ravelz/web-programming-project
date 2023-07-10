@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DiscoverArticleController;
 use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\ProfileCOntroller;
+use App\Http\Controllers\PaymentController;
 
 
 /*
@@ -72,21 +73,16 @@ Route::middleware([User::class])->group(function () {
     });
     
     Route::get('/profile/{username}', [ProfileController::class, 'index'])->name('profile');
+    Route::post('/profile', [ProfileController::class, 'changePassword'])->name('changePassword');
 
 
-    Route::get('/payment', function () {
-        return view('payment');
-    })->name("payment");
+    Route::get('/payment/{role}/{paket}', [PaymentController::class, 'index'])->name('payment');
     
-    Route::get('/paySuccess', function () {
-        return view('paySuccess');
-    })->name('paySuccess');
+    Route::post('/paySuccess/{role}/{paket}', [PaymentController::class, 'paySuccess'])->name('paySuccess');
     
     Route::get('/visitProfile', function () {
         return view('visitProfile');
     });
 
-    Route::get('/subsType', function () {
-        return view('subsType');
-    })->name("subsType");
+    Route::get('/subsType', [PaymentController::class, 'subsType'])->name("subsType");
 });

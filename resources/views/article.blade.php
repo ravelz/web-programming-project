@@ -66,7 +66,6 @@
         </div>
     </div>
         
-
     <div class="offset-1 col-3">
     <!-- kanan bawah   -->
     <div style= "padding-top: 30px;" class="BuatMore">
@@ -101,6 +100,7 @@
                                     <p class="card-text">Selat solo adalah sebuah selat yang berasal dari solo</p>
                                     <span class="card-text" style = "margin-right: 60px;"><small class="text-body-secondary">Saciell</small></span>
                                     <span class="card-text"><small class="text-body-secondary">Saciell</small></span>
+
                                 </div>
                             </div>
                         </div>
