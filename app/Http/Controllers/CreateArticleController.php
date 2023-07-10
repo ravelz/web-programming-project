@@ -30,7 +30,10 @@ class CreateArticleController extends Controller
         foreach ($articles as $article) {
             $article->authorName = User::select('name')->where('id_user', $article->id_user)->first()->name;
         }
-        return view('listArticles')->with('articles', $articles);
+        return view('listArticles')
+        ->with('articles', $articles)
+        
+        ;
     }
 
     public function getDifferenceDate($collections){
@@ -209,8 +212,25 @@ class CreateArticleController extends Controller
             'comment'=>$comment,
             'tag'=>$tag,
             'share'=>$shareButtons1
-        ]);
+        ])->with('popularArticles', $this->getPopularArticle());
                            
+    }
+
+
+    public function getPopularArticle(){
+        $articles = Article::inRandomORder()->limit(10)->get();
+        $articles = $this->getDifferenceDate($articles);
+        foreach ($articles as $article) {
+            $user = User::select('name', 'username', 'profile_picture')->where('id_user', $article->id_user)->first();
+            // dd($user);
+            $article->authorName = $user->name;
+            $article->username = $user->username;
+            $article->profile_picture = $user->profile_picture;
+        }
+        // dd($articles);
+        
+        
+        return $articles;
     }
 
     public function bookmark($id){

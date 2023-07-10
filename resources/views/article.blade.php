@@ -89,8 +89,11 @@
     <!-- kanan bawah   -->
     <div style= "padding-top: 30px;" class="BuatMore">
         <h4 style= "font-family: 'Rubik', sans-serif;"> Rekomendasi Article </h4>
-            <div style= "padding-top: 20px;" class="row"> 
-                <div class="row">
+            <div class="row">
+                @foreach ($popularArticles as $article)
+                    <x-profile-big-card :article="$article"/>
+                @endforeach
+                {{-- <div class="row">
                     <div class="card mb-3" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
@@ -124,7 +127,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

@@ -5,9 +5,26 @@
     <div class="d-flex flex-row justify-content-center mb-4">
         <img style="width:70%"src="{{asset('storage')}}/uploads/{{$dataArticle->thumbnail}}" alt="">
     </div>
-    <div class="isiArtikel mb-5">
-        {!! $dataArticle->deskripsi !!}
-    </div>
+    {{-- @php
+        dd($dataArticle)
+    @endphp --}}
+    @if ($dataArticle->membership == 2)
+        @if (Auth::user()->role == 1 || Auth::user()->role == 2)
+            <div class="isiArtikel mb-5" style="filter:blur(8px)">
+                {!! $dataArticle->deskripsi !!}
+            </div>
+        @else
+            <div class="isiArtikel mb-5">
+                {!! $dataArticle->deskripsi !!}
+            </div>
+        @endif
+    @else
+        <div class="isiArtikel mb-5">
+            {!! $dataArticle->deskripsi !!}
+        </div>
+    @endif
+    
+    
 
     <div>
         @foreach ($tag as $t)

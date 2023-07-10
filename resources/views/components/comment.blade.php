@@ -9,7 +9,6 @@
                             <h4 style="font-family: Poppins, sans-serif;font-weight: 600;"> {{ $comment->name }} </h4>
                             <p> {{ $comment->created_at }} </p>
                         </div>
-                        
                     </div>
                 </div>
                 <div class="column" style="padding-top: 10px">
