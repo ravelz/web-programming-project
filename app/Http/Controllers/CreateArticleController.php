@@ -176,6 +176,12 @@ class CreateArticleController extends Controller
                 )
                 ->get();   
 
+        $bookmark = DB::table('bookmarks')
+        ->where('id_article', '=', $read[0]->id_article)
+        ->where('id_user', '=', Auth::id())
+        ->get();
+        // dd($bookmark->isEmpty());
+
         $tag = DB::table('articles')
                 ->join('users', 'users.id_user', '=', 'articles.id_user')
                 ->join('detailtags', 'detailtags.id_article', '=', 'articles.id_article')
@@ -210,7 +216,10 @@ class CreateArticleController extends Controller
             'comment'=>$comment,
             'tag'=>$tag,
             'share'=>$shareButtons1
-        ])->with('popularArticles', $this->getPopularArticle());
+        ])
+        ->with('popularArticles', $this->getPopularArticle())
+        ->with('isBookmark', $bookmark->isEmpty())
+        ;
                            
     }
 
@@ -239,7 +248,7 @@ class CreateArticleController extends Controller
             ]);
         }catch (\Illuminate\Database\QueryException $exception) {
             $errorInfo = $exception->errorInfo;
-
+            $follow = Bookmark::where('id_user','=', Auth::id())->where('id_article','=', $id)->delete();
             return back()->withErrors(['msg' => 'Article sudah ada di bookmark!']);
         }
         return back()->withErrors(['msg' => 'Bookmark berhasil ditambahkan']);;

@@ -102,7 +102,7 @@ $gatauPokoknyaIdUser = User::where('username', $username)->first()->id_user;
             {{-- ==============     KANAN     ============== --}}
 
         <div class="offset-1 col-7">
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-10 mt-4 profile-search d-flex">
                     <div class="input-group mb-3">
                         <span class="input-group-text profile-search-icon" id="basic-addon1"><i class="bi bi-search"></i></span>
@@ -113,7 +113,7 @@ $gatauPokoknyaIdUser = User::where('username', $username)->first()->id_user;
                     <i id="profile-sort-postingan" class="bi bi-arrow-down-up me-2 profile-sort-icon"></i>
                     <p id="profile-sort-postingan" class="profile-sort">urutkan</p> 
                 </div>
-            </div>
+            </div> --}}
             <div class="row d-flex flex-column justify-content-between">
                 <div class="col-11 col-sm-11 col-md-11 col-lg-12 col-xl-12 border-bottom border-1 mt-1 profile-garis" style="max-width: 1100px">
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">

@@ -78,7 +78,7 @@
             </div>
 
             <div class="d-flex flex-column col-8 offset-1">
-                <h1 class="judul-ikuti mb-5 text-capitalize">
+                <h1 class="judul-ikuti pb-3 text-capitalize border-bottom">
                     @if ($titleKonten == "G")
                         {{"Berdasarkan Topic"}}
                     @elseif ($titleKonten == "H")

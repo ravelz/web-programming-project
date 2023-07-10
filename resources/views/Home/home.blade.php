@@ -1,28 +1,16 @@
+
+@extends('layouts.app')
 @if($errors->any())
     <div class="alert alert-primary alert-dismissible fade show" role="alert">
         <h4>{{$errors->first()}}</h4>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
-@extends('layouts.app')
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Karya Budaya | Home</title>
-
-    <!--Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-   
+<head>
+    <title>Karya Budaya | Home</title>   
     <!--Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!--CSS -->
-
-    <link rel="stylesheet" type="text/css" href="{{ url('/css/style.css') }}" />
 
     {{-- Glide --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@^3.4.1/dist/css/glide.core.min.css">
@@ -30,8 +18,7 @@
     
 
 </head>
-
-<body>
+    
     @section('content')
     <section class="Header d-flex align-items-center d-flex justify-content-center col">
         <div class="row" >
@@ -57,65 +44,69 @@
     <section id = "isi" class="d-flex row pb-5" >
         <!-- ========BANNER======= -->
         <div class="col-10 offset-1">
-            <div class="row">
-                <div class="col-2 banner">
-                    <p class="sign ">Diikuti</p>
-                </div>
-                <div id = "view-all" class="col view-all d-flex align-items-center text-dark" >
-                    <a class="text-dark text-decoration-none" href="{{ route('diikuti') }}">
-                        <p>Semua
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-                            </svg>
-                        </p>
-                    </a>
-                    
-                </div>
-            </div>
-            <div class="row my-5">
-                <div class="row mt-2">
-                    <div class="col ikuti">
-                        <h3 class="judul-ikuti">Artikel dari yang kamu ikuti</h3>
+            @if (!$followedArticles->isEmpty())
+                <div class="row">
+                    <div class="col-2 banner">
+                        <p class="sign ">Diikuti</p>
+                    </div>
+                    <div id = "view-all" class="col view-all d-flex align-items-center text-dark" >
+                        <a class="text-dark text-decoration-none" href="{{ route('diikuti') }}">
+                            <p>Semua
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                                </svg>
+                            </p>
+                        </a>
                     </div>
                 </div>
-                <!-- ========CARD DIIKUTI======= -->
-                <div class="row p-0 m-0">
-                    <div class="col glide d-flex flex-column justify-content-center">
-                        <div class="d-flex flex-row " data-glide-el="controls">
-                            <button class="glide__arrow--prev rounded btn" type="button" data-glide-dir="<">
-                                <img src="https://www.upgrad.com/__khugblog-next/image/?url=%2F__khugblog-next%2F_next%2Fstatic%2Fmedia%2Fleft-vector.becdf374.png&w=32&q=75" alt="">
-                            </button>
-                            <div class="glide__track" data-glide-el="track">
-                                <ul class="glide__slides">
-                                @foreach ($followedArticles as $article)
-                                    <x-article-card :article="$article"/>
-                                @endforeach
-                                </ul>
-                            </div>
-                            <button class="glide__arrow--next rounded btn" type="button" data-glide-dir=">">
-                                <img src="https://www.upgrad.com/__khugblog-next/image/?url=%2F__khugblog-next%2F_next%2Fstatic%2Fmedia%2Fright-vector.df3941af.png&w=32&q=75" alt="">
-                            </button>
+            
+                <div class="row my-5">
+                    <div class="row mt-2">
+                        <div class="col ikuti">
+                            <h3 class="judul-ikuti">Artikel dari yang kamu ikuti</h3>
                         </div>
-                        
-                        
                     </div>
-                    <script>
-                        new Glide('.glide', {
-                            type: 'slider',
-                            bound: true,
-                            rewind: true,
-                            startAt: 1,
-                            perView: 4,
-                            gap: 16,
-                            autoplay: 1500,
-                            hoverpause: true,
-                            focusAt: 0,  // set focus on the center slide
-                        }).mount();
-                    </script>
-                </div>
-            </div>
+                    <!-- ========CARD DIIKUTI======= -->
+                    <div class="row p-0 m-0">
+                        <div class="col glide d-flex flex-column justify-content-center">
+                            <div class="d-flex flex-row " data-glide-el="controls">
+                                <button class="glide__arrow--prev rounded btn" type="button" data-glide-dir="<">
+                                    <img src="https://www.upgrad.com/__khugblog-next/image/?url=%2F__khugblog-next%2F_next%2Fstatic%2Fmedia%2Fleft-vector.becdf374.png&w=32&q=75" alt="">
+                                </button>
+                                <div class="glide__track" data-glide-el="track">
+                                    <ul class="glide__slides">
 
-            <div class="row">
+                                    @foreach ($followedArticles as $article)
+                                        <x-article-card :article="$article"/>
+                                    @endforeach
+                                    </ul>
+                                </div>
+                                <button class="glide__arrow--next rounded btn" type="button" data-glide-dir=">">
+                                    <img src="https://www.upgrad.com/__khugblog-next/image/?url=%2F__khugblog-next%2F_next%2Fstatic%2Fmedia%2Fright-vector.df3941af.png&w=32&q=75" alt="">
+                                </button>
+                            </div>
+                            
+                            
+                        </div>
+                        <script>
+                            new Glide('.glide', {
+                                type: 'slider',
+                                bound: true,
+                                rewind: true,
+                                startAt: 1,
+                                perView: 4,
+                                gap: 16,
+                                autoplay: 5000,
+                                hoverpause: true,
+                                focusAt: 0,  // set focus on the center slide
+                            }).mount();
+                        </script>
+                    </div>
+                </div>
+            @endif
+            
+
+            <div class="row py-5">
                 <div class="d-flex flex-column col-8">
                     <div class="row mt-2">
                         <div class="col-11 ikuti">
@@ -210,11 +201,6 @@
         </div>
     </div>
     @endsection
-
-    <!--Javascript -->
-    <script src="./js/Home/homescript.js"></script>
-</body>
-</html>
 
 <script>
     const myModal = document.getElementById('myModal')

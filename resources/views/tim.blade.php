@@ -50,10 +50,15 @@
         opacity: 1; 
     }
 </style>
-<body class="pt-2">
+<body class="pt-2" style="background-color: #F5F0F0;">
     <div class="container-fluid">
         <div class="row">
-            <p class="display-2 text-center mb-5 fw-semibold tit">Our Teamates</p>
+            <div class="d-flex col-12 flex-row justify-content-around">
+                <a href = "{{ route('index') }}" type = "button" class="btn kaRed text-light fw-semibold fs-5 align-self-start ">Kembali</a>
+                <p class="display-2 mb-5 fw-bold tit">Our Teamates</p>
+                <div></div>
+            </div>
+            
             <div class="d-flex flex-column">
                 <div class="offset-sm-1 offset-lg-3 col-sm-6 col-12 d-flex justify-content-between ">
                     <div class="card col-6 col-lg-4 col-sm-6 border-light mb-3" style="max-width: 30rem;">
