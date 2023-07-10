@@ -13,12 +13,20 @@ if($profile[0]->id_article == null){
 }else{
     $count = count($profile);
 }
-$bookmarkCount = count($bookmark);
+$bookmarkCount = 0;
+if($bookmark[0]->id_article != null){
+    $bookmarkCount = count($bookmark);
+}
+
 $followerCount = count($follower);
 $followingCount = count($following);
 if($profile[0]->id_article == null){
     // dd("Asi");
 }
+
+use App\Models\User;
+$gatauPokoknyaIdUser = User::where('username', $username)->first()->id_user;
+                
 // dd($profile[0]->id_article);
 @endphp
 <div class="isi">
@@ -30,7 +38,15 @@ if($profile[0]->id_article == null){
             <p class="text-justify prof-sub-pengguna fw-light ms-2 fs-5 color-5E5D2D  text-wrap">{{ '@'.$profile[0]->username }}</p>
             <p class="text-wrap text-justify text-black-50 ms-2 desc-profile">{{$profile[0]->aboutme}}</p>
             @if (Auth::user()->username != $username)
-                <button  type="button" id = "follow-other" class="btn btn-primary ms-2 mt-1 text-nowrap col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3" onclick="toggleButton()"><span id = "btn-ikuti-text" class="text-nowrap">Ikuti</span></button>
+                @if (Auth::user()->isFollowing($gatauPokoknyaIdUser))
+                    {{-- @php
+                        dd(Auth::user()->isFollowing($gatauPokoknyaIdUser))
+                    @endphp --}}
+                    <button  type="button" id = "follow-other" class="btn btn-primary ms-2 mt-1 text-nowrap col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3"><span id = "btn-ikuti-text" class="text-nowrap">Berhenti</span></button>
+                @else
+                    <button  type="button" id = "follow-other" class="btn btn-primary ms-2 mt-1 text-nowrap col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3"><span id = "btn-ikuti-text" class="text-nowrap">Ikuti</span></button>
+                @endif
+                
             @endif
             <div class="ms-2 border border-dark border-opacity-10 rounded row p-3">
                 <div class="d-flex flex-column justify-content-between col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 ">
@@ -45,7 +61,7 @@ if($profile[0]->id_article == null){
             <div class="ms-2 border border-dark border-opacity-10 rounded row p-3">
                 @if (Auth::user()->username == $username)
                     <div class="d-flex flex-column justify-content-between col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 ">
-                        <h1 class="prof-dat text-black display-6 fw-bold text-nowrap text-center">17</h1>
+                        <h1 class="prof-dat text-black display-6 fw-bold text-nowrap text-center">{{ $bookmarkCount }}</h1>
                         <p class="prof-dats text-black-50 text-center fs-5 text-center">Markah</p>
                     </div>
                     <div class="d-flex flex-column justify-content-between col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">

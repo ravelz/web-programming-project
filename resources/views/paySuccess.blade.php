@@ -46,7 +46,7 @@
 <body class="krem">
     <div class="row d-flex krem report-container ">
         <div class="offset-1 col-10 row">
-            <div class="col-5 kaRed d-flex flex-column rounded-start">
+            <div class="col-5 kaRed d-flex flex-column rounded-start row">
                 <div class="d-flex flex-column align-items-center border-bottom border-light border-opacity-25 ms-3">
                     <p class="display-6 text-light mt-3 fw-bold"> LAPORAN PEMBAYARAN</p>
                     <img width="250px" height="250px" class="img-fluid bg-light p-3 mb-4 " src="{{ asset('storage') }}/LOGO WEB.png" alt="">
@@ -86,6 +86,7 @@
                         <p class="fs-5 text-light fw-semibold">{{ $data["email"] }}</p>
                     </div> 
                 </div>
+                <a href = "{{ route('index') }}" type = "button" class=" col-4 mt-3 mb-3 btn btn-light text-dark fw-semibold fs-5 align-self-center">Kembali ke Home</a>
             </div>
             <div class="col-7 bg-light rounded-end">
                 <div class="d-flex justify-content-between border-bottom border-dark border-opacity-25 ms-3 align-items-center">
@@ -101,8 +102,7 @@
                 <div class="d-flex border-bottom border-light border-opacity-25 ms-3">
                     <i class="bi bi-calendar text-light fs-5 mt-3 ms-3"></i> 
                     <div class="d-flex flex-column mt-3 ms-3">
-                        <p class="fs-5 text-light mb-0"> Tanggal: </p>
-                        <p class="fs-3 text-secondary fw-semibold">Halo {{ Auth::user()->username }}</p>
+                        <p class=" mt-3 fs-3 text-secondary fw-semibold">Halo {{ Auth::user()->username }}</p>
                         <p class="fs-5 text-secondary fw-normal">Terima kasih karena kamu telah melakukan pembayaran sebesar <span class="text-dark fw-semibold">
                             Rp 50.000,- <br></span> Kepada Karya Budaya. ( <span style = " color : #982727" class="fw-semibold">karyaBudaya@sunib.ac.id</span> )</p>
                     </div> 
@@ -116,7 +116,7 @@
                     </div> 
                 </div>
                 <div class="d-flex justify-content-between ms-3 mt-3 mb-5">
-                    <p style = "color : #982727" class="fs-5 fw-bold mb-0 ms-3"> www.karya budaya.com</p>
+                    <p style = "color : #982727" class="fs-5 fw-bold mb-0 ms-3"> www.karyabudaya.com</p>
                     <p class="fs-5 text-end text-dark fw-semibold me-3">ID Akun: {{ Auth::id() }}</p>
                 </div>
             </div>

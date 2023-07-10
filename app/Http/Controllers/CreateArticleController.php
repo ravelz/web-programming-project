@@ -127,7 +127,7 @@ class CreateArticleController extends Controller
                 'tgl_publish' => Carbon::now()->toDateTimeString(),
                 'jml_comment' => 0,
                 'id_user' => $user,
-                'status_member' => 1,
+                'membership' => 1,
                 'deskripsi' => $deskripsi,
                 'jml_like' => 0 ,
                 'thumbnail' => $imageName

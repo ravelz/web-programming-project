@@ -42,7 +42,7 @@ class ProfileController extends Controller
         try{
             $profile = DB::table('users')
             ->where('users.username', '=', $username)
-            ->select('username', 'name','users.name as authorName', 'users.aboutme', 'users.profile_picture', 'role','membership', 'articles.*','detailtags.*', 'tags.*', DB::raw("GROUP_CONCAT(tags.title_tag SEPARATOR ', ') as title_group"))
+            ->select('username', 'profile_picture', 'name','users.name as authorName', 'users.aboutme', 'users.profile_picture', 'role','membership', 'articles.*','detailtags.*', 'tags.*', DB::raw("GROUP_CONCAT(tags.title_tag SEPARATOR ', ') as title_group"))
             ->leftjoin('articles', 'users.id_user', '=', 'articles.id_user')
             ->leftjoin('detailtags', 'detailtags.id_article', '=', 'articles.id_article')
             ->leftjoin('tags', 'tags.id_tag', '=', 'detailtags.id_tag')
@@ -110,7 +110,7 @@ class ProfileController extends Controller
         try{
             $profile = DB::table('users')
             ->where('users.username', '=', $username)
-            ->select('username', 'name','users.name as authorName', 'role','membership', 'articles.*','detailtags.*', 'tags.*', DB::raw("GROUP_CONCAT(tags.title_tag SEPARATOR ', ') as title_group"))
+            ->select('username', 'profile_picture', 'name','users.name as authorName', 'role','membership', 'articles.*','detailtags.*', 'tags.*', DB::raw("GROUP_CONCAT(tags.title_tag SEPARATOR ', ') as title_group"))
             // left join `bookmarks` on users.id_user = bookmarks.id_user
             ->leftjoin('bookmarks', 'users.id_user', '=', 'bookmarks.id_user')
             ->leftjoin('articles', 'bookmarks.id_article', '=', 'articles.id_article')

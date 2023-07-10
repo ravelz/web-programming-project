@@ -17,8 +17,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $primaryKey = 'id_user';
-    public $incrementing = false; 
+    protected $primaryKey='id_user';
+    public $incrementing=false; 
     protected $fillable = [
         'id_user',
         'name',
@@ -79,8 +79,11 @@ class User extends Authenticatable
 
     // users that are followed by this user
     public function following() {
+        // dd($this->belongsToMany(User::class, 'followers',
+        // 'id_user_m',  // M mengikuti F
+        // 'id_user_f')->get());
         return $this->belongsToMany(User::class, 'followers',
-        'id_user_m',
+        'id_user_m',  // M mengikuti F
         'id_user_f');
     }
 
@@ -93,12 +96,13 @@ class User extends Authenticatable
 
     public function isFollowing($user)
     {
-        return  !!  $this->following()->where('id_user_f', $user);
+        // dd($user);
+        return  !!  $this->following()->where('id_user_f', $user)->count();
     }
 
     public function isFollowedBy($user)
     {
-        return  !! $this->followers()->where('id_user_m', $user);
+        return  !! $this->followers()->where('id_user_m', $user)->count();
     }
 
     public function draftArticle(){

@@ -23,9 +23,9 @@
                     <img class="modal-logo" src="{{ asset('storage/LOGO WEB.png') }}" alt="">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <h1 class="modal-title fs-3 fw-bold ms-auto me-auto" id="exampleModalLabel">
+                <h1 class="modal-title text-center fs-3 fw-bold ms-auto me-auto" id="exampleModalLabel">
                     {{$methods}}</h1>
-                <img class="modal-logo ms-auto me-auto mt-2 border border-dark border-opacity-25 p-3" src="{{ asset("storage/$method") }}" alt=""height = "150px" width="160px">
+                <img class="modal-logo d-flex flex-column ms-auto me-auto mt-2 border border-dark border-opacity-25 p-3" src="{{ asset("storage/$method") }}" alt=""height = "150px" width="160px">
                 <div class="modal-body text-start">
                     {{-- ========ISI MODAL======== --}}
                     <div class="row">
