@@ -44,3 +44,13 @@
 //     window.location.href = '/paySuccess';
 //   }, 3000);
 // });
+
+window.addEventListener('DOMContentLoaded', function() {
+    var cards = document.querySelectorAll('.card');
+    cards.forEach(function(card, index) {
+      setTimeout(function() {
+        card.classList.add('visible');
+      }, (index + 1) * 500); 
+    });
+  });
+  

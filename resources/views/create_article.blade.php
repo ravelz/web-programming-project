@@ -95,7 +95,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <table class="table table-bordered" id="table">
+                        <table class="table-primary d-flex justify-content-between" id="table">
                             <tr>
                                 <th>Add Tag</th>
                                 <th>Action</th>    
