@@ -1124,11 +1124,12 @@ html,body{
 
   .gelombang-bayar{
     z-index: 1;
-    bottom: -50px !important;
+    
   }
 
   .subsType-container{
-    z-index: 2;
+    z-index: 5;
+    overflow: hidden;
   }
 
   .kaRed{
