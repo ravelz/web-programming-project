@@ -12,6 +12,7 @@ use App\Http\Controllers\DiscoverArticleController;
 use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\ProfileCOntroller;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\timController;
 
 
 /*
@@ -33,6 +34,7 @@ Route::get('/article', [articleController::class, 'index']);
 // Route::get('/home', [HomeController::class, 'showHome']);
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::get('/tim', [timController::class, 'showTim'])->name('tim');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);

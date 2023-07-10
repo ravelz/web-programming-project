@@ -1100,14 +1100,6 @@ html,body{
     margin-bottom: 20.8vh;
   }
 
-  .pay-tit{
-
-  }
-
-  .pay-subtit{
-
-  }
-
   .pay-mets{
     font-size: clamp(0.75rem, 0.393rem + 0.952vw, 1.25rem);
   }
@@ -1136,6 +1128,15 @@ html,body{
     background-color: #982727;
   }
 
+  .text-kaRed{
+    color: #982727;
+  }
+
+  .text-rubik{
+    font-family:'Rubik', sans-serif;
+  }
+
+
   .krem{
     background: rgb(152,39,39);
     background: linear-gradient(277deg, rgba(152,39,39,1) 0%, rgba(245,240,240,1) 100%);
@@ -1143,6 +1144,12 @@ html,body{
 
   .report-container{
     margin-top: 12vh !important;
+  }
+
+  .profil-about{
+    margin-top: -50px;
+    height: 100px;
+    width: 100px;
   }
 
 
