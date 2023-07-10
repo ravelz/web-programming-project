@@ -83,10 +83,6 @@ class CreateArticleController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
-        $image = $request->file('Thumbnail');
-        $imageName = $request->Judul.'.'.$image->getClientOriginalExtension();
-        $moveImg = Storage::disk('public')->putFileAs('uploads/', $image, $imageName);
         
         foreach($converted as &$key){
             $key = Str::lower($key);
@@ -117,6 +113,10 @@ class CreateArticleController extends Controller
                 array_push($array, $idtag);
             }
         }
+
+        $image = $request->file('Thumbnail');
+        $imageName = $request->Judul.'.'.$image->getClientOriginalExtension();
+        $moveImg = Storage::disk('public')->putFileAs('uploads/', $image, $imageName);
         
         if($validator->fails()){
             return redirect()->back()->withInput()->withErrors($validator);
@@ -127,14 +127,12 @@ class CreateArticleController extends Controller
                 'tgl_publish' => Carbon::now()->toDateTimeString(),
                 'jml_comment' => 0,
                 'id_user' => $user,
-                'membership' => 1,
+                'status_member' => 1,
                 'deskripsi' => $deskripsi,
                 'jml_like' => 0 ,
                 'thumbnail' => $imageName
             ]);
         }
-
-        // dd($array);
 
         foreach($array as &$key){
             $value2 = [
@@ -144,7 +142,7 @@ class CreateArticleController extends Controller
             DetailTag::create($value2);
         }
 
-        return redirect('index');
+        return redirect('article');
     }
 
     public function uploadImage(Request $request): JsonResponse{

@@ -1,6 +1,9 @@
 <div>
-    <div class="bagBawah mx-auto" >
+    <div class="bagBawah mx-auto d-flex flex-row justify-content-center" style="margin-bottom: 20px">
         <h1> {{$dataArticle->judul}} </h1>
+    </div>
+    <div class="d-flex flex-row justify-content-center mb-4">
+        <img style="width:70%"src="{{asset('storage')}}/uploads/{{$dataArticle->thumbnail}}" alt="">
     </div>
     <div class="isiArtikel mb-5">
         {!! $dataArticle->deskripsi !!}
