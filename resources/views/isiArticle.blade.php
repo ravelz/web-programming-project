@@ -3,7 +3,7 @@
 @section('content')
 <!-- bagian isi artikel -->
 <div style= "padding-top: 40px;" class="bagBawah mx-auto text-center" >
-    <h3 style="font-family: Rubik, sans-serif;font-weight: 600;">{{$read->judul}}</h3>
+    <h3 style="font-weight: 600;">{{$read->judul}}</h3>
 </div>
 <div style= "padding-top: 50px; padding-left: 10px;text-indent: 50px; font-family: Poppins, sans-serif;font-weight: 300;" class="isiArtikel">
     {!! $data->deskripsi !!}

@@ -43,19 +43,19 @@
              padding-left: 0;
         }
         #social-links ul li {
-             display: inline-block;
+            display: inline-block;
         } 
         #social-links ul li a {
-            width: 100px;
-            height: 100px;
-            padding: 20px;
+            padding-top: 5px;
+            padding-bottom: 8px;
+            padding-left: 15px;
+            padding-right: 15px;
             border: 1px solid #ccc;
-            border-radius: 50%;
             margin: 5px;
             font-size: 25px;
-        }
-        #social-links .fa-facebook{
-              color: #0d6efd;
+            color: #222;
+            border-radius: 5px;
+            background-color: #F5F0F0;
         }
         </style>
 </head>

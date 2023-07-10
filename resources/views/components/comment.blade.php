@@ -20,8 +20,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="column" style="padding-top: 10px">
-                    <h6 style="font-family: Poppins, sans-serif; padding-top: 10px"> {{$comment->comment}} </h6>
+                <div class="row" style="padding-top: 10px; margin-bottom: 5px">
+                    <h6 style="padding-top: 10px"> {{$comment->comment}} </h6>
                 </div>
             </div>
         </div>
