@@ -4,9 +4,6 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
-@extends('layouts.app')
-@section('title', $profile[0]->name)
-@section('content')
 @php
 if($profile[0]->id_article == null){
     $count = 0;
@@ -29,6 +26,10 @@ $gatauPokoknyaIdUser = User::where('username', $username)->first()->id_user;
                 
 // dd($profile[0]->id_article);
 @endphp
+@extends('layouts.app')
+@section('title', $profile[0]->name)
+@section('content')
+
 <div class="isi">
     <div class="row">
         {{-- ==============      KIRI    ============== --}}
@@ -42,9 +43,9 @@ $gatauPokoknyaIdUser = User::where('username', $username)->first()->id_user;
                     {{-- @php
                         dd(Auth::user()->isFollowing($gatauPokoknyaIdUser))
                     @endphp --}}
-                    <button  type="button" id = "follow-other" class="btn btn-primary ms-2 mt-1 text-nowrap col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3"><span id = "btn-ikuti-text" class="text-nowrap">Berhenti</span></button>
+                    <a  type="button" id = "follow-other" class="btn btn-primary ms-2 mt-1 text-nowrap col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3" href="{{ route('unfollow', ['id' => $gatauPokoknyaIdUser]) }}"><span id = "btn-ikuti-text" class="text-nowrap">Berhenti</span></a>
                 @else
-                    <button  type="button" id = "follow-other" class="btn btn-primary ms-2 mt-1 text-nowrap col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3"><span id = "btn-ikuti-text" class="text-nowrap">Ikuti</span></button>
+                    <a  type="button" id = "follow-other" class="btn btn-primary ms-2 mt-1 text-nowrap col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3" href="{{ route('follow', ['id' => $gatauPokoknyaIdUser]) }}"><span id = "btn-ikuti-text" class="text-nowrap" >Ikuti</span></a>
                 @endif
                 
             @endif

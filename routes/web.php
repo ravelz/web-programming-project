@@ -66,6 +66,7 @@ Route::middleware([User::class])->group(function () {
     Route::get('/diikuti', [DiscoverArticleController::class, 'diikuti'])->name('diikuti');
 
     Route::get('/follow/{id}', [HomeController::class, 'follow'])->name('follow');
+    Route::get('/unfollow/{id}', [HomeController::class, 'unfollow'])->name('unfollow');
     Route::get('/bookmark/{id}', [CreateArticleController::class, 'bookmark'])->name('bookmark');
     
     Route::get('/user', function () {
