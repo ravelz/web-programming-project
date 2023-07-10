@@ -11,6 +11,12 @@ use App\Models\Tag;
 use App\Models\Follower;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use App\Rules\MatchOldPassword;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Contracts\Service\Attribute\Required;
+use URL;
 
 class ProfileController extends Controller
 {
@@ -122,5 +128,73 @@ class ProfileController extends Controller
 
         return $profile;
 
+    }
+
+    public function changePassword(Request $request)
+    {
+        $image = $request->file('fileInput');
+        // dd($request->all());
+        if($image != null){
+            $rules = [
+                'name' => 'required',
+                'username' => 'required',
+                'current_password' => ['required', new MatchOldPassword],
+                'fileInput' => 'required|image|mimes:jpg,jpeg,png',
+            ];
+        }else{
+            $rules = [
+                'name' => 'required',
+                'username' => 'required',
+                'current_password' => ['required', new MatchOldPassword]
+            ];
+        }
+        $message = [
+            'required' => ':attribute wajib diisi',
+            'mimes' => 'Format :attribute harus JPG,JPEG, atau PNG '
+        ];
+        $validator = Validator::make($request->all(), $rules, $message);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        
+        $imageName = Auth::user()->profile_picture;
+        if($image != null){
+            $imageName = $request->username.'.'.$image->getClientOriginalExtension();
+            $moveImg = Storage::disk('public')->putFileAs('', $image, $imageName);
+        }
+        // dd($imageName);
+        
+        if($request->new_password != null){
+            $isValid = $request->validate([
+                'current_password' => ['required', new MatchOldPassword],
+                'new_password' => ['required'],
+                'new_confirm_password' => ['same:new_password'],
+            ]);
+            if(!$isValid){
+                return redirect()->back()->withErrors($isValid)->withInput();
+            }
+            User::find(Auth::user()->id_user)
+            ->update(
+                ['name' => $request->name,
+                'username' => $request->username,
+                'aboutme' => $request->aboutme,
+                'profile_picture' => $imageName,
+                'password'=> Hash::make($request->new_password)]);
+        }else{
+            $isValid = $request->validate([
+                'current_password' => ['required', new MatchOldPassword],
+            ]);
+            if(!$isValid){
+                return redirect()->back()->withErrors($isValid)->withInput();
+            }
+            User::find(Auth::user()->id_user)
+            ->update(
+                ['name' => $request->name,
+                'username' => $request->username,
+                'aboutme' => $request->aboutme,
+                'profile_picture' => $imageName,
+                'password'=> Hash::make($request->new_password)]);
+        }
+        return redirect()->back()->withErrors("Profile berhasil diubah!")->withInput();
     }
 }

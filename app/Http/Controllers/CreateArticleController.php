@@ -195,8 +195,12 @@ class CreateArticleController extends Controller
         $shareButtons1 = \Share::page(
                         URL::current(),
                         $read[0]->judul
-                    )
-                    ->facebook();
+                    )->facebook()
+                    ->twitter()
+                    ->linkedin()
+                    ->telegram()
+                    ->whatsapp()
+                  ;
                   
         return view('article', [
             'read'=>$read[0], 

@@ -14,15 +14,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!--CSS -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="{{ url('/css/style.css') }}">
 </head>
 <style>
+    html{
+        padding-top: 0px;  
+        overflow: hidden; 
+    }
+
+    @media (min-width: 100%) {
+            html {
+                 overflow: auto;
+            }
+   }
+
     body{
         background: rgb(152,39,39);
         background: linear-gradient(188deg, rgba(152,39,39,1) 45%, rgba(255,255,255,1) 100%);
+        overflow: hidden;
     }
 </style>
-<body>
+<body class="vh-100">
     <div class="container-fluid gx-0 overflow-none">
         <div class="bg-light container d-flex flex-column method-card shadow shadow-lg rounded ">
             <p class="h1 pay-tit fw-bold judul-ikuti mt-5 ms-5">Pembayaran</p>
@@ -35,12 +47,12 @@
             </div>
         </div>
         {{-- =============MODAL============ --}}
-        <x-payment-modal methodId="1"></x-payment-modal>
-        <x-payment-modal methodId="2"></x-payment-modal>    
-        <x-payment-modal methodId="3"></x-payment-modal> 
+        <x-payment-modal methodId="1" :role="$role" :paket="$paket"></x-payment-modal>
+        <x-payment-modal methodId="2" :role="$role" :paket="$paket"></x-payment-modal>    
+        <x-payment-modal methodId="3" :role="$role" :paket="$paket"></x-payment-modal> 
         
     </div>          
-    <script src="./js/Home/payment.js"></script>
+    <script src="{{ url('js/Home/payment.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>

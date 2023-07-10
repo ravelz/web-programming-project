@@ -14,9 +14,13 @@ class paymentModal extends Component
      */
 
     public $methodId;
-    public function __construct($methodId)
+    public $role;
+    public $paket;
+    public function __construct($methodId, $role, $paket)
     {
         $this->methodId = $methodId;
+        $this->role = $role;
+        $this->paket = $paket;
     }
 
     /**

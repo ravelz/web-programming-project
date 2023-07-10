@@ -23,32 +23,106 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     </head>
-<body>
-    <div class="container">
-        <div class="row overflow-hidden">
-            <div class="col-6 me-3 backReport1">
-                <img src="{{ asset('storage') }}/upload/debit-card.png" class="back-img1 img-fluid mt-5" alt="">
+    <style>
+       html{
+            background: rgb(152,39,39);
+            background: linear-gradient(277deg, rgba(152,39,39,1) 0%, rgba(245,240,240,1) 100%);
+       }
+    </style>
+
+@php
+    use Carbon\Carbon;
+    if ($data['methodId']== 1 ) {
+        $data['method'] = "bca.jpg";
+        $data['methods'] = "BCA Payment";
+    } elseif ($data['methodId'] == 2) {
+        $data['method'] = "paypal.jpg";
+        $data['methods'] = "Paypal Payment";
+    } else {
+        $data['method'] = "visa.jpg";
+        $data['methods'] = "Visa Payment";
+    }
+@endphp
+<body class="krem">
+    <div class="row d-flex krem report-container ">
+        <div class="offset-1 col-10 row">
+            <div class="col-5 kaRed d-flex flex-column rounded-start">
+                <div class="d-flex flex-column align-items-center border-bottom border-light border-opacity-25 ms-3">
+                    <p class="display-6 text-light mt-3 fw-bold"> LAPORAN PEMBAYARAN</p>
+                    <img width="250px" height="250px" class="img-fluid bg-light p-3 mb-4 " src="{{ asset('storage') }}/LOGO WEB.png" alt="">
+                </div>
+                <div class="d-flex border-bottom border-light border-opacity-25 ms-3">
+                    <i class="bi bi-wallet2 text-light fs-5 mt-3 ms-3"></i> 
+                    <div class="d-flex flex-column mt-3 ms-3">
+                        <p class="fs-5 text-light mb-0"> Jumlah: </p>
+                        <p class="fs-5 text-light fw-semibold">
+                        Rp 
+                        @if ($paket == "Maxwin")
+                            20.000
+                            @elseif ($paket == "Scatter")
+                            50.000
+                        @endif
+                        ,-</p>
+                    </div> 
+                </div>
+                <div class="d-flex border-bottom border-light border-opacity-25 ms-3">
+                    <i class="bi bi-calendar text-light fs-5 mt-3 ms-3"></i> 
+                    <div class="d-flex flex-column mt-3 ms-3">
+                        <p class="fs-5 text-light mb-0"> Tanggal: </p>
+                        <p class="fs-5 text-light fw-semibold">{{ Carbon::now()->format('Y-m-d') }}</p>
+                    </div> 
+                </div>
+                <div class="d-flex border-bottom border-light border-opacity-25 ms-3">
+                    <i class="bi bi-person-circle text-light fs-5 mt-3 ms-3"></i> 
+                    <div class="d-flex flex-column mt-3 ms-3">
+                        <p class="fs-5 text-light mb-0"> Nama Pemilik Kartu: </p>
+                        <p class="fs-5 text-light fw-semibold">{{ $data['namaKartu'] }}</p>
+                    </div> 
+                </div>
+                <div class="d-flex border-bottom border-light border-opacity-25 ms-3">
+                    <i class="bi bi-envelope-at text-light fs-5 mt-3 ms-3"></i> 
+                    <div class="d-flex flex-column mt-3 ms-3">
+                        <p class="fs-5 text-light mb-0"> Email: </p>
+                        <p class="fs-5 text-light fw-semibold">{{ $data["email"] }}</p>
+                    </div> 
+                </div>
             </div>
-            <div class="offset-2 col-4 shadow shadow-lg d-flex flex-column mb-5 mt-5 payReport rounded position-absolute">
-                <div class="d-flex flex-column align-items-center border border-dark border-opacity-25 p-3 mt-3 headerReport rounded">
-                    <img src="{{ asset('storage') }}/upload/LOGO WEB.png" class="success-logo img-fluid mt-3" alt="">
-                    <p class="judul-report fw-bold text-success mt-2">Payment Success</p>
-                    <img src="{{ asset('storage') }}/upload/checked.png" class="success-ceklist img-fluid" alt="">
+            <div class="col-7 bg-light rounded-end">
+                <div class="d-flex justify-content-between border-bottom border-dark border-opacity-25 ms-3 align-items-center">
+                    <img width="160px" height="150px" class="img-fluid bg-light" src="{{ asset('storage/'.$data['method']) }}" alt="">
+                    <p class="text-secondary mt-3 ms-3 fw-normal fs-5 me-3">{{ Carbon::now()->format('Y-m-d | H:i:s') }}   </p>
                 </div>
-                <x-report-att></x-report-att>
-                <x-report-att></x-report-att>
-                <x-report-att></x-report-att>
-                <x-report-att></x-report-att>
-                <x-report-att></x-report-att>
-                <div class="d-flex justify-content-center mb-3 mt-5">
-                    <a href = {{ route('home') }} type="button" class="btn btn-light shadow shadow-lg btn-tamat"><span class="tamat fw-semibold">Kembali Ke Home</span></a>
+                <div class="d-flex border-bottom border-dark border-opacity-25 ms-3">
+                    <i class="bi bi-wallet2 text-light fs-5 mt-3 ms-3"></i> 
+                    <div class="d-flex flex-column mt-3 ms-3">
+                        <p class="fs-3 text-secondary fw-semibold">Akun Karya Budaya {{ $paket }} <span class="text-dark fw-semibold">(permanent)</span></p>
+                    </div> 
                 </div>
-            </div>  
-            <div class="offset-4 col-6 backReport2 position-absolute">
-                <img src="{{ asset('storage') }}/upload/premium.png" class="back-img2 img-fluid mt-5" alt="">
+                <div class="d-flex border-bottom border-light border-opacity-25 ms-3">
+                    <i class="bi bi-calendar text-light fs-5 mt-3 ms-3"></i> 
+                    <div class="d-flex flex-column mt-3 ms-3">
+                        <p class="fs-5 text-light mb-0"> Tanggal: </p>
+                        <p class="fs-3 text-secondary fw-semibold">Halo {{ Auth::user()->username }}</p>
+                        <p class="fs-5 text-secondary fw-normal">Terima kasih karena kamu telah melakukan pembayaran sebesar <span class="text-dark fw-semibold">
+                            Rp 50.000,- <br></span> Kepada Karya Budaya. ( <span style = " color : #982727" class="fw-semibold">karyaBudaya@sunib.ac.id</span> )</p>
+                    </div> 
+                </div>
+                <div class="d-flex border-bottom border-dark border-opacity-25 ms-3">
+                    <i class="bi bi-person-circle text-light fs-5 mt-3 ms-3"></i> 
+                    <div class="d-flex flex-column mt-3 ms-3">
+                        <p class="fs-5 text-secondary mb-0"> Nama Pemilik Kartu: {{ $data['namaKartu'] }}</p>
+                        <p class="fs-5 text-secondary fw-normal">Akunmu akan terupgrade sesuai dengan pembayaran yang telah dilakukan, <br>
+                        dan ini akan memakan beberapa waktu.</p>
+                    </div> 
+                </div>
+                <div class="d-flex justify-content-between ms-3 mt-3 mb-5">
+                    <p style = "color : #982727" class="fs-5 fw-bold mb-0 ms-3"> www.karya budaya.com</p>
+                    <p class="fs-5 text-end text-dark fw-semibold me-3">ID Akun: {{ Auth::id() }}</p>
+                </div>
             </div>
         </div>
     </div>
+      
       <script src="./js/Home/payment.js"></script>
 </body>
 </html>
