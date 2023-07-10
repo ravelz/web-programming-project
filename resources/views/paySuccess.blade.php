@@ -30,9 +30,9 @@
        }
     </style>
 <body class="krem">
-    <div class="row d-flex krem report-container rounded">
-        <div class="offset-1 col-10 row rounded">
-            <div class="col-5 kaRed d-flex flex-column rounded">
+    <div class="row d-flex krem report-container ">
+        <div class="offset-1 col-10 row">
+            <div class="col-5 kaRed d-flex flex-column rounded-start">
                 <div class="d-flex flex-column align-items-center border-bottom border-light border-opacity-25 ms-3">
                     <p class="display-6 text-light mt-3 fw-bold"> LAPORAN PEMBAYARAN</p>
                     <img width="250px" height="250px" class="img-fluid bg-light p-3 mb-4 " src="{{ asset('storage') }}/upload/LOGO WEB.png" alt="">
@@ -62,11 +62,11 @@
                     <i class="bi bi-envelope-at text-light fs-5 mt-3 ms-3"></i> 
                     <div class="d-flex flex-column mt-3 ms-3">
                         <p class="fs-5 text-light mb-0"> Email: </p>
-                        <p class="fs-5 text-light fw-semibold">stevenmatthew@binus.ac.id</p>
+                        <p class="fs-5 text-light fw-semibold">stevenmatthew@sunib.ac.id</p>
                     </div> 
                 </div>
             </div>
-            <div class="col-7 bg-light rounded">
+            <div class="col-7 bg-light rounded-end">
                 <div class="d-flex justify-content-between border-bottom border-dark border-opacity-25 ms-3 align-items-center">
                     <img width="160px" height="150px" class="img-fluid bg-light" src="{{ asset('storage') }}/upload/bca2.png" alt="">
                     <p class="text-secondary mt-3 ms-3 fw-normal fs-5 me-3"> 12 Maret 2023 | 09:30:25  </p>
@@ -82,8 +82,8 @@
                     <div class="d-flex flex-column mt-3 ms-3">
                         <p class="fs-5 text-light mb-0"> Tanggal: </p>
                         <p class="fs-3 text-secondary fw-semibold">Halo Username</p>
-                        <p class="fs-5 text-secondary fw-normal"> telah melakukan pembayaran sebesar <span class="text-dark fw-semibold">
-                            Rp 50.000,- <br></span> Kepada Karya Budaya. ( <span style = " color : #982727" class="fw-semibold">karyaBudaya@Binus.ac.id</span> )</p>
+                        <p class="fs-5 text-secondary fw-normal">Terima kasih karena kamu telah melakukan pembayaran sebesar <span class="text-dark fw-semibold">
+                            Rp 50.000,- <br></span> Kepada Karya Budaya. ( <span style = " color : #982727" class="fw-semibold">karyaBudaya@sunib.ac.id</span> )</p>
                     </div> 
                 </div>
                 <div class="d-flex border-bottom border-dark border-opacity-25 ms-3">
@@ -91,7 +91,7 @@
                     <div class="d-flex flex-column mt-3 ms-3">
                         <p class="fs-5 text-light mb-0"> Nama Pemilik Kartu: </p>
                         <p class="fs-5 text-secondary fw-normal">Akunmu akan terupgrade sesuai dengan pembayaran yang telah dilakukan, <br>
-                        dan tunggu sebentar saja.</p>
+                        dan ini akan memakan beberapa waktu.</p>
                     </div> 
                 </div>
                 <div class="d-flex justify-content-between ms-3 mt-3 mb-5">
