@@ -59,6 +59,9 @@
                             </filter>
                         </defs>
                     </svg>
+                    <div class="social-btn-sp">
+                        <div class="social-btn-sp"> {!!$share!!} </div>
+                    </div>
                 </div>
             </div>
 
