@@ -34,7 +34,7 @@
         overflow: hidden;
     }
 </style>
-<body>
+<body class="vh-100">
     <div class="container-fluid gx-0 overflow-none">
         <div class="bg-light container d-flex flex-column method-card shadow shadow-lg rounded ">
             <p class="h1 pay-tit fw-bold judul-ikuti mt-5 ms-5">Pembayaran</p>
@@ -47,9 +47,9 @@
             </div>
         </div>
         {{-- =============MODAL============ --}}
-        <x-payment-modal methodId="1"></x-payment-modal>
-        <x-payment-modal methodId="2"></x-payment-modal>    
-        <x-payment-modal methodId="3"></x-payment-modal> 
+        <x-payment-modal methodId="1" :role="$role" :paket="$paket"></x-payment-modal>
+        <x-payment-modal methodId="2" :role="$role" :paket="$paket"></x-payment-modal>    
+        <x-payment-modal methodId="3" :role="$role" :paket="$paket"></x-payment-modal> 
         
     </div>          
     <script src="{{ url('js/Home/payment.js') }}"></script>

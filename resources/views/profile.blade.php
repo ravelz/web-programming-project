@@ -60,12 +60,18 @@ if($profile[0]->id_article == null){
             </div>
 
 
-            @if ($profile[0]->role != 2)
+            @if ($profile[0]->role == 1)
             <button type="button" id = "status-berlangganan" class="btn btn-danger text-nowrap ms-2 mt-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"  data-bs-toggle="modal" data-bs-target="#exampleModal4"><span class="tulisan-status-berlangganan text-wrap">
-                Status Berlangganan: Tidak aktif</span></button>
+                Status Berlangganan: Rungkad</span></button>
             @elseif ($profile[0]->role == 2)
             <button type="button" id = "status-berlangganan" class="btn btn-success text-nowrap ms-2 mt-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"  data-bs-toggle="modal" data-bs-target="#exampleModal4"><span class="tulisan-status-berlangganan text-wrap">
-                Status Berlangganan: Aktif</span></button>
+                Status Berlangganan: Maxwin</span></button>
+            @elseif ($profile[0]->role == 3)
+            <button type="button" id = "status-berlangganan" class="btn btn-success text-nowrap ms-2 mt-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"  data-bs-toggle="modal" data-bs-target="#exampleModal4"><span class="tulisan-status-berlangganan text-wrap">
+                Status Berlangganan: Scatter</span></button>
+            @elseif ($profile[0]->role == 4)
+            <button type="button" id = "status-berlangganan" class="btn btn-success text-nowrap ms-2 mt-3 col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"  data-bs-toggle="modal" data-bs-target="#exampleModal4"><span class="tulisan-status-berlangganan text-wrap">
+                Status Berlangganan: Gacor</span></button>
             @endif
             <x-show-benefit></x-show-benefit>
             @if (Auth::user()->username == $username)
@@ -97,9 +103,11 @@ if($profile[0]->id_article == null){
                         <li class="nav-item me-2" role="presentation">
                           <button style = "color:black" class="nav-link active fw-semibold" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Artikelmu</button>
                         </li>
+                        @if (Auth::user()->username == $username)
                         <li class="nav-item me-2" role="presentation">
                           <button style = "color:black" class="nav-link fw-normal fw-semibold" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Markah</button>
                         </li>
+                        @endif
                         <li class="nav-item me-2" role="presentation">
                           <button style = "color:black" class="nav-link fw-normal fw-semibold" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Pengikut</button>
                         </li>
@@ -118,6 +126,7 @@ if($profile[0]->id_article == null){
                             
                         @endfor
                     </div>
+                    @if (Auth::user()->username == $username)
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
                         @for ($i = 0; $i < $bookmarkCount; $i++)
                             @if ($bookmark[$i]->id_article != null)
@@ -127,6 +136,7 @@ if($profile[0]->id_article == null){
                             
                         @endfor
                     </div>
+                    @endif
                     <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
                         <div class="row d-flex flexwrap justify-content-between">
                             @foreach ($follower as $a)

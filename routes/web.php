@@ -74,17 +74,13 @@ Route::middleware([User::class])->group(function () {
     Route::post('/profile', [ProfileController::class, 'changePassword'])->name('changePassword');
 
 
-    Route::get('/payment/{role}', [PaymentController::class, 'index'])->name('payment');
+    Route::get('/payment/{role}/{paket}', [PaymentController::class, 'index'])->name('payment');
     
-    Route::get('/paySuccess', function () {
-        return view('paySuccess');
-    })->name('paySuccess');
+    Route::post('/paySuccess/{role}/{paket}', [PaymentController::class, 'paySuccess'])->name('paySuccess');
     
     Route::get('/visitProfile', function () {
         return view('visitProfile');
     });
 
-    Route::get('/subsType', function () {
-        return view('subsType');
-    })->name("subsType");
+    Route::get('/subsType', [PaymentController::class, 'subsType'])->name("subsType");
 });
