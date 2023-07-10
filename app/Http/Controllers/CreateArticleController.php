@@ -117,6 +117,12 @@ class CreateArticleController extends Controller
             }
         }
 
+        if($request->has('membership')){
+            $members = 2;
+        }else{
+            $members = 1;
+        }
+
         $image = $request->file('Thumbnail');
         $imageName = $request->Judul.'.'.$image->getClientOriginalExtension();
         $moveImg = Storage::disk('public')->putFileAs('uploads/', $image, $imageName);
@@ -130,7 +136,7 @@ class CreateArticleController extends Controller
                 'tgl_publish' => Carbon::now()->toDateTimeString(),
                 'jml_comment' => 0,
                 'id_user' => $user,
-                'membership' => 1,
+                'membership' => $members,
                 'deskripsi' => $deskripsi,
                 'jml_like' => 0 ,
                 'thumbnail' => $imageName
