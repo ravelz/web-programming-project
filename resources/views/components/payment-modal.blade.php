@@ -1,19 +1,19 @@
 @php
-    if ($methodId== 1 ) {
-        $method = "bca2.png";
+    if ($methodId == 1 ) {
+        $method = "bca.jpg";
         $methods = "BCA Payment";
     } elseif ($methodId == 2) {
-        $method = "paypal.png";
+        $method = "paypal.jpg";
         $methods = "Paypal Payment";
     } else {
-        $method = "visaFix.png";
+        $method = "visa.jpg";
         $methods = "Visa Payment";
     }
 @endphp
 
 {{-- =============MODAL 1============ --}} 
 
-<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal{{ $methodId }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <form method="POST" action="{{ route('paySuccess', ['role'=>$role, 'paket'=>$paket]) }}" enctype="multipart/form-data">
@@ -23,8 +23,9 @@
                     <img class="modal-logo" src="{{ asset('storage/LOGO WEB.png') }}" alt="">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <h1 class="modal-title fs-3 fw-bold ms-auto me-auto" id="exampleModalLabel">{{$methods}}</h1>
-                <img class="modal-logo ms-auto me-auto mt-2 border border-dark border-opacity-25 p-3" src="{{ asset('storage') }}/{{$method}}" alt=""height = "150px" width="160px">
+                <h1 class="modal-title fs-3 fw-bold ms-auto me-auto" id="exampleModalLabel">
+                    {{$methods}}</h1>
+                <img class="modal-logo ms-auto me-auto mt-2 border border-dark border-opacity-25 p-3" src="{{ asset("storage/$method") }}" alt=""height = "150px" width="160px">
                 <div class="modal-body text-start">
                     {{-- ========ISI MODAL======== --}}
                     <div class="row">
@@ -68,9 +69,6 @@
                             <input id="noKartu" name="noKartu" class="form-control" placeholder="xxxx-xxxx-xxxx-xxxx">
                         </div>
                     </div>
-                    <button type="submit" id="klik-bayar1" class="btn btn-danger klik-bayar">
-                        <span class="bayarCuy fs-5">Bayar</span>
-                    </button>
                 </div>
                 
                 <div class="modal-footer d-flex flex-column">                    

@@ -33,13 +33,13 @@
 @php
     use Carbon\Carbon;
     if ($data['methodId']== 1 ) {
-        $data['method'] = "bca2.png";
+        $data['method'] = "bca.jpg";
         $data['methods'] = "BCA Payment";
     } elseif ($data['methodId'] == 2) {
-        $data['method'] = "paypal.png";
+        $data['method'] = "paypal.jpg";
         $data['methods'] = "Paypal Payment";
     } else {
-        $data['method'] = "visaFix.png";
+        $data['method'] = "visa.jpg";
         $data['methods'] = "Visa Payment";
     }
 @endphp
@@ -89,7 +89,7 @@
             </div>
             <div class="col-7 bg-light rounded-end">
                 <div class="d-flex justify-content-between border-bottom border-dark border-opacity-25 ms-3 align-items-center">
-                    <img width="160px" height="150px" class="img-fluid bg-light" src="{{ asset('storage') }}/bca2.png" alt="">
+                    <img width="160px" height="150px" class="img-fluid bg-light" src="{{ asset('storage/'.$data['method']) }}" alt="">
                     <p class="text-secondary mt-3 ms-3 fw-normal fs-5 me-3">{{ Carbon::now()->format('Y-m-d | H:i:s') }}   </p>
                 </div>
                 <div class="d-flex border-bottom border-dark border-opacity-25 ms-3">
@@ -110,7 +110,7 @@
                 <div class="d-flex border-bottom border-dark border-opacity-25 ms-3">
                     <i class="bi bi-person-circle text-light fs-5 mt-3 ms-3"></i> 
                     <div class="d-flex flex-column mt-3 ms-3">
-                        <p class="fs-5 text-secondary mb-0"> Nama Pemilik Kartu: {{ $data['methods'] }}</p>
+                        <p class="fs-5 text-secondary mb-0"> Nama Pemilik Kartu: {{ $data['namaKartu'] }}</p>
                         <p class="fs-5 text-secondary fw-normal">Akunmu akan terupgrade sesuai dengan pembayaran yang telah dilakukan, <br>
                         dan ini akan memakan beberapa waktu.</p>
                     </div> 

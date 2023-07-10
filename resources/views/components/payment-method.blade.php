@@ -1,21 +1,21 @@
 @php
     if ($payId == 1 ) {
-        $method = "bca2.png";
+        $method = "bca.jpg";
         $methods = "BCA Payment";
     } elseif ($payId == 2) {
-        $method = "paypal.png";
+        $method = "paypal.jpg";
         $methods = "Paypal Payment";
     } else {
-        $method = "visaFix.png";
+        $method = "visa.jpg";
         $methods = "Visa Payment";
     }
 @endphp
 
 {{-- ======PAYMENT METHOD 1======== --}}
 
-<div class="payMethod border border-5" data-bs-toggle="modal" data-bs-target="#exampleModal1" >
+<div class="payMethod border border-5" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $payId }}">
     <label class="form-check-label" for={{$radioCheck}}>
-        <img class="img-fluid" src="{{asset('storage')}}/upload/{{$method}}"alt="">
+        <img class="img-fluid" src="{{asset('storage')}}/{{$method}}"alt="">
         <div class="form-check">
             <input class="form-check-input ms-auto me-auto" type="radio" name="flexRadioDefault" id="{{ $radioCheck }}"><span class="fw-semibold text-nowrap pay-mets pt-2 pe-3">{{ $methods }}</span>
         </div>
