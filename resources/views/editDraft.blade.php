@@ -49,6 +49,7 @@
 
 </style>
 <body>
+    @foreach ($draft as $draft)
     <form method="POST" enctype="multipart/form-data">
         @csrf
         <div class="my-div" style="position: relative; height: 100vh;">
@@ -64,14 +65,14 @@
                 <div style="width: 100%;">
                     <div class="mb-3 text-start align-items-lg-center">
                         <label for="Judul" class="form-label fw-bold" style="font-size: 20px;">Judul</label>
-                        <input type="text" value="{{old('Judul')}}" name="Judul" class="form-control rounded @error('Judul') is-invalid @enderror border" id="Judul" style="background-color: #ffffff; width: 100%;" placeholder="Tulis judul artikelmu">
+                        <input type="text" value="{{ $draft->judul }}" name="Judul" class="form-control rounded @error('Judul') is-invalid @enderror border" id="Judul" style="background-color: #ffffff; width: 100%;" placeholder="Tulis judul artikelmu">
                         @error('Judul')
                             <div class="text-danger"> {{$message}} </div>
                         @enderror
                     </div>
                     <div class="mb-3">
                         <label for="Thumbnail" class="form-label" style="margin-top: 10px">Thumbnail</label>
-                        <input value="{{old('Thumbnail')}}" class="form-control @error('Thumbnail') is-invalid @enderror" type="file" name="Thumbnail" id="Thumbnail">
+                        <input value="<?php echo $draft->thumbnail;?>" class="form-control @error('Thumbnail') is-invalid @enderror" type="file" name="Thumbnail" id="Thumbnail">
                         @error('Thumbnail')
                             <div class="text-danger"> {{$message}} </div>
                         @enderror
@@ -83,7 +84,7 @@
                                 <th>Action</th>    
                             </tr>
                             <tr>
-                                <td><input value="{{old('Tag')}}" type="text" name="Tag" id="Tag" placeholder="Tambahkan tag artikel" class="form-control @error('Tag') is-invalid @enderror" multiple="multiple"></td>
+                                <td><input value="{{$draft->tag}}" type="text" name="Tag" id="Tag" placeholder="Tambahkan tag artikel" class="form-control @error('Tag') is-invalid @enderror" multiple="multiple"></td>
                             </tr>
                             @error('Tag')
                             <div class="text-danger"> {{$message}} </div>
@@ -93,19 +94,21 @@
                     <div class="mb-3">
                         <label for="deskripsi" class="form-label fw-bold" style="font-size: 20px;">Apa Ceritamu?</label>
                         <div style="border: 2px solid black; background-color: #F5EFEF;">
-                            <textarea name="deskripsi" class="deskripsi form-control rounded" id="deskripsi" cols="70" rows="1000" style="background-color: #F5EFEF; border: none; width: 100%;">{{old('deskripsi')}}</textarea>
+                            <textarea name="deskripsi" class="deskripsi form-control rounded" id="deskripsi" cols="70" rows="1000" style="background-color: #F5EFEF; border: none; width: 100%;">{{$draft->deskripsi}}</textarea>
                         </div>
                     </div>
                     <div class="text-end mt-5">
                         <button type="submit" class="btn btn-post fs-5 fw-semibold" formaction="{{ route('store')}}">Posting</button>
                     </div>
                     <div class="text-end mt-5">
-                        <button type="submit" class="btn btn-post fs-5 fw-semibold" formaction="{{ route('draft')}}">Draft</button>
+                        <button type="submit" class="btn btn-post fs-5 fw-semibold" formaction="{{ route('updatedraft', ['id'=>$draft->id_draft])}}">Simpan</button>
                     </div>
                 </form>
             </div>
         </div>
     </form>
+        
+    @endforeach
 
     <script>
         ClassicEditor
@@ -146,5 +149,6 @@
             $('#Tag').tokenfield();
         })
     </script>
+
 </body>
 </html>

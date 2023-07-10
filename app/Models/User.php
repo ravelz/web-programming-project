@@ -100,5 +100,7 @@ class User extends Authenticatable
         return  !! $this->followers()->where('id_user_m', $user);
     }
 
-    
+    public function draftArticle(){
+        return $this->belongsToMany(Draft::class, 'id_user', 'id_user');
+    }    
 }

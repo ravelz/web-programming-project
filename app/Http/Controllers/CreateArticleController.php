@@ -10,6 +10,7 @@ use App\Models\Article;
 use App\Models\DetailTag;
 use App\Models\Tag;
 use App\Models\Bookmark;
+use App\Models\Draft;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -91,10 +92,6 @@ class CreateArticleController extends Controller
             $key = Str::lower($key);
             $key = trim($key);
         }
-
-        // foreach($converted as &$key){
-        //     $key = trim($key);
-        // }
 
         //CEK SEMUA INPUT APAKAH UDH EXIST DI TAG
         $array = [];
@@ -201,12 +198,7 @@ class CreateArticleController extends Controller
                         URL::current(),
                         $read[0]->judul
                     )
-                    ->facebook()
-                    ->twitter()
-                    ->linkedin()
-                    ->telegram()
-                    ->whatsapp()
-                  ;
+                    ->facebook();
                   
         return view('article', [
             'read'=>$read[0], 
@@ -229,6 +221,77 @@ class CreateArticleController extends Controller
             return back()->withErrors(['msg' => 'Article sudah ada di bookmark!']);
         }
         return back()->withErrors(['msg' => 'Bookmark berhasil ditambahkan']);;
+    }
+
+    public function draft(Request $request){
+        $user = Auth::User()->id_user;
+
+        $last_id_draft =  Draft::select('id_draft')->orderBy('id_draft', 'desc')->count();
+        $draft = (int)substr($last_id_draft, -3);
+
+        if($draft == 0){
+            $idDraft = "D001";
+        }else{
+            $idDraft = 'D'.str_pad($draft+1, 3, '0', STR_PAD_LEFT);
+        }
+
+        $image = $request->file('Thumbnail');
+        $imageName = $request->Judul.'.'.$image->getClientOriginalExtension();
+        $moveImg = Storage::disk('public')->putFileAs('uploads/', $image, $imageName);
+
+        $rules1 = [
+            'Judul' => 'required',
+            'Thumbnail' => 'nullable|image|mimes:jpg,jpeg,png',
+            'Tag' => 'nullable',
+            'deskripsi' => 'nullable'
+        ];  
+
+        $message1 = [
+            'required' => ':attribute wajib diisi',
+            'min' => 'Jumlah minimal :attribute adalah :min',
+            'mimes' => 'Format :attribute harus JPG,JPEG, atau PNG '    
+        ];
+
+        $validator = Validator::make($request->all(), $rules1, $message1);
+
+        if($validator->fails()){
+            return redirect()->back()->withInput()->withErrors($validator);
+        }else{
+            $article = Draft::create([
+                'id_draft' => $idDraft,
+                'judul' => $request->Judul,
+                'id_user' => $user,
+                'deskripsi' => $request->deskripsi,
+                'thumbnail' => $imageName,
+                'tag' => $request->Tag
+            ]);
+        }
+
+        $dataDraft = DB::table('drafts')
+                    ->where('drafts.id_user', '=', $user)
+                    ->get();
+
+        $dataDraft = $this->getDifferenceDate1($dataDraft);
+        // dd($dataDraft);
+        return view('listdraft', ['dataDraft'=>$dataDraft]);
+    }
+
+    public function getDifferenceDate1($collections){
+        foreach ($collections as $collection) {
+            $collection->deskripsi = Str::limit($collection->deskripsi, 150);
+            $collection->differenceDate = Carbon::now()->diffInDays(Carbon::parse($collection->created_at));
+        }
+        return $collections;
+    }
+
+    public function listDraft(){
+        $user = Auth::User()->id_user;
+        $dataDraft = DB::table('drafts')
+                    ->where('drafts.id_user', '=', $user)
+                    ->get();
+
+        $dataDraft = $this->getDifferenceDate1($dataDraft);
+        return view('listDraft', ['dataDraft'=>$dataDraft]);
     }
 
 }
