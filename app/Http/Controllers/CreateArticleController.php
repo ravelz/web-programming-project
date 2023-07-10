@@ -196,7 +196,9 @@ class CreateArticleController extends Controller
                         URL::current(),
                         $read[0]->judul
                     )
-                    ->facebook();
+                    ->facebook()
+                    ->whatsapp()
+                    ->twitter();
                   
         return view('article', [
             'read'=>$read[0], 

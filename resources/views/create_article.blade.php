@@ -38,9 +38,7 @@
   }
 
   .background-image{
-    background: rgb(152,39,39);
-    background: linear-gradient(59deg, rgba(152,39,39,1) 45%, rgba(255,255,255,1) 100%);
-    /* background-image: url('https://images.unsplash.com/photo-1571235908642-0459c9475ac3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'); */
+    background-image: url('https://images.unsplash.com/photo-1571235908642-0459c9475ac3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
   }
 
   .text-rubik{
@@ -55,11 +53,11 @@
             <div class="background-image" style=" background-size: cover; background-position: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;"></div>
             <div class="container d-flex flex-column rounded" style="position: relative; height: 90vh; max-width: 1200px; margin: auto; background-color: #F5EFEF; padding: 50px; overflow: hidden; top: 5vh; overflow:scroll">
                 <div class="d-flex justify-content-between border-bottom border-dark border-opacity-25">
-                    <p class="h1 fw-semibold text-center text-rubik pb-3">TULIS ARTIKEL</p>
+                    <img src="{{ asset('images/logo.png') }}" class="mb-5 mt-2" style="width:150px">
+                    <p class="h1 fw-semibold text-rubik pb-3">TULIS ARTIKEL</p>
                     <a href = "{{ route('home') }}" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
                 </div>
                 <div class="mt-3 text-center">
-                    <img src="{{ asset('images/logo.png') }}" class="mb-5 mt-2" style="max-height: 130px; max-width: 100%;">
                 </div>
                 <div style="width: 100%;">
                     <div class="mb-3 text-start align-items-lg-center">

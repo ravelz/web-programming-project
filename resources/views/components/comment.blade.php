@@ -8,7 +8,7 @@
                         <h5 style="font-family: Poppins, sans-serif;font-weight: 600; margin-left: 15px; padding-top: 10px"> {{ Auth::user()->name }} </h5>
                     </div>
                 </div>
-                <div class="row" style="padding-top: 10px">
+                <div class="row" style="padding-top: 10px; margin-bottom: 5px">
                     <h6 style="font-family: Poppins, sans-serif; padding-top: 10px"> {{$comment->comment}} </h6>
                 </div>
             </div>
