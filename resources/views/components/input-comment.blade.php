@@ -5,7 +5,7 @@
             <div style="background-color:#F5F0F0; padding: 20px;" class="d-flex row">      
                 <div class="row">
                     <div style="display: flex; align-items:center">
-                        <img class="img-fluid" src="{{ asset('images/fotoProfil.jpeg') }}" style= "width: 50px;height: 50px;border-radius: 100%;float:left;" alt="">
+                        <img class="img-fluid" src="{{ asset('storage/'.Auth::user()->profile_picture) }}" style= "width: 50px;height: 50px;border-radius: 100%;float:left;" alt="">
                         <h5 style="font-family: Poppins, sans-serif;font-weight: 600; margin-left: 15px; padding-top: 10px"> 
                             {{Auth::user()->name}} 
                         </h5>

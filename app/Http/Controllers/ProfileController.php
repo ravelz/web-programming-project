@@ -108,16 +108,18 @@ class ProfileController extends Controller
     }
     public function getBookmark($username){
         try{
-            $profile = DB::table('users')
-            ->where('users.username', '=', $username)
-            ->select('username', 'profile_picture', 'name','users.name as authorName', 'role','membership', 'articles.*','detailtags.*', 'tags.*', DB::raw("GROUP_CONCAT(tags.title_tag SEPARATOR ', ') as title_group"))
-            // left join `bookmarks` on users.id_user = bookmarks.id_user
-            ->leftjoin('bookmarks', 'users.id_user', '=', 'bookmarks.id_user')
+            $profile = DB::table('users as u')
+            ->where('u.username', '=', $username)
+            ->select('u1.username', 'u1.profile_picture', 'u.name','u1.name as authorName', 'u.role','membership', 'articles.*','detailtags.*', 'tags.*', DB::raw("GROUP_CONCAT(tags.title_tag SEPARATOR ', ') as title_group"))
+            // left join `bookmarks` on u.id_user = bookmarks.id_user
+            ->leftjoin('bookmarks', 'u.id_user', '=', 'bookmarks.id_user')
             ->leftjoin('articles', 'bookmarks.id_article', '=', 'articles.id_article')
             ->leftjoin('detailtags', 'detailtags.id_article', '=', 'articles.id_article')
             ->leftjoin('tags', 'tags.id_tag', '=', 'detailtags.id_tag')
+            ->leftjoin('users as u1', 'articles.id_user', '=', 'u1.id_user')
             ->groupBy('articles.id_article')
             // ->toSql();
+            // ->paginate(10);
             ->get();
             // dd($profile);
             $profile = $this->getDifferenceDate($profile);
@@ -127,6 +129,19 @@ class ProfileController extends Controller
         }
 
         return $profile;
+
+    }
+
+    public function follow($id){
+        $user = User::find($id);
+        $user->followers()->attach(Auth::id());
+        return back()->withErrors(['msg' => 'The Message']);
+    }
+
+    public function unFollow($id){
+        $user = User::find($id);
+        $user->followers()->detach(Auth::id());
+        return back()->withErrors(['msg' => 'The Message']);
 
     }
 

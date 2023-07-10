@@ -146,7 +146,17 @@ class HomeController extends Controller
         // ]);
         $user = User::find($id);
         $user->followers()->attach(Auth::id());
-        return back()->withErrors(['msg' => 'The Message']);;
+        return back()->withErrors(['msg' => 'Pengguna berhasil diikuti!']);;
+    }
+    public function unfollow($id){
+        // dd($id);
+        // $follow = Follower::create([
+        //     'id_user_f' => $id,
+        //     'id_user_m' => Auth::id()
+        // ]);
+        $user = User::find($id);
+        $user->followers()->detach(Auth::id());
+        return back()->withErrors(['msg' => 'Pengguna berhasil berhenti diikuti!']);;
     }
     
     public function index()
