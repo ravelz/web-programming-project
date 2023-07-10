@@ -7,10 +7,14 @@
     </div>
 @endif
 <head>
-    <title>Karya Budaya | Home</title>   
+    <title>Karya Budaya | Home</title>  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> 
     <!--Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!--CSS -->
+
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/style.css') }}" />
 
     {{-- Glide --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@^3.4.1/dist/css/glide.core.min.css">
@@ -68,7 +72,7 @@
                     </div>
                     <!-- ========CARD DIIKUTI======= -->
                     <div class="row p-0 m-0">
-                        <div class="col glide d-flex flex-column justify-content-center">
+                        <div class="col-12 glide d-flex flex-column justify-content-center">
                             <div class="d-flex flex-row " data-glide-el="controls">
                                 <button class="glide__arrow--prev rounded btn" type="button" data-glide-dir="<">
                                     <img src="https://www.upgrad.com/__khugblog-next/image/?url=%2F__khugblog-next%2F_next%2Fstatic%2Fmedia%2Fleft-vector.becdf374.png&w=32&q=75" alt="">
@@ -96,7 +100,7 @@
                                 startAt: 1,
                                 perView: 4,
                                 gap: 16,
-                                autoplay: 5000,
+                                autoplay: 3000,
                                 hoverpause: true,
                                 focusAt: 0,  // set focus on the center slide
                             }).mount();
@@ -142,7 +146,7 @@
                                         <div class="mx-2">
                                             <h1 id = "top-name" class = "nama-ikuti" >{{ $author->name }}</h1>
                                             <div class="kotak-tulisan"> 
-                                                <p id = "top-desc" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, eum.</p>
+                                                <p id = "top-desc" >{{ Str::limit($author->aboutme, 100) }}</p>
                                             </div>
                                         </div>
                                     </a>
@@ -152,10 +156,10 @@
                                 </div>
                             @endforeach
                             @endauth
-                            <!-- Button trigger modal -->
+                            {{-- <!-- Button trigger modal -->
                             <div style="margin-top : 12px; padding-left:24px; padding-bottom:32px;">
                                 <a style="color: #5E5D2D; font-size:16px; font-weight:400; font-family:'Rubik', sans-serif;" data-bs-toggle="modal" data-bs-target="#exampleModal">Lihat lebih banyak saran...</a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <!-- ========TOP TOPIC======= -->

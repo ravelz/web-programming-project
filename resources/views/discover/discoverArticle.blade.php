@@ -66,12 +66,27 @@
                     <div>
                         <h2 class="mb-2">Ikuti juga</h2>
                         @foreach ($authors as $author)
-                            <x-author-item :author="$author"/>
+                            <div id = side-top class="d-flex flex-row justify-content-between">
+                                <a href="{{ route('profile', ['username' => $author->username]) }}" class="d-flex flex-row justify-content-between text-decoration-none text-black">
+                                    <div class="ikuti-img">
+                                        <img id = "top-img" src="{{ asset('storage/'.$author->profile_picture) }}" class="rounded-circle " alt="..." width="47px" height="47px">
+                                    </div>
+                                    <div class="mx-2">
+                                        <h1 id = "top-name" class = "nama-ikuti" >{{ $author->name }}</h1>
+                                        <div class="kotak-tulisan"> 
+                                            <p id = "top-desc" >{{ Str::limit($author->aboutme, 100) }}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="p-0 m-0">
+                                    <a type="submit" value="send" class="btn btn-outline-secondary" style="color: black; border-radius: 20px;" href="{{ route('follow', ['id' => $author->id_user]) }}">Follow</a>
+                                </div>
+                            </div>
                         @endforeach
-                        <!-- Button trigger modal -->
+                        {{-- <!-- Button trigger modal -->
                         <div class="ps-2">
                             <a style="color: #5E5D2D; font-size:16px; font-weight:400; font-family:'Rubik', sans-serif;" data-bs-toggle="modal" data-bs-target="#exampleModal">Lihat lebih banyak saran...</a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 

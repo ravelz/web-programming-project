@@ -1,14 +1,20 @@
 <div id="card-kecil">
     <div class="card" style="height:auto; border-radius: 0px;">
         @if ($article->thumbnail == null)
-                <img id = "pic-small" src="{{asset('storage')}}/public/uploads/karyabudaya.png" class="img-fluid" alt="..." style="height:100%; width:100%; object-fit:cover;" >
+                <img id = "pic-small" src="{{asset('storage')}}/hakim.jpg" class="img-fluid" alt="..." style="height:100%; width:100%; object-fit:cover;" >
             @else 
-                <img id = "pic-small" src="{{asset('storage')}}/public/uploads/{{$article->thumbnail}}" class="img-fluid" alt="..." style="height:100%; width:100%; object-fit:cover;" >
+                <img id = "pic-small" src="{{asset('storage')}}/uploads/{{$article->thumbnail}}" class="img-fluid" alt="..." style="height:100%; width:100%; object-fit:cover;" >
             @endif
         <div class="card-body">
         <div class="first-layer">
             <div class="kategori-waktu">
-                <p id="kategori-small" class="kategori text-break text-wrap">{{ $article->title_group }}</p>
+                <p id="kategori-small" class="kategori text-break text-wrap">
+                    @if ($article->membership == 2)
+                    Premium
+                    @else
+                        Gratis
+                    @endif
+                </p>
                 <p id ="waktu-small" class = "waktu text-wrap">{{ $article->differenceDate }} hari yang lalu</p>
             </div>
         </div>

@@ -14,7 +14,14 @@
             <div class="card-body follow-card-body" >
                 <div class="d-flex ">
                     <div class="me-auto">
-                        <h5 id = "profile-follow-cat" class="card-title p-2" >Budaya</h5>
+                        <h5 id = "profile-follow-cat" class="card-title p-2" >
+                            @if ($article->membership == 2)
+                                Premium
+                            @else
+                                Gratis
+                            @endif
+                            
+                        </h5>
                     </div>
                     <div>
                         <h5 id = "profile-follow-time"class="card-title" >{{ $article->differenceDate }} hari yang lalu</h5>

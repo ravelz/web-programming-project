@@ -3,7 +3,11 @@
         <h1> {{$dataArticle->judul}} </h1>
     </div>
     <div class="d-flex flex-row justify-content-center mb-4">
-        <img style="width:70%"src="{{asset('storage')}}/uploads/{{$dataArticle->thumbnail}}" alt="">
+        @if ($dataArticle->thumbnail == null)
+            <img style="width:70%"src="{{asset('storage')}}/hakim.jpg" alt="">
+        @else
+            <img style="width:70%"src="{{asset('storage')}}/uploads/{{$dataArticle->thumbnail}}" alt="">
+        @endif
     </div>
     {{-- @php
         dd($dataArticle)

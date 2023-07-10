@@ -34,7 +34,7 @@ $gatauPokoknyaIdUser = User::where('username', $username)->first()->id_user;
     <div class="row">
         {{-- ==============      KIRI    ============== --}}
         <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-2 offset-1" style="max-width: 500px">        
-            <img src="{{ asset("storage/".Auth::user()->profile_picture) }}" class="img rounded-circle profile border border-5 header-profile-img" alt="...">
+            <img src="{{ asset("storage/".$profile[0]->profile_picture) }}" class="img rounded-circle profile border border-5 header-profile-img" alt="...">
             <h1 class="prof-nama-pengguna text-black display-6 fw-bold ms-2 mt-3 text-wrap">{{ $profile[0]->name }}</h1>
             <p class="text-justify prof-sub-pengguna fw-light ms-2 fs-5 color-5E5D2D  text-wrap">{{ '@'.$profile[0]->username }}</p>
             <p class="text-wrap text-justify text-black-50 ms-2 desc-profile">{{$profile[0]->aboutme}}</p>
@@ -155,16 +155,37 @@ $gatauPokoknyaIdUser = User::where('username', $username)->first()->id_user;
                     </div>
                     @endif
                     <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
-                        <div class="row d-flex flexwrap justify-content-between">
-                            @foreach ($follower as $a)
-                                <x-author-item :author="$a"/>
+                        <div class="row d-flex flexwrap justify-content-start">
+                            @foreach ($follower as $author)
+                        
+                                <a href="{{ route('profile', ['username' => $author->username]) }}" class="d-flex flex-row col-4 text-decoration-none text-black">
+                                    <div class="ikuti-img">
+                                        <img id = "top-img" src="{{ asset('storage/'.$author->profile_picture) }}" class="rounded-circle " alt="..." width="75px" height="75px">
+                                    </div>
+                                    <div class="mx-2">
+                                        <h1 id = "top-name" class = "nama-ikuti" >{{ $author->name }}</h1>
+                                        <div class="kotak-tulisan"> 
+                                            <p id = "top-desc" >{{ Str::limit($author->aboutme, 100) }}</p>
+                                        </div>
+                                    </div>
+                                </a>
                             @endforeach
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-following" role="tabpanel" aria-labelledby="pills-following-tab" tabindex="0">
-                        <div class="row d-flex flexwrap justify-content-between">
-                            @foreach ($following as $a)
-                                <x-author-item :author="$a"/>
+                        <div class="row d-flex flexwrap justify-content-start">
+                            @foreach ($following as $author)
+                            <a href="{{ route('profile', ['username' => $author->username]) }}" class="d-flex flex-row col-4 text-decoration-none text-black">
+                                <div class="ikuti-img">
+                                    <img id = "top-img" src="{{ asset('storage/'.$author->profile_picture) }}" class="rounded-circle " alt="..." width="75px" height="75px">
+                                </div>
+                                <div class="mx-2">
+                                    <h1 id = "top-name" class = "nama-ikuti" >{{ $author->name }}</h1>
+                                    <div class="kotak-tulisan"> 
+                                        <p id = "top-desc" >{{ Str::limit($author->aboutme, 100) }}</p>
+                                    </div>
+                                </div>
+                            </a>
                             @endforeach
                         </div>
                     </div>
