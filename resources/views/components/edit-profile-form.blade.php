@@ -21,20 +21,20 @@
               @enderror
             </div>
             <div class="mb-3">
-              <label for="recipient-name" class="col-form-label fw-semibold">Nama</label>
-              <input type="text" class="form-control" id="recipient-name" value="{{ $profile[0]->name }}">
+              <label for="name" class="col-form-label fw-semibold">Nama</label>
+              <input type="text" class="form-control" id="name" name="name" value="{{ $profile[0]->name }}">
             </div>
             <div class="mb-3">
-              <label for="recipient-name" class="col-form-label fw-semibold">Username</label>
-              <input type="text" class="form-control" id="recipient-name" value="{{ $profile[0]->username }}">
+              <label for="username" class="col-form-label fw-semibold">Username</label>
+              <input type="text" class="form-control" id="username" name="username" value="{{ $profile[0]->username }}">
             </div>
             <div class="mb-3">
-              <label for="message-text" class="col-form-label fw-semibold">Tentang saya<span class="text-secondary fw-normal"> </span></label>
-              <textarea class="form-control edit-deskripsi" id="message-text" >{{ $profile[0]->aboutme }}</textarea>
+              <label for="aboutme" class="col-form-label fw-semibold">Tentang saya<span class="text-secondary fw-normal"> </span></label>
+              <textarea class="form-control edit-deskripsi" id="aboutme" name="aboutme" >{{ $profile[0]->aboutme }}</textarea>
             </div>
             <div class="mb-3">
               <label for="password" class="col-form-label fw-semibold">Password Lama</label>
-              <input id="password" type="password" class="form-control" name="current_password">
+              <input id="password" type="password" class="form-control" name="current_password" autocomplete="current-password">
             </div>
             <div class="mb-3">
               <label for="new_password" class="col-form-label fw-semibold">Password Baru<span class="text-secondary fw-normal"> ( Jika ingin ganti password. . . . )</span></label>

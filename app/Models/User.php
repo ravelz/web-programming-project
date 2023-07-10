@@ -23,7 +23,7 @@ class User extends Authenticatable
         'id_user',
         'name',
         'username',
-        'deskripsi',
+        'aboutme',
         'profile_picture',
         'email',
         'password',

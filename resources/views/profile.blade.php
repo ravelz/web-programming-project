@@ -1,3 +1,9 @@
+@if($errors->any())
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <h4>{{$errors->first()}}</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
 @extends('layouts.app')
 @section('title', $profile[0]->name)
 @section('content')
