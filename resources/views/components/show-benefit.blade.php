@@ -5,7 +5,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <h1 class="modal-title fs-1 fw-bold ms-auto me-auto mt-3" id="exampleModalLabel">KEUNTUNGAN BERLANGGANAN</h1>
-            <img class="modal-logo-ben ms-auto me-auto p-3" src="{{ asset('storage') }}/upload/LOGO WEB.png" alt="">
+            <img class="modal-logo-ben ms-auto me-auto p-3" src="{{ asset('storage') }}/LOGO WEB.png" alt="">
             <div class="modal-body text-start">
                 {{-- ========ISI MODAL======== --}}
                 <div class="ms-auto me-auto isi-ben rounded">

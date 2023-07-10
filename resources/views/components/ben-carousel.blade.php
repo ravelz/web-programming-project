@@ -1,14 +1,14 @@
 <div class="carousel-inner benefit-container position-absolute">
     <div class="carousel-item active text-center mt-5">
-      <img src="{{ asset('storage') }}/upload/suc.png" class="ben-logo" alt="...">
+      <img src="{{ asset('storage') }}/suc.png" class="ben-logo" alt="...">
       <p class=" me-auto ms-auto ben-desc text-wrap text-light text-center align-middle mt-3 fw-semibold">Dengan subscribe, berarti anda telah berinvestasi untuk menambah wawasan berkualitas.</p>
     </div>
     <div class="carousel-item text-center mt-5">
-      <img src="{{ asset('storage') }}/upload/article.png" class="ben-logo" alt="...">
+      <img src="{{ asset('storage') }}/article.png" class="ben-logo" alt="...">
       <p class=" me-auto ms-auto ben-desc text-wrap text-light align-middle text-center mt-3 fw-semibold">Pengetahuan yang valid, dari article yang ditulis oleh penulis terverifikasi.</p>
     </div>
     <div class="carousel-item text-center mt-5">
-      <img src="{{ asset('storage') }}/upload/copywriter.png" class="ben-logo" alt="...">
+      <img src="{{ asset('storage') }}/copywriter.png" class="ben-logo" alt="...">
       <p class=" me-auto ms-auto ben-desc text-wrap text-light align-middle text-center mt-3 fw-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quas quaerat adipisci eos, voluptatem perspiciatis voluptatum corrupti exercitationem odio iure molestiae nobis totam illum distinctio blanditiis! Nemo ab eveniet asperiores.</p>
     </div>
   </div>

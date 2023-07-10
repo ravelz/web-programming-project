@@ -114,7 +114,7 @@
                 <div class="d-flex flex-column col-8">
                     <div class="row mt-2">
                         <div class="col-11 ikuti">
-                            <h3 class="judul-ikuti" style="padding-bottom: 32px">Artikel rekomendasi buat kamu</h3>
+                            <h3 class="judul-ikuti">Artikel rekomendasi buat kamu</h3>
                         </div>
                     </div>
                         <!-- ========BIG CARD======= -->
@@ -132,8 +132,8 @@
                 <div class="d-flex flex-column col-3 offset-1 border-start border-end px-3" >
                     <div class="d-flex flex-row">
                         <!-- ========TOP AUTHOR======= -->
-                        <div>
-                            <h2>Ikuti juga</h2>
+                        <div class="">
+                            <h2 class="fw-bold mb-5">Ikuti juga</h2>
                             @guest
                             @endguest
                             @auth
@@ -164,7 +164,7 @@
                     </div>
                     <!-- ========TOP TOPIC======= -->
                     <div class="top-topic">
-                        <h2>Topik yang direkomendasikan</h2>
+                        <h2 class="fw-bold">Topik yang direkomendasikan</h2>
                         <div>
                             <div class="tags d-flex flex-row flex-wrap" style="font-family:'Rubik',sans-serif; font-size:16px">
                                 @foreach ($tags as $tag)                                  

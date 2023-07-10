@@ -9,7 +9,7 @@
         <div class="row">
             <div class="d-flex flex-column col-3 border-start border-end" >
                 <div class="mb-5">
-                    <h2>Konten</h2>
+                    <h2 class="fw-bold">Konten</h2>
                     @if (Route::currentRouteName() == "rekomendasi")
                         @php
                             $titleKonten = Route::currentRouteName();
@@ -50,7 +50,7 @@
                 </div>
                 <!-- ========TOP TOPIC======= -->
                 <div class="top-topic">
-                    <h2>Topik yang direkomendasikan</h2>
+                    <h2 class="fw-bold">Topik yang direkomendasikan</h2>
                     <div>
                         <div class="tags d-flex flex-row flex-wrap" style="font-family:'Rubik',sans-serif; font-size:16px">
                             @foreach ($tags as $tag)

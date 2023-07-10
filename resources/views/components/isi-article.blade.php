@@ -1,6 +1,6 @@
 <div>
     <div class="bagBawah mx-auto d-flex flex-row justify-content-center" >
-        <h1> {{$dataArticle->judul}} </h1>
+        <h1 class="fw-bold"> {{$dataArticle->judul}} </h1>
     </div>
     <div class="d-flex flex-row justify-content-center mb-4">
         @if ($dataArticle->thumbnail == null)
@@ -14,9 +14,12 @@
     @endphp --}}
     @if ($dataArticle->membership == 2)
         @if (Auth::user()->role == 1 || Auth::user()->role == 2)
-            <div class="isiArtikel mb-4" style="filter:blur(8px)">
+            <div class="isiArtikel mb-4" style="filter:blur(4px)">
                 {!! $dataArticle->deskripsi !!}
             </div>
+            <a class="isiArtikel mb-4 text-center d-flex justify-content-center btn btn-success fs-5" href="{{ route('subsType') }}">
+                Upgrade sekarang
+            </a>
         @else
             <div class="isiArtikel mb-4">
                 {!! $dataArticle->deskripsi !!}
