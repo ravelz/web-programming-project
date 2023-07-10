@@ -122,7 +122,6 @@ class CreateArticleController extends Controller
         }else{
             $members = 1;
         }
-
         $image = $request->file('Thumbnail');
         $imageName = $request->Judul.'.'.$image->getClientOriginalExtension();
         $moveImg = Storage::disk('public')->putFileAs('uploads/', $image, $imageName);
