@@ -47,49 +47,32 @@
     font-family:'Rubik', sans-serif;
   }
 
-  .draft-btn{
-    color: #982727;
-    border-color :#982727;
-  }
-
-  .draft-btn{
-    color: #982727 !important;
-    border-color :#982727 !important;
-    background-color: white !important;
-  }
- 
-
 </style>
 <body>
+    @foreach ($draft as $draft)
     <form method="POST" enctype="multipart/form-data">
         @csrf
         <div class="my-div" style="position: relative; height: 100vh;">
             <div class="background-image" style=" background-size: cover; background-position: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;"></div>
- <div class="container d-flex flex-column rounded" style="position: relative; height: 90vh; max-width: 1200px; margin: auto; background-color: #F5EFEF; padding: 50px; overflow: hidden; top: 5vh; overflow:scroll">
+            <div class="container d-flex flex-column rounded" style="position: relative; height: 90vh; max-width: 1200px; margin: auto; background-color: #F5EFEF; padding: 50px; overflow: hidden; top: 5vh; overflow:scroll">
                 <div class="d-flex justify-content-between border-bottom border-dark border-opacity-25">
-                    <div class="d-flex justify-content-between ms-4">
-                        <a href = "{{ route('home') }}" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
-                        <div class="d-flex align-items-center ms-4">
-                            <img src="{{ asset('images/logo.png') }}" class="mb-4" style="max-height: 70px; max-width: 100%;">
-                            <p class="fs-5 fw-semibold text-center text-rubik ms-3">Tulis Artikelmu</p>
-                        </div>
-                    </div>   
-                    <div class="d-flex align-items-center ">
-                        <button type="submit" class="btn draft-btn border-3 btn-outline-danger fw-semibold h-50 w-50 me-3">Draft</button>
-                        <button type="submit" class="btn btn-post fw-semibold h-50 w-50">Posting</button>
-                    </div>
+                    <p class="h1 fw-semibold text-center text-rubik pb-3">TULIS ARTIKEL</p>
+                    <a href = "{{ route('home') }}" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
+                </div>
+                <div class="mt-3 text-center">
+                    <img src="{{ asset('images/logo.png') }}" class="mb-5 mt-2" style="max-height: 130px; max-width: 100%;">
                 </div>
                 <div style="width: 100%;">
                     <div class="mb-3 text-start align-items-lg-center">
                         <label for="Judul" class="form-label fw-bold" style="font-size: 20px;">Judul</label>
-                        <input type="text" value="{{old('Judul')}}" name="Judul" class="form-control rounded @error('Judul') is-invalid @enderror border" id="Judul" style="background-color: #ffffff; width: 100%;" placeholder="Tulis judul artikelmu">
+                        <input type="text" value="{{ $draft->judul }}" name="Judul" class="form-control rounded @error('Judul') is-invalid @enderror border" id="Judul" style="background-color: #ffffff; width: 100%;" placeholder="Tulis judul artikelmu">
                         @error('Judul')
                             <div class="text-danger"> {{$message}} </div>
                         @enderror
                     </div>
                     <div class="mb-3">
                         <label for="Thumbnail" class="form-label" style="margin-top: 10px">Thumbnail</label>
-                        <input value="{{old('Thumbnail')}}" class="form-control @error('Thumbnail') is-invalid @enderror" type="file" name="Thumbnail" id="Thumbnail">
+                        <input value="<?php echo $draft->thumbnail;?>" class="form-control @error('Thumbnail') is-invalid @enderror" type="file" name="Thumbnail" id="Thumbnail">
                         @error('Thumbnail')
                             <div class="text-danger"> {{$message}} </div>
                         @enderror
@@ -101,7 +84,7 @@
                                 <th>Action</th>    
                             </tr>
                             <tr>
-                                <td><input value="{{old('Tag')}}" type="text" name="Tag" id="Tag" placeholder="Tambahkan tag artikel" class="form-control @error('Tag') is-invalid @enderror" multiple="multiple"></td>
+                                <td><input value="{{$draft->tag}}" type="text" name="Tag" id="Tag" placeholder="Tambahkan tag artikel" class="form-control @error('Tag') is-invalid @enderror" multiple="multiple"></td>
                             </tr>
                             @error('Tag')
                             <div class="text-danger"> {{$message}} </div>
@@ -111,19 +94,21 @@
                     <div class="mb-3">
                         <label for="deskripsi" class="form-label fw-bold" style="font-size: 20px;">Apa Ceritamu?</label>
                         <div style="border: 2px solid black; background-color: #F5EFEF;">
-                            <textarea name="deskripsi" class="deskripsi form-control rounded" id="deskripsi" cols="70" rows="1000" style="background-color: #F5EFEF; border: none; width: 100%;">{{old('deskripsi')}}</textarea>
+                            <textarea name="deskripsi" class="deskripsi form-control rounded" id="deskripsi" cols="70" rows="1000" style="background-color: #F5EFEF; border: none; width: 100%;">{{$draft->deskripsi}}</textarea>
                         </div>
                     </div>
                     <div class="text-end mt-5">
                         <button type="submit" class="btn btn-post fs-5 fw-semibold" formaction="{{ route('store')}}">Posting</button>
                     </div>
                     <div class="text-end mt-5">
-                        <button type="submit" class="btn btn-post fs-5 fw-semibold" formaction="{{ route('draft')}}">Draft</button>
+                        <button type="submit" class="btn btn-post fs-5 fw-semibold" formaction="{{ route('updatedraft', ['id'=>$draft->id_draft])}}">Simpan</button>
                     </div>
                 </form>
             </div>
         </div>
     </form>
+        
+    @endforeach
 
     <script>
         ClassicEditor
@@ -164,5 +149,6 @@
             $('#Tag').tokenfield();
         })
     </script>
+
 </body>
 </html>

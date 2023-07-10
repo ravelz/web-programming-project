@@ -6,8 +6,10 @@ use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Models\Like;
 use App\Models\Comment;
+use App\Models\Draft;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class articleController extends Controller
 {
@@ -90,5 +92,49 @@ class articleController extends Controller
         Article::where('id_article', $id)->update(['jml_comment'=>$jml_comment]);
 
         return redirect()->back();
+    }
+
+    public function edit($id, $judul){
+        $draft = DB::table('drafts')
+                ->where('drafts.id_draft', '=', $id)
+                ->where('drafts.judul', '=', $judul)
+                ->get();
+
+        return view('editDraft', ['draft'=>$draft]);
+    }
+
+    public function updateDraft($id, Request $request){
+        $user = auth()->user()->id_user;
+        $update = Draft::find($id);
+
+        $image = $request->file('Thumbnail');
+        $imageName = $request->Judul.'.'.$image->getClientOriginalExtension();
+        $moveImg = Storage::disk('public')->putFileAs('uploads/', $image, $imageName);
+
+        $rules1 = [
+            'Judul' => 'required',
+            'Thumbnail' => 'nullable|image|mimes:jpg,jpeg,png',
+            'Tag' => 'nullable',
+            'deskripsi' => 'nullable'
+        ];  
+
+        $message1 = [
+            'required' => ':attribute wajib diisi',
+            'min' => 'Jumlah minimal :attribute adalah :min',
+            'mimes' => 'Format :attribute harus JPG,JPEG, atau PNG '    
+        ];
+
+        $validator = Validator::make($request->all(), $rules1, $message1);
+
+        if($validator->fails()){
+            return redirect()->back()->withInput()->withErrors($validator);
+        }else{
+            $update->judul = $request->Judul;
+            $update->thumbnail = $request->imageName;
+            $update->tag = $request->Tag;
+            $update->deskripsi = $request->deskripsi;
+
+            $update->save();
+        }
     }
 }

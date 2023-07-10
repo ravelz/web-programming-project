@@ -15,7 +15,7 @@ class Article extends Model
         'id_article',
         'judul',
         'tgl_publish',
-        'membership',
+        'status_member',
         'deskripsi',
         'jml_like',
         'jml_comment',

@@ -42,10 +42,12 @@ Route::get('/create-article', [CreateArticleController::class, 'create'])->name(
 Route::post('/upload-image', [CreateArticleController::class, 'uploadImage'])->name('upload');
 Route::post('/store-article', [CreateArticleController::class, 'store'])->name('store'); 
 
-// Route::get('/edit-article', [ArticleController::class, 'edit'])->name('edit');
+Route::post('/draft-article', [CreateArticleController::class, 'draft'])->name('draft');
+Route::get('/draft', [CreateArticleController::class, 'listDraft'])->name('listdraft');
+Route::get('/edit-article/{id}/{judul}', [ArticleController::class, 'edit'])->name('edit');
+Route::post('update-draft/{id}', [ArticleController::class, 'updateDraft'])->name('updatedraft');
 
 Route::get('/read-article/{id}/{judul}', [CreateArticleController::class, 'readArticle'])->name('read');
-Route::get('/edit-article/{id}/{judul}', [ArticleController::class])->name('edit');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/topics', [TopicsController::class, 'index'])->name('topics');
 Route::get('/like/{id}', [ArticleController::class, 'like'])->name('like_article');
