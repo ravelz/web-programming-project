@@ -7,7 +7,6 @@
     <title>Document</title>
     <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
     {{-- input text field --}}
@@ -41,10 +40,6 @@
     background-image: url('https://images.unsplash.com/photo-1571235908642-0459c9475ac3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
   }
 
-  .text-rubik{
-    font-family:'Rubik', sans-serif;
-  }
-
   .draft-btn{
     color: #982727;
     border-color :#982727;
@@ -55,7 +50,7 @@
     border-color :#982727 !important;
     background-color: white !important;
   }
- 
+
 
 </style>
 <body>
@@ -67,56 +62,43 @@
                 <div class="d-flex justify-content-between border-bottom border-dark border-opacity-25">
                     <div class="d-flex justify-content-between ms-4">
                         <a href = "{{ route('home') }}" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
-                        <div class="d-flex align-items-center ms-4">
-                            <img src="{{ asset('images/logo.png') }}" class="mb-4" style="max-height: 70px; max-width: 100%;">
-                            <p class="fs-5 fw-semibold text-center text-rubik ms-3">Tulis Artikelmu</p>
+                        <div class="d-flex align-items-center ms-4 mb-4">
+                            <img src="{{ asset('images/logo.png') }}" class=" align-self-end" style="max-height: 70px; max-width: 100%;">
+                            <h3 class="ms-4 mb-4 fw-semibold text-center">Tulis Artikelmu</h3>
                         </div>
                     </div>   
                     <div class="d-flex align-items-center ">
-                        <button type="submit" class="btn draft-btn border-3 btn-outline-danger fw-semibold h-50 w-50 me-3">Draft</button>
-                        <button type="submit" class="btn btn-post fw-semibold h-50 w-50">Posting</button>
+                        <button type="submit" class="btn btn-primary fs-4 fw-semibold m-3" style="background-color: #982727; color :#ffffff; border: #982727;" formaction="{{ route('draft')}}">Draft</button>
+                        <button type="submit" class="btn btn-primary fs-4 fw-semibold" style="background-color: #982727; color :#ffffff; border: #982727;" formaction="{{ route('store')}}">Posting</button>
                     </div>
                 </div>
                 <div style="width: 100%;">
-                    <div class="mb-3 text-start align-items-lg-center">
-                        <label for="Judul" class="form-label fw-bold" style="font-size: 20px;">Judul</label>
+                    <div class="mb-4 text-start align-items-lg-center">
+                        <label for="Judul" class="mt-5 form-label fw-bold mb-3">Judul</label>
                         <input type="text" value="{{old('Judul')}}" name="Judul" class="form-control rounded @error('Judul') is-invalid @enderror border" id="Judul" style="background-color: #ffffff; width: 100%;" placeholder="Tulis judul artikelmu">
                         @error('Judul')
                             <div class="text-danger"> {{$message}} </div>
                         @enderror
                     </div>
-                    <div class="mb-3">
-                        <label for="Thumbnail" class="form-label" style="margin-top: 10px">Thumbnail</label>
+                    <div class="mb-4">
+                        <label for="Thumbnail" class="form-label ,b-3">Thumbnail</label>
                         <input value="{{old('Thumbnail')}}" class="form-control @error('Thumbnail') is-invalid @enderror" type="file" name="Thumbnail" id="Thumbnail">
                         @error('Thumbnail')
                             <div class="text-danger"> {{$message}} </div>
                         @enderror
                     </div>
-                    <div class="mb-3">
-                        <table class="table table-bordered" id="table">
-                            <tr>
-                                <th>Add Tag</th>
-                                <th>Action</th>    
-                            </tr>
-                            <tr>
-                                <td><input value="{{old('Tag')}}" type="text" name="Tag" id="Tag" placeholder="Tambahkan tag artikel" class="form-control @error('Tag') is-invalid @enderror" multiple="multiple"></td>
-                            </tr>
-                            @error('Tag')
+                    <div class="mb-4">
+                        <label for="" class="mb-3">Tambahkan tag</label>
+                        <input value="{{old('Tag')}}" type="text" name="Tag" id="Tag" placeholder="Tambahkan tag artikel" class="form-control @error('Tag') is-invalid @enderror" multiple="multiple">
+                        @error('Tag')
                             <div class="text-danger"> {{$message}} </div>
-                            @enderror
-                        </table> 
+                        @enderror 
                     </div>
-                    <div class="mb-3">
-                        <label for="deskripsi" class="form-label fw-bold" style="font-size: 20px;">Apa Ceritamu?</label>
+                    <div class="mb-4">
+                        <label for="deskripsi" class="form-label fw-bold mb-3">Apa Ceritamu?</label>
                         <div style="border: 2px solid black; background-color: #F5EFEF;">
                             <textarea name="deskripsi" class="deskripsi form-control rounded" id="deskripsi" cols="70" rows="1000" style="background-color: #F5EFEF; border: none; width: 100%;">{{old('deskripsi')}}</textarea>
                         </div>
-                    </div>
-                    <div class="text-end mt-5">
-                        <button type="submit" class="btn btn-post fs-5 fw-semibold" formaction="{{ route('store')}}">Posting</button>
-                    </div>
-                    <div class="text-end mt-5">
-                        <button type="submit" class="btn btn-post fs-5 fw-semibold" formaction="{{ route('draft')}}">Draft</button>
                     </div>
                 </form>
             </div>

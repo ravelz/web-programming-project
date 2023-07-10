@@ -1,9 +1,9 @@
 <div id="card-kecil">
     <div class="card" style="height:auto; border-radius: 0px;">
         @if ($article->thumbnail == null)
-                <img id = "pic-small" src="{{asset('storage')}}/hakim.jpg" class="img-fluid" alt="..." style="height:100%; width:100%; object-fit:cover;" >
+                <img id = "pic-small" src="{{asset('storage')}}/public/uploads/karyabudaya.png" class="img-fluid" alt="..." style="height:100%; width:100%; object-fit:cover;" >
             @else 
-                <img id = "pic-small" src="{{asset('storage')}}/uploads/{{$article->thumbnail}}" class="img-fluid" alt="..." style="height:100%; width:100%; object-fit:cover;" >
+                <img id = "pic-small" src="{{asset('storage')}}/public/uploads/{{$article->thumbnail}}" class="img-fluid" alt="..." style="height:100%; width:100%; object-fit:cover;" >
             @endif
         <div class="card-body">
         <div class="first-layer">
