@@ -50,6 +50,7 @@
 </style>
 <body>
     @foreach ($draft as $draft)
+    @if (Auth::user()->role == 1 || Auth::user()->role == 3)
     <form method="POST" enctype="multipart/form-data">
         @csrf
         <div class="my-div" style="position: relative; height: 100vh;">
@@ -107,6 +108,65 @@
             </div>
         </div>
     </form>
+
+    @elseif (Auth::user()->role == 2 || Auth::user()->role == 4)
+        <form method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="my-div" style="position: relative; height: 100vh;">
+                <div class="background-image" style=" background-size: cover; background-position: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;"></div>
+    <div class="container d-flex flex-column rounded" style="position: relative; height: 90vh; max-width: 1200px; margin: auto; background-color: #F5EFEF; padding: 50px; overflow: hidden; top: 5vh; overflow:scroll">
+                    <div class="d-flex justify-content-between border-bottom border-dark border-opacity-25">
+                        <div class="d-flex justify-content-between ms-4">
+                            <a href = "{{ route('home') }}" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
+                            <div class="d-flex align-items-center ms-4 mb-4">
+                                <img src="{{ asset('images/logo.png') }}" class=" align-self-end" style="max-height: 70px; max-width: 100%;">
+                                <h3 class="ms-4 mb-4 fw-semibold text-center">Tulis Artikelmu</h3>
+                            </div>
+                        </div>   
+                        <div class="d-flex align-items-center ">
+                            <div class="form-check me-3">
+                                <input class="form-check-input me-3" type="checkbox" value="" name="membership" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault" >Buat artikel berbayar</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary fs-4 fw-semibold m-3" style="background-color: #982727; color :#ffffff; border: #982727;" formaction="{{ route('draft')}}">Draft</button>
+                            <button type="submit" class="btn btn-primary fs-4 fw-semibold" style="background-color: #982727; color :#ffffff; border: #982727;" formaction="{{ route('store')}}">Posting</button>
+                        </div>
+                    </div>
+                    <div style="width: 100%;">
+                        <div class="mb-4 text-start align-items-lg-center">
+                            <label for="Judul" class="mt-5 form-label fw-bold mb-3">Judul</label>
+                            <input type="text" value="{{ $draft->judul }}" name="Judul" class="form-control rounded @error('Judul') is-invalid @enderror border" id="Judul" style="background-color: #ffffff; width: 100%;" placeholder="Tulis judul artikelmu">
+                            @error('Judul')
+                                <div class="text-danger"> {{$message}} </div>
+                            @enderror
+                        </div>
+                        <div class="mb-4">
+                            <label for="Thumbnail" class="form-label ,b-3">Thumbnail</label>
+                            <input value="{{old('Thumbnail')}}" class="form-control @error('Thumbnail') is-invalid @enderror" type="file" name="Thumbnail" id="Thumbnail">
+                            @error('Thumbnail')
+                                <div class="text-danger"> {{$message}} </div>
+                            @enderror
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="" class="mb-3">Tambahkan tag</label>
+                            <input value="{{$draft->tag}}" type="text" name="Tag" id="Tag" placeholder="Tambahkan tag artikel" class="form-control @error('Tag') is-invalid @enderror" multiple="multiple">
+                            @error('Tag')
+                                <div class="text-danger"> {{$message}} </div>
+                            @enderror 
+                        </div>
+                        <div class="mb-4">
+                            <label for="deskripsi" class="form-label fw-bold mb-3">Apa Ceritamu?</label>
+                            <div style="border: 2px solid black; background-color: #F5EFEF;">
+                                <textarea name="deskripsi" class="deskripsi form-control rounded" id="deskripsi" cols="70" rows="1000" style="background-color: #F5EFEF; border: none; width: 100%;">{{$draft->deskripsi}}</textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </form>
+
+    @endif
         
     @endforeach
 

@@ -150,7 +150,7 @@ class CreateArticleController extends Controller
             DetailTag::create($value2);
         }
 
-        return redirect('article');
+        return redirect()->route('home')->withInput()->withErrors("Article berhasil ditambahkan!");
     }
 
     public function uploadImage(Request $request): JsonResponse{
@@ -179,7 +179,7 @@ class CreateArticleController extends Controller
                 ->selectRaw(
                     'DATE_FORMAT(articles.tgl_publish, \'%W, %d %M %Y\') AS date_publish'
                 )
-                ->get();   
+                ->get();
 
         $bookmark = DB::table('bookmarks')
         ->where('id_article', '=', $read[0]->id_article)
@@ -224,6 +224,7 @@ class CreateArticleController extends Controller
         ])
         ->with('popularArticles', $this->getPopularArticle())
         ->with('isBookmark', $bookmark->isEmpty())
+        
         ;
                            
     }
@@ -309,7 +310,7 @@ class CreateArticleController extends Controller
 
         $dataDraft = $this->getDifferenceDate1($dataDraft);
         // dd($dataDraft);
-        return view('listdraft', ['dataDraft'=>$dataDraft]);
+        return redirect()->route('home')->withInput()->withErrors("Draft berhasil ditambahkan!");
     }
 
     public function getDifferenceDate1($collections){

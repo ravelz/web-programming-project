@@ -28,7 +28,25 @@ class ProfileController extends Controller
         ->with('follower', $this->getFollower($username))
         ->with('following', $this->getFollowing($username))
         ->with('bookmark', $this->getBookmark($username))
+        ->with('draft', $this->getDraft($username))
         ;
+    }
+    public function getDraft($username){
+        $dataDraft = DB::table('drafts')
+        ->where('drafts.id_user', '=', Auth::User()->id_user)
+        ->get();
+
+        $dataDraft = $this->getDifferenceDate1($dataDraft);
+        // dd($dataDraft);
+        return $dataDraft;
+    }
+
+    public function getDifferenceDate1($collections){
+        foreach ($collections as $collection) {
+            $collection->deskripsi = Str::limit($collection->deskripsi, 150);
+            $collection->differenceDate = Carbon::now()->diffInDays(Carbon::parse($collection->created_at));
+        }
+        return $collections;
     }
 
     public function getDifferenceDate($collections){

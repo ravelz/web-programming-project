@@ -41,7 +41,8 @@
               <div class="card subs-type-card text-center mt-3 ms-5 border-3" style="width: 25rem;">
                   <div class="card-body">
                     <h5 class="card-title fw-semibold fs-3 text-secondary">Maxwin</h5>
-                    <p class="card-text fw-normal">Dengan Subrek, kamu bisa menjelajahi 7 galaxy.</p>
+                    <p class="card-text fw-normal">Berbagi kisah seru dari daerah Anda dengan Pembaca Unggul
+                    </p>
                     <p class="fs-2 fw-semibold">Rp 20.000,-</p>
                     <p class="fs-4 fw-bold text-danger">Permanent</p>
                     <a type = "button" href="{{ route('payment', ['role'=>'4', 'paket'=>"Maxwin"]) }}" class="btn text-light fw-normal btn-subsType w-50">Gas Beli !</a>
@@ -49,12 +50,12 @@
                   <div class="benefit-subrek border-top border-dark border-opacity-25">
                       <p class="fs-5 text-start ms-3 mt-4 fw-semibold mb-3">Fitur Tambahan</p>
                       <div class="list-group list-container text-start">
-                          <li class="list-group-item rounded-0"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                          <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                          <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                          <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
-                          <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
-                          <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
+                          <li class="list-group-item rounded-0"><i class="bi bi-check-circle-fill text-success"></i>Dapat menentukan artikel karya Anda berbayar atau tidak
+                          </li>
+                          <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>Isi konten artikel Anda menjadi lebih eksklusif
+                          </li>
+                          <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>Membantu developer situs web untuk menjadi lebih baik lagi
+                          </li>
                       </div>
                   </div> 
               </div>
@@ -70,12 +71,10 @@
                 <div class="benefit-subrek border-top border-dark border-opacity-25">
                     <p class="fs-5 text-start ms-3 mt-4 fw-semibold mb-3">Fitur Tambahan</p>
                     <div class="list-group list-container text-start">
-                        <li class="list-group-item rounded-0"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                        <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
-                        <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
-                        <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
+                        <li class="list-group-item rounded-0"><i class="bi bi-check-circle-fill text-success"></i>  Dapat membaca semua tipe artikel, berbayar maupun tidak</li>
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  Tidak ada batasan atas artikel yang dapat Anda akses
+                        </li>
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  Membantu developer situs web untuk menjadi lebih baik lagi</li>
                     </div>
                 </div> 
               </div>
@@ -83,21 +82,22 @@
               <div class="card subs-type-card text-center mt-3 ms-5 border-3" style="width: 25rem;">
                 <div class="card-body">
                   <h5 class="card-title fw-semibold fs-3 text-secondary">Maxwin</h5>
-                  <p class="card-text fw-normal">Dengan Subrek, kamu bisa menjelajahi 7 galaxy.</p>
+                  <p class="card-text fw-normal">Berbagi kisah seru dari daerah Anda dengan Pembaca Unggul
+                  </p>
                   <p class="fs-2 fw-semibold">Rp 20.000,-</p>
                   <p class="fs-4 fw-bold text-danger">Permanent</p>
                   <a type = "button" href="{{ route('payment', ['role'=>'4', 'paket'=>"Maxwin"]) }}" class="btn text-light fw-normal btn-subsType w-50 disabled">Gas Beli !</a>
                 </div>
                 <div class="benefit-subrek border-top border-dark border-opacity-25">
-                    <p class="fs-5 text-start ms-3 mt-4 fw-semibold mb-3">Fitur Tambahan</p>
-                    <div class="list-group list-container text-start">
-                        <li class="list-group-item rounded-0"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                        <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
-                        <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
-                        <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
-                    </div>
+                  <p class="fs-5 text-start ms-3 mt-4 fw-semibold mb-3">Fitur Tambahan</p>
+                  <div class="list-group list-container text-start">
+                      <li class="list-group-item rounded-0"><i class="bi bi-check-circle-fill text-success"></i>Dapat menentukan artikel karya Anda berbayar atau tidak
+                      </li>
+                      <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>Isi konten artikel Anda menjadi lebih eksklusif
+                      </li>
+                      <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>Membantu developer situs web untuk menjadi lebih baik lagi
+                      </li>
+                  </div>
                 </div> 
               </div>
 
@@ -112,41 +112,40 @@
                 <div class="benefit-subrek border-top border-dark border-opacity-25">
                     <p class="fs-5 text-start ms-3 mt-4 fw-semibold mb-3">Fitur Tambahan</p>
                     <div class="list-group list-container text-start">
-                        <li class="list-group-item rounded-0"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                        <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
-                        <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
-                        <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
+                        <li class="list-group-item rounded-0"><i class="bi bi-check-circle-fill text-success"></i>  Dapat membaca semua tipe artikel, berbayar maupun tidak</li>
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  Tidak ada batasan atas artikel yang dapat Anda akses
+                        </li>
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  Membantu developer situs web untuk menjadi lebih baik lagi</li>
                     </div>
-                </div> 
+                </div>
               </div>
             @elseif ($role == 1)
             <div class="card subs-type-card text-center mt-3 ms-5 border-3" style="width: 25rem;">
               <div class="card-body">
                 <h5 class="card-title fw-semibold fs-3 text-secondary">Maxwin</h5>
-                <p class="card-text fw-normal">Dengan Subrek, kamu bisa menjelajahi 7 galaxy.</p>
+                <p class="card-text fw-normal">Berbagi kisah seru dari daerah Anda dengan Pembaca Unggul
+                </p>
                 <p class="fs-2 fw-semibold">Rp 20.000,-</p>
                 <p class="fs-4 fw-bold text-danger">Permanent</p>
                 <a type = "button" href="{{ route('payment', ['role'=>'2', 'paket'=>"Maxwin"]) }}" class="btn text-light fw-normal btn-subsType w-50">Gas Beli !</a>
               </div>
               <div class="benefit-subrek border-top border-dark border-opacity-25">
-                  <p class="fs-5 text-start ms-3 mt-4 fw-semibold mb-3">Fitur Tambahan</p>
-                  <div class="list-group list-container text-start">
-                      <li class="list-group-item rounded-0"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                      <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                      <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                      <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
-                      <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
-                      <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
-                  </div>
+                <p class="fs-5 text-start ms-3 mt-4 fw-semibold mb-3">Fitur Tambahan</p>
+                <div class="list-group list-container text-start">
+                    <li class="list-group-item rounded-0"><i class="bi bi-check-circle-fill text-success"></i>Dapat menentukan artikel karya Anda berbayar atau tidak
+                    </li>
+                    <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>Isi konten artikel Anda menjadi lebih eksklusif
+                    </li>
+                    <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>Membantu developer situs web untuk menjadi lebih baik lagi
+                    </li>
+                </div>
               </div> 
             </div>
 
             <div class="card subs-type-card text-center mt-3 ms-5 border-3" style="width: 25rem;">
               <div class="card-body">
                 <h5 class="card-title fw-semibold fs-3 text-warning">Scatter</h5>
-                <p class="card-text fw-normal">Dengan Subrek, kamu bisa menjelajahi 7 galaxy.</p>
+                <p class="card-text fw-normal">Miliki kesempatan membaca karya tulis para Penulis Andalan dengan leluasa</p>
                 <p class="fs-2 fw-semibold">Rp 50.000,-</p>
                 <p class="fs-4 fw-bold text-danger">Permanent</p>
                 <a type = "button" href="{{ route('payment', ['role'=>'3', 'paket'=>"Scatter"]) }}" class="btn text-light fw-normal btn-subsType w-50">Gas Beli !</a>
@@ -167,22 +166,23 @@
               <div class="card subs-type-card text-center mt-3 ms-5 border-3" style="width: 25rem;">
                 <div class="card-body">
                   <h5 class="card-title fw-semibold fs-3 text-secondary">Maxwin</h5>
-                  <p class="card-text fw-normal">Dengan Subrek, kamu bisa menjelajahi 7 galaxy.</p>
+                  <p class="card-text fw-normal">Berbagi kisah seru dari daerah Anda dengan Pembaca Unggul
+                  </p>
                   <p class="fs-2 fw-semibold">Rp 20.000,-</p>
                   <p class="fs-4 fw-bold text-danger">Permanent</p>
                   <a type = "button" href="{{ route('payment', ['role'=>'2', 'paket'=>"Maxwin"]) }}" class="btn text-light fw-normal btn-subsType w-50 disabled">Gas Beli !</a>
                 </div>
                 <div class="benefit-subrek border-top border-dark border-opacity-25">
-                    <p class="fs-5 text-start ms-3 mt-4 fw-semibold mb-3">Fitur Tambahan</p>
-                    <div class="list-group list-container text-start">
-                        <li class="list-group-item rounded-0"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                        <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
-                        <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
-                        <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
-                    </div>
-                </div> 
+                  <p class="fs-5 text-start ms-3 mt-4 fw-semibold mb-3">Fitur Tambahan</p>
+                  <div class="list-group list-container text-start">
+                      <li class="list-group-item rounded-0"><i class="bi bi-check-circle-fill text-success"></i>Dapat menentukan artikel karya Anda berbayar atau tidak
+                      </li>
+                      <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>Isi konten artikel Anda menjadi lebih eksklusif
+                      </li>
+                      <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>Membantu developer situs web untuk menjadi lebih baik lagi
+                      </li>
+                  </div>
+              </div> 
               </div>
 
 
@@ -190,7 +190,7 @@
               <div class="card subs-type-card text-center mt-3 ms-5 border-3" style="width: 25rem;">
                 <div class="card-body">
                   <h5 class="card-title fw-semibold fs-3 text-warning">Scatter</h5>
-                  <p class="card-text fw-normal">Dengan Subrek, kamu bisa menjelajahi 7 galaxy.</p>
+                  <p class="card-text fw-normal">Miliki kesempatan membaca karya tulis para Penulis Andalan dengan leluasa</p>
                   <p class="fs-2 fw-semibold">Rp 50.000,-</p>
                   <p class="fs-4 fw-bold text-danger">Permanent</p>
                   <a type = "button" href="{{ route('payment', ['role'=>'3', 'paket'=>"Scatter"]) }}" class="btn text-light fw-normal btn-subsType w-50 disabled">Gas Beli !</a>
@@ -198,14 +198,12 @@
                 <div class="benefit-subrek border-top border-dark border-opacity-25">
                     <p class="fs-5 text-start ms-3 mt-4 fw-semibold mb-3">Fitur Tambahan</p>
                     <div class="list-group list-container text-start">
-                        <li class="list-group-item rounded-0"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  1.a</li>
-                        <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
-                        <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
-                        <li class="list-group-item"><i class="bi bi-dash-circle-fill text-danger"></i>  2.b</li>
+                        <li class="list-group-item rounded-0"><i class="bi bi-check-circle-fill text-success"></i>  Dapat membaca semua tipe artikel, berbayar maupun tidak</li>
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  Tidak ada batasan atas artikel yang dapat Anda akses
+                        </li>
+                        <li class="list-group-item"><i class="bi bi-check-circle-fill text-success"></i>  Membantu developer situs web untuk menjadi lebih baik lagi</li>
                     </div>
-                </div> 
+                </div>
               </div>
             @endif
             

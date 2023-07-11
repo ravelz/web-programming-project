@@ -15,6 +15,11 @@ if($bookmark[0]->id_article != null){
     $bookmarkCount = count($bookmark);
 }
 
+$draftCount = 0;
+if(!$draft->isEmpty()){
+    $draftCount = count($draft);
+}
+
 $followerCount = count($follower);
 $followingCount = count($following);
 if($profile[0]->id_article == null){
@@ -124,6 +129,9 @@ $gatauPokoknyaIdUser = User::where('username', $username)->first()->id_user;
                         <li class="nav-item me-2" role="presentation">
                           <button style = "color:black" class="nav-link fw-normal fw-semibold" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Markah</button>
                         </li>
+                        <li class="nav-item me-2" role="presentation">
+                            <button style = "color:black" class="nav-link fw-normal fw-semibold" id="pills-draft-tab" data-bs-toggle="pill" data-bs-target="#pills-draft" type="button" role="tab" aria-controls="pills-draft" aria-selected="false">Draft</button>
+                          </li>
                         @endif
                         <li class="nav-item me-2" role="presentation">
                           <button style = "color:black" class="nav-link fw-normal fw-semibold" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Pengikut</button>
@@ -149,8 +157,13 @@ $gatauPokoknyaIdUser = User::where('username', $username)->first()->id_user;
                             @if ($bookmark[$i]->id_article != null)
                                 <x-profile-big-card :article="$bookmark[$i]"/>
                             @endif
-                           
-                            
+                        @endfor
+                    </div>
+                    <div class="tab-pane fade" id="pills-draft" role="tabpanel" aria-labelledby="pills-draft-tab" tabindex="0">
+                        @for ($i = 0; $i < $draftCount; $i++)
+                            @if ($draft[$i]->id_draft != null)
+                                <x-draft-item :draft="$draft[$i]"/>
+                            @endif
                         @endfor
                     </div>
                     @endif
