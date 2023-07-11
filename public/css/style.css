@@ -5,6 +5,10 @@ html,body{
     padding-top: 55px; 
 }
 
+.background-anjay{
+  background-color: #F5F0F0;
+}
+
                                                 /*=============SET UP FONT ================*/
 
 /*=====Rubik=====*/
@@ -1119,6 +1123,14 @@ html,body{
     
   }
 
+  .btn-tol{
+    background-color: #982727 !important;
+  }
+
+  .btn-tol:hover{
+    background-color: #B05151 !important;
+  }
+
   .subsType-container{
     z-index: 5;
     overflow: hidden;
@@ -1151,6 +1163,33 @@ html,body{
     height: 100px;
     width: 100px;
   }
+
+
+  @keyframes slideInFromLeft {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  } 
+
+  .background-anjay {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .background-anjay.visible {
+    opacity: 1;
+  }
+
+  .slide-from-left {
+    animation: slideInFromLeft 1s ease-in-out;
+  }
+
+
+
+
 
 
 

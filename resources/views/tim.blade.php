@@ -107,7 +107,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="offset-3 col-6 d-flex justify-content-center mt-3">
                     <div class="card col-6 col-lg-4 col-sm-6 border-light mb-3" style="max-width: 30rem;">
                         <div class="d-flex justify-content-between kaRed rounded-top">
