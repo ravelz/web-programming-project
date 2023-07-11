@@ -53,4 +53,9 @@ window.addEventListener('DOMContentLoaded', function() {
       }, (index + 1) * 500); 
     });
   });
+
+  window.addEventListener('DOMContentLoaded', function() {
+    var container = document.querySelector('.background-anjay');
+    container.classList.add('visible', 'slide-from-left');
+  });
   

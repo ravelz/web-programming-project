@@ -30,6 +30,10 @@ Route::get('/', function() {
     return view('login');
 });
 
+Route::get('/aboutUs', function() {
+    return view('aboutUs');
+})->name('aboutUs');
+
 Route::get('/article', [articleController::class, 'index']);
 // Route::get('/home', [HomeController::class, 'showHome']);
 
