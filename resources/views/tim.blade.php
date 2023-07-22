@@ -55,7 +55,7 @@
         <div class="row">
             <div class="d-flex col-12 flex-row justify-content-around">
                 <a href = "{{ route('index') }}" type = "button" class="btn kaRed text-light fw-semibold fs-5 align-self-start ">Kembali</a>
-                <p class="display-2 mb-5 fw-bold tit">Our Teamates</p>
+                <p class="display-2 mb-5 me-3 fw-bold tit">Tim Karya Budaya</p>
                 <div></div>
             </div>
             
@@ -64,78 +64,56 @@
                     <div class="card col-6 col-lg-4 col-sm-6 border-light mb-3" style="max-width: 30rem;">
                         <div class="d-flex justify-content-between kaRed rounded-top">
                             <div class="card-header text-light fs-3 text-rubik pb-5">Ella</div>
-                            <div class="d-flex me-3 mt-3">
-                                <i class="ms-2 bi bi-facebook text-light fs-4"></i>
-                                <i class="ms-2 bi bi-facebook text-light fs-4"></i>
-                                <i class="ms-2 bi bi-facebook text-light fs-4"></i>
-                            </div>
                         </div>
                         <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                          <img class="img-thumbnail rounded-circle profil-about mb-4" src="{{ asset('storage') }}/upload/smallCard.jpg" alt="">
-                          <h5 class="card-title fs-2 mb-3 mt-2 text-center text-rubik">ANJAY GURINJAY</h5>
-                          <p class="card-text text-center text-rubik mb-5 p-2">Makan daging anjing dengan sayur KOL !!!</p>
+                          <img class="img-thumbnail rounded-circle profil-about mb-4" src="{{ asset('storage') }}/el.jpg" alt="">
+                          <h5 class="card-title fs-2 mb-3 mt-2 text-center text-rubik">Christiella</h5>
+                          <p class="card-text text-center text-rubik mb-5 p-2">I take the L and R on my headphones seriously
+                        </p>
                         </div>
                     </div>
                     <div class="card ms-3 col-6 col-lg-4 col-sm-6 border-light mb-3" style="max-width: 30rem;">
                         <div class="d-flex justify-content-between kaRed rounded-top">
-                            <div class="card-header text-light fs-3 text-rubik pb-5">Ella</div>
-                            <div class="d-flex me-3 mt-3">
-                                <i class="ms-2 bi bi-facebook text-light fs-4"></i>
-                                <i class="ms-2 bi bi-facebook text-light fs-4"></i>
-                                <i class="ms-2 bi bi-facebook text-light fs-4"></i>
-                            </div>
+                            <div class="card-header text-light fs-3 text-rubik pb-5">Ray</div>
                         </div>
                         <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                          <img class="img-thumbnail rounded-circle profil-about mb-4" src="{{ asset('storage') }}/upload/smallCard.jpg" alt="">
-                          <h5 class="card-title fs-2 mb-3 mt-2 text-center text-rubik">ANJAY GURINJAY</h5>
-                          <p class="card-text text-center text-rubik mb-5 p-2">Makan daging anjing dengan sayur KOL !!!</p>
+                          <img class="img-thumbnail rounded-circle profil-about mb-4" src="{{ asset('storage') }}/ray.jpg" alt="">
+                          <h5 class="card-title fs-2 mb-3 mt-2 text-center text-rubik">Raymasterio</h5>
+                          <p class="card-text text-center text-rubik mb-5 p-2">today's schedule: suffer
+
+                        </p>
                         </div>
                     </div>
                     <div class="card ms-3 col-6 col-lg-4 col-sm-6 border-light mb-3" style="max-width: 30rem;">
                         <div class="d-flex justify-content-between kaRed rounded-top">
-                            <div class="card-header text-light fs-3 text-rubik pb-5">Ella</div>
-                            <div class="d-flex me-3 mt-3">
-                                <i class="ms-2 bi bi-facebook text-light fs-4"></i>
-                                <i class="ms-2 bi bi-facebook text-light fs-4"></i>
-                                <i class="ms-2 bi bi-facebook text-light fs-4"></i>
-                            </div>
+                            <div class="card-header text-light fs-3 text-rubik pb-5">Tha</div>
                         </div>
                         <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                          <img class="img-thumbnail rounded-circle profil-about mb-4" src="{{ asset('storage') }}/upload/smallCard.jpg" alt="">
-                          <h5 class="card-title fs-2 mb-3 mt-2 text-center text-rubik">ANJAY GURINJAY</h5>
-                          <p class="card-text text-center text-rubik mb-5 p-2">Makan daging anjing dengan sayur KOL !!!</p>
+                          <img class="img-thumbnail rounded-circle profil-about mb-4" src="{{ asset('storage') }}/tha.jpg" alt="">
+                          <h5 class="card-title fs-2 mb-3 mt-2 text-center text-rubik">Renatha</h5>
+                          <p class="card-text text-center text-rubik mb-5 p-2">Know what's on the menu? Me-n-u</p>
                         </div>
                     </div>
                 </div>
                 <div class="offset-3 col-6 d-flex justify-content-center mt-3">
                     <div class="card col-6 col-lg-4 col-sm-6 border-light mb-3" style="max-width: 30rem;">
                         <div class="d-flex justify-content-between kaRed rounded-top">
-                            <div class="card-header text-light fs-3 text-rubik pb-5">Ella</div>
-                            <div class="d-flex me-3 mt-3">
-                                <i class="ms-2 bi bi-facebook text-light fs-4"></i>
-                                <i class="ms-2 bi bi-facebook text-light fs-4"></i>
-                                <i class="ms-2 bi bi-facebook text-light fs-4"></i>
-                            </div>
+                            <div class="card-header text-light fs-3 text-rubik pb-5">Met</div>
                         </div>
                         <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                          <img class="img-thumbnail rounded-circle profil-about mb-4" src="{{ asset('storage') }}/upload/smallCard.jpg" alt="">
-                          <h5 class="card-title fs-2 mb-3 mt-2 text-center text-rubik">ANJAY GURINJAY</h5>
+                          <img class="img-thumbnail rounded-circle profil-about mb-4" src="{{ asset('storage') }}/met.jpg" alt="">
+                          <h5 class="card-title fs-2 mb-3 mt-2 text-center text-rubik">Steven Matthew</h5>
                           <p class="card-text text-center text-rubik mb-5 p-2">Makan daging anjing dengan sayur KOL !!!</p>
                         </div>
                     </div>
                     <div class="card ms-3 col-6 col-lg-4 col-sm-6 border-light mb-3" style="max-width: 30rem;">
                         <div class="d-flex justify-content-between kaRed rounded-top">
-                            <div class="card-header text-light fs-3 text-rubik pb-5">Ella</div>
-                            <div class="d-flex me-3 mt-3">
-                                <i class="ms-2 bi bi-facebook text-light fs-4"></i>
-                                <i class="ms-2 bi bi-facebook text-light fs-4"></i>
-                                <i class="ms-2 bi bi-facebook text-light fs-4"></i>
-                            </div>
+                            <div class="card-header text-light fs-3 text-rubik pb-5">Vier</div>
                         </div>
                         <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                          <img class="img-thumbnail rounded-circle profil-about mb-4" src="{{ asset('storage') }}/upload/smallCard.jpg" alt="">
-                          <h5 class="card-title fs-2 mb-3 mt-2 text-center text-rubik">ANJAY GURINJAY</h5>
-                          <p class="card-text text-center text-rubik mb-5 p-2">Makan daging anjing dengan sayur KOL !!!</p>
+                          <img class="img-thumbnail rounded-circle profil-about mb-4" src="{{ asset('storage') }}/vier.jpg" alt="">
+                          <h5 class="card-title fs-2 mb-3 mt-2 text-center text-rubik">Vierda</h5>
+                          <p class="card-text text-center text-rubik mb-5 p-2">i don't know how many "yaudah lah" i got left in me</p>
                         </div>
                     </div>
                 </div>

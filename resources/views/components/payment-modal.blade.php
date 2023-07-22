@@ -38,7 +38,7 @@
                             <input id="email" name="email" class="form-control" placeholder="nama@contoh.com">
                         </div>
                     </div>
-                    <div class="row mt-2">
+                    {{-- <div class="row mt-2">
                         <div class="col-6 mt-2">
                             <label for="Select" class="form-label fw-bold">Kota</label>
                             <select id="Select" class="form-select" name="kota">
@@ -57,7 +57,7 @@
                                 <option  value="3">3</option>
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="row mt-2">
                         <div class="col-6 mt-2">

@@ -28,8 +28,6 @@ class PaymentController extends Controller
         $rules = [
             'name' => 'required',
             'email' => 'required',
-            'kota' => 'required',
-            'negara' => 'required',
             "namaKartu" => 'required',
             "noKartu" => 'required'
         ];

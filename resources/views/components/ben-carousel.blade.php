@@ -9,7 +9,7 @@
     </div>
     <div class="carousel-item text-center mt-5">
       <img src="{{ asset('storage') }}/copywriter.png" class="ben-logo" alt="...">
-      <p class=" me-auto ms-auto ben-desc text-wrap text-light align-middle text-center mt-3 fw-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quas quaerat adipisci eos, voluptatem perspiciatis voluptatum corrupti exercitationem odio iure molestiae nobis totam illum distinctio blanditiis! Nemo ab eveniet asperiores.</p>
+      <p class=" me-auto ms-auto ben-desc text-wrap text-light align-middle text-center mt-3 fw-semibold">Membantu developer membayar tagihan bulanan</p>
     </div>
   </div>
   <button class="carousel-control-prev position-absolute bottom-0" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

@@ -58,7 +58,7 @@
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="{{ asset('js/toggle-passwords.js') }}"></script>
             <div style="margin-top: 20px;">
-            <button type="submit" class="btn btn-danger mx-auto d-block" style="border-radius: 30px; background-color: #982727; width: 120px; height: 30px;">Masuk</button>
+            <button type="submit" class="btn btn-danger pb-3 mx-auto d-block" style="border-radius: 30px; background-color: #982727; border-color: #982727; width: 120px; height: 40px;">Masuk</button>
         </form>
         <div class="text-center" style="margin-top: 20px;">
             Belum punya akun? <a href="{{ route('register') }}" style="color: #AA1A1A;">Daftar disini</a>.

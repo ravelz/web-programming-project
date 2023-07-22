@@ -37,11 +37,13 @@
             </div>
             <div>
                 <div class="d-flex flex-row justify-content-between" style="font-family:'Poppins',sans-serif; font-size:14px; font-weight:400; color:white;" >
-                    <p style="padding:0 16px">Tentang</p>
-                    <p style="padding:0 16px">Fitur</p>
-                    <p style="padding:0 16px">Pricing</p>
-                    <p style="padding:0 16px">Gallery</p>
-                    <p style="padding:0 16px">Tim</p>
+                    <a href="{{ route('aboutUs') }}" class="text-decoration-none">
+                        <p style="padding:0 16px" class="text-light">Tentang</p>
+                    </a>
+                    <a href="{{ route('tim') }}" class="text-decoration-none">
+                        <p style="padding:0 16px" class="text-light">Tim</p>
+                    </a>
+                    
                 </div>
             </div>
         </div>

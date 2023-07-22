@@ -225,8 +225,7 @@ class ProfileController extends Controller
                 ['name' => $request->name,
                 'username' => $request->username,
                 'aboutme' => $request->aboutme,
-                'profile_picture' => $imageName,
-                'password'=> Hash::make($request->new_password)]);
+                'profile_picture' => $imageName]);
         }
         return redirect()->back()->withErrors("Profile berhasil diubah!")->withInput();
     }
