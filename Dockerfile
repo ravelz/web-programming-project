@@ -5,8 +5,8 @@ WORKDIR /var/www/html
 
 COPY ./ ./
 
-RUN composer update
-RUN composer install
+RUN composer update --ignore-platform-req=ext-exif
+RUN composer install --ignore-platform-req=ext-exif
 
 ## NPM react
 FROM node:18-alpine as npm_builder
