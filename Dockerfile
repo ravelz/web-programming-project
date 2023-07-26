@@ -1,11 +1,31 @@
-FROM php:7.4-fpm
+## Composer
+FROM composer:latest as composer_stage
 
-# Arguments defined in docker-compose.yml
-ARG user
-ARG uid
+WORKDIR /var/www/html
 
-# Install system dependencies
+COPY ./ ./
+
+RUN composer install
+
+## NPM react
+FROM node:18-alpine as npm_builder
+
+COPY --from=composer_stage /var/www/html /var/www/html
+
+WORKDIR /var/www/html
+COPY ./ ./
+
+RUN npm install
+RUN npm run build
+
+## Linux
+FROM php:8.1.16-fpm
+
+WORKDIR /var/www/html
+
+# Linux Library
 RUN apt-get update && apt-get install -y \
+    sudo \
     git \
     curl \
     libpng-dev \
@@ -14,21 +34,12 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip
 
-# Clear cache
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+COPY --from=npm_builder /var/www/html /var/www/html
 
-# Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+# Composer
+# COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# RUN composer install
 
-# Get latest Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Create system user to run Composer and Artisan Commands
-RUN useradd -G www-data,root -u $uid -d /home/$user $user
-RUN mkdir -p /home/$user/.composer && \
-    chown -R $user:$user /home/$user
-
-# Set working directory
-WORKDIR /var/www
-
-USER $user
+RUN sudo chown -R www-data:www-data /var/www/html \
+    && sudo chmod 777 -R /var/www/html
